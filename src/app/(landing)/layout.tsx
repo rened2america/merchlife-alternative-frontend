@@ -14,8 +14,8 @@ function LandingPageLayout({ children }: { children: ReactNode }) {
     <>
       <Header />
       {children}
-      <div className="h-20"></div>
-      <Footer />
+      {/* <div className="h-20"></div> */}
+      {/* <Footer /> */}
     </>
   );
 }

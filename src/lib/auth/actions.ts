@@ -18,11 +18,7 @@ import {
   type SignupInput,
   resetPasswordSchema,
 } from "@/lib/validators/auth";
-import {
-  emailVerificationCodes,
-  passwordResetTokens,
-  users,
-} from "@/server/db/schema";
+import { emailVerificationCodes, passwordResetTokens, users } from "@/server/db/schema";
 import { sendMail } from "@/server/send-mail";
 import { renderVerificationCodeEmail } from "@/lib/email-templates/email-verification";
 import { renderResetPasswordEmail } from "@/lib/email-templates/reset-password";
@@ -35,10 +31,7 @@ export interface ActionResponse<T> {
   formError?: string;
 }
 
-export async function login(
-  _: any,
-  formData: FormData,
-): Promise<ActionResponse<LoginInput>> {
+export async function login(_: any, formData: FormData): Promise<ActionResponse<LoginInput>> {
   const obj = Object.fromEntries(formData.entries());
 
   const parsed = loginSchema.safeParse(obj);
@@ -70,10 +63,7 @@ export async function login(
     };
   }
 
-  const validPassword = await new Scrypt().verify(
-    existingUser.hashedPassword,
-    password,
-  );
+  const validPassword = await new Scrypt().verify(existingUser.hashedPassword, password);
   if (!validPassword) {
     return {
       formError: "Incorrect email or password",
@@ -82,18 +72,11 @@ export async function login(
 
   const session = await lucia.createSession(existingUser.id, {});
   const sessionCookie = lucia.createSessionCookie(session.id);
-  cookies().set(
-    sessionCookie.name,
-    sessionCookie.value,
-    sessionCookie.attributes,
-  );
+  cookies().set(sessionCookie.name, sessionCookie.value, sessionCookie.attributes);
   return redirect(redirects.afterLogin);
 }
 
-export async function signup(
-  _: any,
-  formData: FormData,
-): Promise<ActionResponse<SignupInput>> {
+export async function signup(_: any, formData: FormData): Promise<ActionResponse<SignupInput>> {
   const obj = Object.fromEntries(formData.entries());
 
   const parsed = signupSchema.safeParse(obj);
@@ -101,13 +84,14 @@ export async function signup(
     const err = parsed.error.flatten();
     return {
       fieldError: {
+        name: err.fieldErrors.name?.[0],
         email: err.fieldErrors.email?.[0],
         password: err.fieldErrors.password?.[0],
       },
     };
   }
 
-  const { email, password } = parsed.data;
+  const { name, email, password } = parsed.data;
 
   const existingUser = await db.query.users.findFirst({
     where: (table, { eq }) => eq(table.email, email),
@@ -124,6 +108,7 @@ export async function signup(
   const hashedPassword = await new Scrypt().hash(password);
   await db.insert(users).values({
     id: userId,
+    name,
     email,
     hashedPassword,
   });
@@ -137,11 +122,7 @@ export async function signup(
 
   const session = await lucia.createSession(userId, {});
   const sessionCookie = lucia.createSessionCookie(session.id);
-  cookies().set(
-    sessionCookie.name,
-    sessionCookie.value,
-    sessionCookie.attributes,
-  );
+  cookies().set(sessionCookie.name, sessionCookie.value, sessionCookie.attributes);
   return redirect(redirects.toVerify);
 }
 
@@ -154,11 +135,7 @@ export async function logout(): Promise<{ error: string } | void> {
   }
   await lucia.invalidateSession(session.id);
   const sessionCookie = lucia.createBlankSessionCookie();
-  cookies().set(
-    sessionCookie.name,
-    sessionCookie.value,
-    sessionCookie.attributes,
-  );
+  cookies().set(sessionCookie.name, sessionCookie.value, sessionCookie.attributes);
   return redirect("/");
 }
 
@@ -180,10 +157,7 @@ export async function resendVerificationEmail(): Promise<{
       error: `Please wait ${timeFromNow(lastSent.expiresAt)} before resending`,
     };
   }
-  const verificationCode = await generateEmailVerificationCode(
-    user.id,
-    user.email,
-  );
+  const verificationCode = await generateEmailVerificationCode(user.id, user.email);
   await sendMail({
     to: user.email,
     subject: "Verify your account",
@@ -193,10 +167,7 @@ export async function resendVerificationEmail(): Promise<{
   return { success: true };
 }
 
-export async function verifyEmail(
-  _: any,
-  formData: FormData,
-): Promise<{ error: string } | void> {
+export async function verifyEmail(_: any, formData: FormData): Promise<{ error: string } | void> {
   const code = formData.get("code");
   if (typeof code !== "string" || code.length !== 8) {
     return { error: "Invalid code" };
@@ -211,33 +182,22 @@ export async function verifyEmail(
       where: (table, { eq }) => eq(table.userId, user.id),
     });
     if (item) {
-      await tx
-        .delete(emailVerificationCodes)
-        .where(eq(emailVerificationCodes.id, item.id));
+      await tx.delete(emailVerificationCodes).where(eq(emailVerificationCodes.id, item.id));
     }
     return item;
   });
 
-  if (!dbCode || dbCode.code !== code)
-    return { error: "Invalid verification code" };
+  if (!dbCode || dbCode.code !== code) return { error: "Invalid verification code" };
 
-  if (!isWithinExpirationDate(dbCode.expiresAt))
-    return { error: "Verification code expired" };
+  if (!isWithinExpirationDate(dbCode.expiresAt)) return { error: "Verification code expired" };
 
   if (dbCode.email !== user.email) return { error: "Email does not match" };
 
   await lucia.invalidateUserSessions(user.id);
-  await db
-    .update(users)
-    .set({ emailVerified: true })
-    .where(eq(users.id, user.id));
+  await db.update(users).set({ emailVerified: true }).where(eq(users.id, user.id));
   const session = await lucia.createSession(user.id, {});
   const sessionCookie = lucia.createSessionCookie(session.id);
-  cookies().set(
-    sessionCookie.name,
-    sessionCookie.value,
-    sessionCookie.attributes,
-  );
+  cookies().set(sessionCookie.name, sessionCookie.value, sessionCookie.attributes);
   redirect(redirects.afterLogin);
 }
 
@@ -255,8 +215,7 @@ export async function sendPasswordResetLink(
       where: (table, { eq }) => eq(table.email, parsed.data),
     });
 
-    if (!user || !user.emailVerified)
-      return { error: "Provided email is invalid." };
+    if (!user || !user.emailVerified) return { error: "Provided email is invalid." };
 
     const verificationToken = await generatePasswordResetToken(user.id);
 
@@ -295,31 +254,21 @@ export async function resetPassword(
       where: (table, { eq }) => eq(table.id, token),
     });
     if (item) {
-      await tx
-        .delete(passwordResetTokens)
-        .where(eq(passwordResetTokens.id, item.id));
+      await tx.delete(passwordResetTokens).where(eq(passwordResetTokens.id, item.id));
     }
     return item;
   });
 
   if (!dbToken) return { error: "Invalid password reset link" };
 
-  if (!isWithinExpirationDate(dbToken.expiresAt))
-    return { error: "Password reset link expired." };
+  if (!isWithinExpirationDate(dbToken.expiresAt)) return { error: "Password reset link expired." };
 
   await lucia.invalidateUserSessions(dbToken.userId);
   const hashedPassword = await new Scrypt().hash(password);
-  await db
-    .update(users)
-    .set({ hashedPassword })
-    .where(eq(users.id, dbToken.userId));
+  await db.update(users).set({ hashedPassword }).where(eq(users.id, dbToken.userId));
   const session = await lucia.createSession(dbToken.userId, {});
   const sessionCookie = lucia.createSessionCookie(session.id);
-  cookies().set(
-    sessionCookie.name,
-    sessionCookie.value,
-    sessionCookie.attributes,
-  );
+  cookies().set(sessionCookie.name, sessionCookie.value, sessionCookie.attributes);
   redirect(redirects.afterLogin);
 }
 
@@ -331,13 +280,8 @@ const timeFromNow = (time: Date) => {
   return `${minutes}m ${seconds}s`;
 };
 
-async function generateEmailVerificationCode(
-  userId: string,
-  email: string,
-): Promise<string> {
-  await db
-    .delete(emailVerificationCodes)
-    .where(eq(emailVerificationCodes.userId, userId));
+async function generateEmailVerificationCode(userId: string, email: string): Promise<string> {
+  await db.delete(emailVerificationCodes).where(eq(emailVerificationCodes.userId, userId));
   const code = generateRandomString(8, alphabet("0-9")); // 8 digit code
   await db.insert(emailVerificationCodes).values({
     userId,
@@ -349,9 +293,7 @@ async function generateEmailVerificationCode(
 }
 
 async function generatePasswordResetToken(userId: string): Promise<string> {
-  await db
-    .delete(passwordResetTokens)
-    .where(eq(passwordResetTokens.userId, userId));
+  await db.delete(passwordResetTokens).where(eq(passwordResetTokens.userId, userId));
   const tokenId = generateId(40);
   await db.insert(passwordResetTokens).values({
     id: tokenId,

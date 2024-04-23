@@ -4,7 +4,7 @@ import { DrizzlePostgreSQLAdapter } from "@lucia-auth/adapter-drizzle";
 import { env } from "@/env.js";
 import { db } from "@/server/db";
 import { sessions, users, type User as DbUser } from "@/server/db/schema";
-import { absoluteUrl } from "@/lib/utils"
+import { absoluteUrl } from "@/lib/utils";
 
 // Uncomment the following lines if you are using nodejs 18 or lower. Not required in Node.js 20, CloudFlare Workers, Deno, Bun, and Vercel Edge Functions.
 // import { webcrypto } from "node:crypto";
@@ -19,6 +19,7 @@ export const lucia = new Lucia(adapter, {
   getUserAttributes: (attributes) => {
     return {
       id: attributes.id,
+      name: attributes.name,
       email: attributes.email,
       emailVerified: attributes.emailVerified,
       avatar: attributes.avatar,
@@ -40,7 +41,7 @@ export const lucia = new Lucia(adapter, {
 export const discord = new Discord(
   env.DISCORD_CLIENT_ID,
   env.DISCORD_CLIENT_SECRET,
-  absoluteUrl("/login/discord/callback")
+  absoluteUrl("/login/discord/callback"),
 );
 
 declare module "lucia" {

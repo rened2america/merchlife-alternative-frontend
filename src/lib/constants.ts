@@ -1,12 +1,12 @@
-export const APP_TITLE = "Acme";
+export const APP_TITLE = "Merchlife";
 export const DATABASE_PREFIX = "acme";
-export const EMAIL_SENDER = '"Acme" <noreply@acme.com>';
+export const EMAIL_SENDER = '"Merchlife" <noreply@merchlife.co>';
 
 export const redirects = {
   toLogin: "/login",
   toSignup: "/signup",
-  afterLogin: "/dashboard",
+  afterLogin: "/",
   afterLogout: "/",
   toVerify: "/verify-email",
-  afterVerify: "/dashboard",
+  afterVerify: "/",
 } as const;

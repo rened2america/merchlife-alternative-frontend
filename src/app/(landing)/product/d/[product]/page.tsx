@@ -1,0 +1,170 @@
+"use client";
+import { Avatar, Input, Select, SelectItem } from "@nextui-org/react";
+import Link from "next/link";
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Image,
+  Button,
+  CheckboxGroup,
+  Divider,
+} from "@nextui-org/react";
+import { Inter } from "next/font/google";
+import { CustomCheckbox } from "@/app/components/customCheckbox.tsx/customCheckbox";
+import { AddCart } from "@/app/components/addCart/addCart";
+import { NavbarHeader } from "@/app/components/navbar/navbar";
+import { useEffect, useState } from "react";
+import { Gallery } from "@/app/components/gallery/gallery";
+import { useSearchParams } from "next/navigation";
+const inter = Inter({ subsets: ["latin"] });
+const interProducts = Inter({ subsets: ["latin"], variable: "--font-inter" });
+
+export default function One() {
+  const [selected, setSelected] = useState("s"); // Inicializa selected con "s" (S)
+  const [quantity, setQuantity] = useState(1); // Inicializa quantity con 1
+  const [products, setProducts] = useState([]); // Inicializa products como un arreglo vacío
+  const [dataList, setDataList] = useState(null); // Inicializa products como un arreglo vacío
+  const [product, setProduct] = useState(null);
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    // Función para obtener los datos del endpoint
+    const fetchData = async () => {
+      try {
+        const productId = searchParams.get("productId");
+        const variant = searchParams.get("variant");
+        const type = searchParams.get("type");
+        console.log(productId);
+        console.log(variant);
+        console.log(type);
+
+        const response = await fetch(
+          `http://localhost:4000/api/1/product/productsByGroup/Rene-Meza?productId=${productId}&variant=${variant}&type=${type}`
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
+        const data = await response.json();
+        console.log(data.data);
+        setProducts(data.data); // Actualiza el estado con los datos recibidos del endpoint
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData(); // Llama a la función fetchData cuando el componente se monta
+  }, []); // El segundo argumento del useEffect es un arreglo vacío para que se ejecute solo una vez al montar el componente
+
+  const findProduct = () => {
+    // Función para encontrar el producto seleccionado
+    const productId = parseInt(searchParams.get("productId"));
+    const variant = searchParams.get("variant");
+    const selectedProduct = products.find(
+      (product) =>
+        product.size.toLowerCase() === selected.toLowerCase() &&
+        product.variant.toLowerCase() === variant &&
+        product.productId === productId
+    );
+    console.log("selectedProduct", selectedProduct);
+    console.log("selected.toLowerCase()", selected.toLowerCase());
+    console.log("variant", variant);
+    console.log("productId", productId);
+
+    console.log("products", products);
+    if (selectedProduct) {
+      return {
+        name: selectedProduct.title,
+        quantity: quantity,
+        size: selectedProduct.size.toUpperCase(),
+        priceId: selectedProduct.priceId,
+        url: selectedProduct.url,
+      };
+    }
+
+    // Si no se encuentra el producto seleccionado, se devuelve un objeto por defecto
+    console.log("Aqui estoy");
+    return {
+      name: "2A AF White S",
+      quantity: quantity,
+      size: "S",
+      priceId: "price_1OoljtGkWb1Ap7UJKGzI8MpW",
+      url: "/2A/2AAfWhite.jpg",
+    };
+  };
+
+  useEffect(() => {
+    if (products && products.length > 0) {
+      setDataList([products[0].url]);
+      setProduct(findProduct());
+    }
+  }, [products]);
+  return (
+    <>
+      <main
+        style={{
+          backgroundColor: "#171717",
+          fontFamily: "'Inter',sans-serif",
+        }}
+        className="grid justify-center h-screen"
+      >
+        <div
+          style={{
+            width: "80%",
+            marginTop: "20px",
+          }}
+          className="grid grid-cols-2 justify-self-center gap-10"
+        >
+          {dataList && (
+            <Gallery list={[dataList[0]]} defaultValue={dataList[0]} />
+          )}
+          {/* Pasa la lista de URLs de imágenes como prop a Gallery */}
+          <div>
+            <div className="grid grid-cols-4">
+              <div className="text-xl col-span-3">
+                {products.length > 0 &&
+                  `${products[0].product.title} ${products[0].product.types[0].value} ${products[0].variant}`}
+              </div>
+              <div className="text-lg">$24.5</div>
+            </div>
+            <Divider className="my-4" />
+
+            <div>
+              <CheckboxGroup
+                label="Select size"
+                value={selected}
+                onChange={(data) => setSelected(data[1])}
+                classNames={{
+                  base: "w-full",
+                }}
+              >
+                <div className="grid grid-cols-2 gap-2">
+                  {products.map((product) => (
+                    <CustomCheckbox
+                      key={product.id}
+                      value={product.size.toLowerCase()}
+                      size={product.size.toUpperCase()}
+                    />
+                  ))}
+                </div>
+              </CheckboxGroup>
+            </div>
+            <Divider className="my-4" />
+
+            <div className="text-medium text-foreground-500">Quantity</div>
+            <Input
+              type="number"
+              defaultValue="1"
+              labelPlacement="outside"
+              className="mt-2"
+              onChange={(e) => setQuantity(parseInt(e.target.value))}
+            />
+            <Divider className="my-4" />
+            {product && <AddCart product={product} />}
+          </div>
+        </div>
+      </main>
+    </>
+  );
+}
