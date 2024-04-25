@@ -119,7 +119,9 @@ export default function One() {
 
   useEffect(() => {
     if (products && products.length > 0) {
+      //@ts-ignore
       setDataList([products[0].url]);
+      //@ts-ignore
       setProduct(findProduct());
     }
   }, [products]);
