@@ -18,7 +18,7 @@ export const proPlan: SubscriptionPlan = {
   name: "Pro",
   description: "The Pro plan has unlimited posts.",
   features: ["Unlimited posts", "Priority support"],
-  stripePriceId: env.STRIPE_PRO_MONTHLY_PLAN_ID,
+  stripePriceId: "",
 };
 
 export const subscriptionPlans = [freePlan, proPlan];
