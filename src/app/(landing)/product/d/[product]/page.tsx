@@ -46,6 +46,7 @@ export default function One() {
         if (!response.ok) {
           throw new Error("Failed to fetch data");
         }
+        //@ts-ignore
         const data = await response.json();
         console.log(data.data);
         setProducts(data.data); // Actualiza el estado con los datos recibidos del endpoint
@@ -59,7 +60,7 @@ export default function One() {
 
   const findProduct = () => {
     // Función para encontrar el producto seleccionado
-    const productId = parseInt(searchParams.get("productId"));
+    const productId = parseInt(searchParams.get("productId") ?? "1");
     const variant = searchParams.get("variant");
     const selectedProduct = products.find(
       (product) =>
