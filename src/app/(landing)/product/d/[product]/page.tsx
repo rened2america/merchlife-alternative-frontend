@@ -85,10 +85,12 @@ export default function One() {
     // Función para encontrar el producto seleccionado
     const productId = parseInt(searchParams.get("productId") ?? "1");
     const variant = searchParams.get("variant");
-    //@ts-ignore
-    const selectedProduct: SelectedProduct = products.find(
-      (product: Product) =>
-        product.size.toLowerCase() === selected.toLowerCase() &&
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any
+    const selectedProduct: any = products.find(
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any
+      (product: any) =>
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+        product?.size.toLowerCase() === selected.toLowerCase() &&
         product.variant.toLowerCase() === variant &&
         product.productId === productId,
     );
@@ -99,7 +101,8 @@ export default function One() {
 
     console.log("products", products);
     if (selectedProduct) {
-      const productData: ProductData = {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any
+      const productData: any = {
         name: selectedProduct.title,
         quantity: quantity,
         size: selectedProduct.size.toUpperCase(),
