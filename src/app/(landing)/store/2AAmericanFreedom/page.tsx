@@ -1,17 +1,10 @@
 import { Avatar, Input, Select, SelectItem } from "@nextui-org/react";
 import Link from "next/link";
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Image,
-  Button,
-} from "@nextui-org/react";
+import { Card, CardHeader, CardBody, CardFooter, Image, Button } from "@nextui-org/react";
 import { Inter } from "next/font/google";
 import { NavbarHeader } from "@/app/components/navbar/navbar";
 import { FacebookIcon } from "@/app/components/icons/facebookIcon";
-import { InstagramIcon } from "@/app/components/icons/InstagramIcon";
+import { InstagramIcon } from "@/components/ui/components/icons/InstagramIcon";
 const inter = Inter({ subsets: ["latin"] });
 const interProducts = Inter({ subsets: ["latin"], variable: "--font-inter" });
 import type { Metadata } from "next";
@@ -54,8 +47,7 @@ export default function Creators() {
         <div
           style={{
             position: "absolute",
-            background:
-              "linear-gradient(180deg,hsla(0,0%,9%,.4),#171717 100%,#171717 0)",
+            background: "linear-gradient(180deg,hsla(0,0%,9%,.4),#171717 100%,#171717 0)",
             backdropFilter: "blur(5px)",
             width: "100%",
             height: "100%",
@@ -78,12 +70,7 @@ export default function Creators() {
               }}
               type="button"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="none"
-              >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none">
                 <path
                   fill="#FAFAFA"
                   fillRule="evenodd"
@@ -108,7 +95,7 @@ export default function Creators() {
             zIndex: "2",
           }}
         >
-          <Avatar src="/2A/P2aC.png" className="w-48 h-48 text-large" />
+          <Avatar src="/2A/P2aC.png" className="text-large h-48 w-48" />
         </div>
         <div
           style={{
@@ -140,8 +127,8 @@ export default function Creators() {
               lineHeight: "1.8rem",
             }}
           >
-            Welcome to the 2A AF Store! Show your support, and wear your rights.
-            Thanks for standing strong with us!
+            Welcome to the 2A AF Store! Show your support, and wear your rights. Thanks for standing
+            strong with us!
           </p>
 
           <div
@@ -176,12 +163,12 @@ export default function Creators() {
           justifyContent: "center",
         }}
       >
-        <div className="max-w-[900px] gap-2 grid grid-cols-12 px-8 pb-8">
-          <Card className="col-span-12 sm:col-span-4 h-[400px]">
+        <div className="grid max-w-[900px] grid-cols-12 gap-2 px-8 pb-8">
+          <Card className="col-span-12 h-[400px] sm:col-span-4">
             <Link href={"/product/2A-AF-White"}>
               <CardHeader className="absolute z-10 flex-col !items-start bg-white/30">
                 <p
-                  className={`${interProducts.variable} text-slate-900/60 uppercase font-bold text-xs`}
+                  className={`${interProducts.variable} text-xs font-bold uppercase text-slate-900/60`}
                 >
                   Go to buy
                 </p>
@@ -190,7 +177,7 @@ export default function Creators() {
                 <Image
                   removeWrapper
                   alt="Card background"
-                  className="z-0 w-full h-full object-cover"
+                  className="z-0 h-full w-full object-cover"
                   src="/2A/2AAfWhite.jpg"
                 />
               </CardBody>
@@ -203,17 +190,17 @@ export default function Creators() {
               }}
             >
               <h4
-                className={`${interProducts.variable} font-sans text-cyan-50 font-medium text-sm`}
+                className={`${interProducts.variable} font-sans text-sm font-medium text-cyan-50`}
               >
                 2A AF Tee White
               </h4>
             </CardFooter>
           </Card>
-          <Card className="col-span-12 sm:col-span-4 h-[400px]">
+          <Card className="col-span-12 h-[400px] sm:col-span-4">
             <Link href={"/product/American-Freedom-Eagle-White"}>
               <CardHeader className="absolute z-10 flex-col !items-start bg-white/30">
                 <p
-                  className={`${interProducts.variable} text-slate-900/60 uppercase font-bold text-xs`}
+                  className={`${interProducts.variable} text-xs font-bold uppercase text-slate-900/60`}
                 >
                   Go to buy
                 </p>
@@ -222,7 +209,7 @@ export default function Creators() {
                 <Image
                   removeWrapper
                   alt="Card background"
-                  className="z-0 w-full h-full object-cover"
+                  className="z-0 h-full w-full object-cover"
                   src="/2A/AFEagleWhite.jpg"
                 />
               </CardBody>
@@ -235,17 +222,17 @@ export default function Creators() {
               }}
             >
               <h4
-                className={`${interProducts.variable} font-sans text-cyan-50 font-medium text-sm`}
+                className={`${interProducts.variable} font-sans text-sm font-medium text-cyan-50`}
               >
                 American Freedom Eagle T-shirt White
               </h4>
             </CardFooter>
           </Card>
-          <Card className="col-span-12 sm:col-span-4 h-[400px]">
+          <Card className="col-span-12 h-[400px] sm:col-span-4">
             <Link href={"/product/2nd-Amendment-American-Freedom-White"}>
               <CardHeader className="absolute z-10 flex-col !items-start bg-white/30">
                 <p
-                  className={`${interProducts.variable} text-slate-900/60 uppercase font-bold text-xs`}
+                  className={`${interProducts.variable} text-xs font-bold uppercase text-slate-900/60`}
                 >
                   Go to buy
                 </p>
@@ -254,7 +241,7 @@ export default function Creators() {
                 <Image
                   removeWrapper
                   alt="Card background"
-                  className="z-0 w-full h-full object-cover"
+                  className="z-0 h-full w-full object-cover"
                   src="/2A/2ndAmendmentAFWhite.jpg"
                 />
               </CardBody>
@@ -267,7 +254,7 @@ export default function Creators() {
               }}
             >
               <h4
-                className={`${interProducts.variable} font-sans text-cyan-50 font-medium text-sm`}
+                className={`${interProducts.variable} font-sans text-sm font-medium text-cyan-50`}
               >
                 2nd Amendment American Freedom T-shirt White
               </h4>

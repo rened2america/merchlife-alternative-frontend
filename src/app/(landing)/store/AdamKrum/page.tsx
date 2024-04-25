@@ -1,18 +1,11 @@
 import { Avatar, Input, Select, SelectItem } from "@nextui-org/react";
 import Link from "next/link";
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Image,
-  Button,
-} from "@nextui-org/react";
+import { Card, CardHeader, CardBody, CardFooter, Image, Button } from "@nextui-org/react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { NavbarHeader } from "@/app/components/navbar/navbar";
 import { FacebookIcon } from "@/app/components/icons/facebookIcon";
-import { InstagramIcon } from "@/app/components/icons/InstagramIcon";
+import { InstagramIcon } from "@/components/ui/components/icons/InstagramIcon";
 const inter = Inter({ subsets: ["latin"] });
 const interProducts = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -54,8 +47,7 @@ export default function Creators() {
         <div
           style={{
             position: "absolute",
-            background:
-              "linear-gradient(180deg,hsla(0,0%,9%,.4),#171717 100%,#171717 0)",
+            background: "linear-gradient(180deg,hsla(0,0%,9%,.4),#171717 100%,#171717 0)",
             backdropFilter: "blur(5px)",
             width: "100%",
             height: "100%",
@@ -78,12 +70,7 @@ export default function Creators() {
               }}
               type="button"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="none"
-              >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none">
                 <path
                   fill="#FAFAFA"
                   fillRule="evenodd"
@@ -108,7 +95,7 @@ export default function Creators() {
             zIndex: "2",
           }}
         >
-          <Avatar src="/adam/PAdamD1.png" className="w-48 h-48 text-large" />
+          <Avatar src="/adam/PAdamD1.png" className="text-large h-48 w-48" />
         </div>
         <div
           style={{
@@ -140,8 +127,8 @@ export default function Creators() {
               lineHeight: "1.8rem",
             }}
           >
-            Welcome to the Adam Krum Merch Shop! Grab your favorite pieces and
-            join the family. Thanks for your support and rock on!
+            Welcome to the Adam Krum Merch Shop! Grab your favorite pieces and join the family.
+            Thanks for your support and rock on!
           </p>
 
           <div
@@ -176,12 +163,12 @@ export default function Creators() {
           justifyContent: "center",
         }}
       >
-        <div className="max-w-[900px] gap-2 grid grid-cols-12 px-8 pb-8">
-          <Card className="col-span-12 sm:col-span-4 h-[400px]">
+        <div className="grid max-w-[900px] grid-cols-12 gap-2 px-8 pb-8">
+          <Card className="col-span-12 h-[400px] sm:col-span-4">
             <Link href={"/product/Adam-Krum-Pocket-Classic-White"}>
               <CardHeader className="absolute z-10 flex-col !items-start bg-white/30">
                 <p
-                  className={`${interProducts.variable} text-slate-900/60 uppercase font-bold text-xs`}
+                  className={`${interProducts.variable} text-xs font-bold uppercase text-slate-900/60`}
                 >
                   Go to buy
                 </p>
@@ -190,7 +177,7 @@ export default function Creators() {
                 <Image
                   removeWrapper
                   alt="Card background"
-                  className="z-0 w-full h-full object-cover"
+                  className="z-0 h-full w-full object-cover"
                   src="/adam/classicLogoWhite.jpg"
                 />
               </CardBody>
@@ -203,7 +190,7 @@ export default function Creators() {
               }}
             >
               <h4
-                className={`${interProducts.variable} font-sans text-cyan-50 font-medium text-sm`}
+                className={`${interProducts.variable} font-sans text-sm font-medium text-cyan-50`}
               >
                 Adam Krum Classic T-shirt White
               </h4>
@@ -241,11 +228,11 @@ export default function Creators() {
               </h4>
             </CardFooter>
           </Card> */}
-          <Card className="col-span-12 sm:col-span-4 h-[400px]">
+          <Card className="col-span-12 h-[400px] sm:col-span-4">
             <Link href={"/product/Adam-Krum-Pocket-Monochrome-Classic-White"}>
               <CardHeader className="absolute z-10 flex-col !items-start bg-white/30">
                 <p
-                  className={`${interProducts.variable} text-slate-900/60 uppercase font-bold text-xs`}
+                  className={`${interProducts.variable} text-xs font-bold uppercase text-slate-900/60`}
                 >
                   Go to buy
                 </p>
@@ -254,7 +241,7 @@ export default function Creators() {
                 <Image
                   removeWrapper
                   alt="Card background"
-                  className="z-0 w-full h-full object-cover"
+                  className="z-0 h-full w-full object-cover"
                   src="/adam/classicMLogoWhite.png"
                 />
               </CardBody>
@@ -267,17 +254,17 @@ export default function Creators() {
               }}
             >
               <h4
-                className={`${interProducts.variable} font-sans text-cyan-50 font-medium text-sm`}
+                className={`${interProducts.variable} font-sans text-sm font-medium text-cyan-50`}
               >
                 Adam Krum Classic Monochrome T-shirt White
               </h4>
             </CardFooter>
           </Card>
-          <Card className="col-span-12 sm:col-span-4 h-[400px]">
+          <Card className="col-span-12 h-[400px] sm:col-span-4">
             <Link href={"/product/Adam-Krum-Pocket-Classic-Grey"}>
               <CardHeader className="absolute z-10 flex-col !items-start bg-white/30">
                 <p
-                  className={`${interProducts.variable} text-slate-900/60 uppercase font-bold text-xs`}
+                  className={`${interProducts.variable} text-xs font-bold uppercase text-slate-900/60`}
                 >
                   Go to buy
                 </p>
@@ -286,7 +273,7 @@ export default function Creators() {
                 <Image
                   removeWrapper
                   alt="Card background"
-                  className="z-0 w-full h-full object-cover"
+                  className="z-0 h-full w-full object-cover"
                   src="/adam/classicLogoGrey.jpg"
                 />
               </CardBody>
@@ -299,7 +286,7 @@ export default function Creators() {
               }}
             >
               <h4
-                className={`${interProducts.variable} font-sans text-cyan-50 font-medium text-sm`}
+                className={`${interProducts.variable} font-sans text-sm font-medium text-cyan-50`}
               >
                 Adam Krum Classic T-shirt Grey
               </h4>
@@ -370,11 +357,11 @@ export default function Creators() {
             </CardFooter>
           </Card> */}
 
-          <Card className="col-span-12 sm:col-span-4 h-[400px]">
+          <Card className="col-span-12 h-[400px] sm:col-span-4">
             <Link href={"/product/Adam-Krum-Pocket-Classic-Green"}>
               <CardHeader className="absolute z-10 flex-col !items-start bg-white/30">
                 <p
-                  className={`${interProducts.variable} text-slate-900/60 uppercase font-bold text-xs`}
+                  className={`${interProducts.variable} text-xs font-bold uppercase text-slate-900/60`}
                 >
                   Go to buy
                 </p>
@@ -383,7 +370,7 @@ export default function Creators() {
                 <Image
                   removeWrapper
                   alt="Card background"
-                  className="z-0 w-full h-full object-cover"
+                  className="z-0 h-full w-full object-cover"
                   src="/adam/classicLogoGreen.jpg"
                 />
               </CardBody>
@@ -396,7 +383,7 @@ export default function Creators() {
               }}
             >
               <h4
-                className={`${interProducts.variable} font-sans text-cyan-50 font-medium text-sm`}
+                className={`${interProducts.variable} font-sans text-sm font-medium text-cyan-50`}
               >
                 Adam Krum Classic T-shirt Green
               </h4>
@@ -466,11 +453,11 @@ export default function Creators() {
               </h4>
             </CardFooter>
           </Card> */}
-          <Card className="col-span-12 sm:col-span-4 h-[400px]">
+          <Card className="col-span-12 h-[400px] sm:col-span-4">
             <Link href={"/product/Adam-Krum-Pocket-Classic-Black"}>
               <CardHeader className="absolute z-10 flex-col !items-start bg-white/30">
                 <p
-                  className={`${interProducts.variable} text-slate-900/60 uppercase font-bold text-xs`}
+                  className={`${interProducts.variable} text-xs font-bold uppercase text-slate-900/60`}
                 >
                   Go to buy
                 </p>
@@ -479,7 +466,7 @@ export default function Creators() {
                 <Image
                   removeWrapper
                   alt="Card background"
-                  className="z-0 w-full h-full object-cover"
+                  className="z-0 h-full w-full object-cover"
                   src="/adam/classicLogoBlack.jpg"
                 />
               </CardBody>
@@ -492,7 +479,7 @@ export default function Creators() {
               }}
             >
               <h4
-                className={`${interProducts.variable} font-sans text-cyan-50 font-medium text-sm`}
+                className={`${interProducts.variable} font-sans text-sm font-medium text-cyan-50`}
               >
                 Adam Krum Classic T-shirt Black
               </h4>
@@ -563,11 +550,11 @@ export default function Creators() {
               </h4>
             </CardFooter>
           </Card> */}
-          <Card className="col-span-12 sm:col-span-4 h-[400px]">
+          <Card className="col-span-12 h-[400px] sm:col-span-4">
             <Link href={"/product/Adam-Krum-Pocket-Monochrome-Classic-Black"}>
               <CardHeader className="absolute z-10 flex-col !items-start bg-white/30">
                 <p
-                  className={`${interProducts.variable} text-slate-900/60 uppercase font-bold text-xs`}
+                  className={`${interProducts.variable} text-xs font-bold uppercase text-slate-900/60`}
                 >
                   Go to buy
                 </p>
@@ -576,7 +563,7 @@ export default function Creators() {
                 <Image
                   removeWrapper
                   alt="Card background"
-                  className="z-0 w-full h-full object-cover"
+                  className="z-0 h-full w-full object-cover"
                   src="/adam/classicMLogoBlack.jpg"
                 />
               </CardBody>
@@ -589,18 +576,18 @@ export default function Creators() {
               }}
             >
               <h4
-                className={`${interProducts.variable} font-sans text-cyan-50 font-medium text-sm`}
+                className={`${interProducts.variable} font-sans text-sm font-medium text-cyan-50`}
               >
                 Adam Krum Classic Monochrome T-shirt Black
               </h4>
             </CardFooter>
           </Card>
 
-          <Card className="col-span-12 sm:col-span-4 h-[400px]">
+          <Card className="col-span-12 h-[400px] sm:col-span-4">
             <Link href={"/product/Adam-Krum-Pocket-Classic-Sand"}>
               <CardHeader className="absolute z-10 flex-col !items-start bg-white/30">
                 <p
-                  className={`${interProducts.variable} text-slate-900/60 uppercase font-bold text-xs`}
+                  className={`${interProducts.variable} text-xs font-bold uppercase text-slate-900/60`}
                 >
                   Go to buy
                 </p>
@@ -609,7 +596,7 @@ export default function Creators() {
                 <Image
                   removeWrapper
                   alt="Card background"
-                  className="z-0 w-full h-full object-cover"
+                  className="z-0 h-full w-full object-cover"
                   src="/adam/classicLogoSand.jpg"
                 />
               </CardBody>
@@ -622,7 +609,7 @@ export default function Creators() {
               }}
             >
               <h4
-                className={`${interProducts.variable} font-sans text-cyan-50 font-medium text-sm`}
+                className={`${interProducts.variable} font-sans text-sm font-medium text-cyan-50`}
               >
                 Adam Krum Classic T-shirt Sand
               </h4>

@@ -12,11 +12,11 @@ import {
   Divider,
 } from "@nextui-org/react";
 import { Inter } from "next/font/google";
-import { CustomCheckbox } from "@/app/components/customCheckbox.tsx/customCheckbox";
-import { AddCart } from "@/app/components/addCart/addCart";
-import { NavbarHeader } from "@/app/components/navbar/navbar";
+import { CustomCheckbox } from "@/components/ui/components/customCheckbox.tsx/customCheckbox";
+import { AddCart } from "@/components/ui/components/addCart/addCart";
+import { NavbarHeader } from "@/components/ui/components/navbar/navbar";
 import { useState } from "react";
-import { Gallery } from "@/app/components/gallery/gallery";
+import { Gallery } from "@/components/ui/components/gallery/gallery";
 const inter = Inter({ subsets: ["latin"] });
 const interProducts = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
