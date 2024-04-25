@@ -46,7 +46,7 @@ export default function One() {
   const [selected, setSelected] = useState("s"); // Inicializa selected con "s" (S)
   const [quantity, setQuantity] = useState(1); // Inicializa quantity con 1
   const [products, setProducts] = useState([
-    { product: { title: "", types: [{ value: "" }] }, variant: "" },
+    { product: { title: "", types: [{ value: "" }] }, variant: "", size: "", id: "1" },
   ]); // Inicializa products como un arreglo vacío
   const [dataList, setDataList] = useState(null); // Inicializa products como un arreglo vacío
   const [product, setProduct] = useState(null);
@@ -160,7 +160,9 @@ export default function One() {
             <div>
               <CheckboxGroup
                 label="Select size"
+                //@ts-ignore
                 value={selected}
+                //@ts-ignore
                 onChange={(data) => setSelected(data[1])}
                 classNames={{
                   base: "w-full",
@@ -169,8 +171,14 @@ export default function One() {
                 <div className="grid grid-cols-2 gap-2">
                   {products.map((product) => (
                     <CustomCheckbox
+                      //@ts-ignore
+
                       key={product.id}
+                      //@ts-ignore
+
                       value={product.size.toLowerCase()}
+                      //@ts-ignore
+
                       size={product.size.toUpperCase()}
                     />
                   ))}
