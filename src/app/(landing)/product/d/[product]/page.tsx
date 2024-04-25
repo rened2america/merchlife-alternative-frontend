@@ -41,10 +41,13 @@ interface ProductData {
   priceId: string;
   url: string;
 }
+
 export default function One() {
   const [selected, setSelected] = useState("s"); // Inicializa selected con "s" (S)
   const [quantity, setQuantity] = useState(1); // Inicializa quantity con 1
-  const [products, setProducts] = useState([]); // Inicializa products como un arreglo vacío
+  const [products, setProducts] = useState([
+    { product: { title: "", types: [{ value: "" }] }, variant: "" },
+  ]); // Inicializa products como un arreglo vacío
   const [dataList, setDataList] = useState(null); // Inicializa products como un arreglo vacío
   const [product, setProduct] = useState(null);
   const searchParams = useSearchParams();
@@ -148,10 +151,7 @@ export default function One() {
             <div className="grid grid-cols-4">
               <div className="col-span-3 text-xl">
                 {products.length > 0 &&
-                  products[0].product &&
-                  products[0].product.types &&
-                  products[0].variant &&
-                  `${products[0].product.title} ${products[0].product.types[0].value} ${products[0].variant}`}
+                  `${products[0]?.product.title} ${products[0]?.product?.types[0]?.value} ${products[0]?.variant}`}
               </div>
               <div className="text-lg">$24.5</div>
             </div>
