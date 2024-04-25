@@ -49,7 +49,7 @@ export default function Stores() {
         tUrlImg="/2A/2ndAmendmentAFWhite.jpg"
         urlRedirect="/store/2AAmericanFreedom"
       />
-      {data &&
+      {/* {data &&
         data.map((store: any) => {
           return (
             <CartStore
@@ -61,7 +61,7 @@ export default function Stores() {
               urlRedirect={`/store/d/${store.name.replace(/ /g, "-")}/`}
             />
           );
-        })}
+        })} */}
     </div>
   );
 }
