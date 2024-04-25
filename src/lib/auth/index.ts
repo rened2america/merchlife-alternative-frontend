@@ -1,5 +1,4 @@
 import { Lucia, TimeSpan } from "lucia";
-import { Discord } from "arctic";
 import { DrizzlePostgreSQLAdapter } from "@lucia-auth/adapter-drizzle";
 import { env } from "@/env.js";
 import { db } from "@/server/db";
@@ -37,12 +36,6 @@ export const lucia = new Lucia(adapter, {
     },
   },
 });
-
-export const discord = new Discord(
-  env.DISCORD_CLIENT_ID,
-  env.DISCORD_CLIENT_SECRET,
-  absoluteUrl("/login/discord/callback"),
-);
 
 declare module "lucia" {
   interface Register {
