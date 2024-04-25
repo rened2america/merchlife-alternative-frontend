@@ -12,11 +12,11 @@ import {
   Divider,
 } from "@nextui-org/react";
 import { Inter } from "next/font/google";
-import { CustomCheckbox } from "@/app/components/customCheckbox.tsx/customCheckbox";
-import { AddCart } from "@/app/components/addCart/addCart";
-import { NavbarHeader } from "@/app/components/navbar/navbar";
+import { CustomCheckbox } from "@/components/ui/components/customCheckbox.tsx/customCheckbox";
+import { AddCart } from "@/components/ui/components/addCart/addCart";
+import { NavbarHeader } from "@/components/ui/components/navbar/navbar";
 import { useEffect, useState } from "react";
-import { Gallery } from "@/app/components/gallery/gallery";
+import { Gallery } from "@/components/ui/components/gallery/gallery";
 import { useSearchParams } from "next/navigation";
 const inter = Inter({ subsets: ["latin"] });
 const interProducts = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -41,7 +41,7 @@ export default function One() {
         console.log(type);
 
         const response = await fetch(
-          `http://localhost:4000/api/1/product/productsByGroup/Rene-Meza?productId=${productId}&variant=${variant}&type=${type}`
+          `http://localhost:4000/api/1/product/productsByGroup/Rene-Meza?productId=${productId}&variant=${variant}&type=${type}`,
         );
         if (!response.ok) {
           throw new Error("Failed to fetch data");
@@ -65,7 +65,7 @@ export default function One() {
       (product) =>
         product.size.toLowerCase() === selected.toLowerCase() &&
         product.variant.toLowerCase() === variant &&
-        product.productId === productId
+        product.productId === productId,
     );
     console.log("selectedProduct", selectedProduct);
     console.log("selected.toLowerCase()", selected.toLowerCase());
@@ -107,22 +107,20 @@ export default function One() {
           backgroundColor: "#171717",
           fontFamily: "'Inter',sans-serif",
         }}
-        className="grid justify-center h-screen"
+        className="grid h-screen justify-center"
       >
         <div
           style={{
             width: "80%",
             marginTop: "20px",
           }}
-          className="grid grid-cols-2 justify-self-center gap-10"
+          className="grid grid-cols-2 gap-10 justify-self-center"
         >
-          {dataList && (
-            <Gallery list={[dataList[0]]} defaultValue={dataList[0]} />
-          )}
+          {dataList && <Gallery list={[dataList[0]]} defaultValue={dataList[0]} />}
           {/* Pasa la lista de URLs de imágenes como prop a Gallery */}
           <div>
             <div className="grid grid-cols-4">
-              <div className="text-xl col-span-3">
+              <div className="col-span-3 text-xl">
                 {products.length > 0 &&
                   `${products[0].product.title} ${products[0].product.types[0].value} ${products[0].variant}`}
               </div>

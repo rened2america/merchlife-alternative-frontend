@@ -12,9 +12,9 @@ import {
   Divider,
 } from "@nextui-org/react";
 import { Inter } from "next/font/google";
-import { CustomCheckbox } from "@/app/components/customCheckbox.tsx/customCheckbox";
-import { AddCart } from "@/app/components/addCart/addCart";
-import { NavbarHeader } from "@/app/components/navbar/navbar";
+import { CustomCheckbox } from "@/components/ui/components/customCheckbox.tsx/customCheckbox";
+import { AddCart } from "@/components/ui/components/addCart/addCart";
+import { NavbarHeader } from "@/components/ui/components/navbar/navbar";
 import { useState } from "react";
 const inter = Inter({ subsets: ["latin"] });
 const interProducts = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -102,21 +102,19 @@ export default function One() {
           backgroundColor: "#171717",
           fontFamily: "'Inter',sans-serif",
         }}
-        className="grid justify-center h-screen"
+        className="grid h-screen justify-center"
       >
         <div
           style={{
             width: "80%",
             marginTop: "20px",
           }}
-          className="grid grid-cols-2 justify-self-center gap-10"
+          className="grid grid-cols-2 gap-10 justify-self-center"
         >
           <Image src="/product_three.jpg" width="350" />
           <div>
             <div className="grid grid-cols-4">
-              <div className="text-xl col-span-3">
-                It&apos;s 6PM Somewhere T-shirt Black
-              </div>
+              <div className="col-span-3 text-xl">It&apos;s 6PM Somewhere T-shirt Black</div>
               <div className="text-lg">$24.5</div>
             </div>
             <Divider className="my-4" />
