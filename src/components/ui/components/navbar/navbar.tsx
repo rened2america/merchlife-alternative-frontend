@@ -1,17 +1,10 @@
 "use client";
 import React from "react";
 import { Checkbox, Link, User, Chip, cn } from "@nextui-org/react";
-import {
-  Navbar,
-  NavbarBrand,
-  NavbarContent,
-  NavbarItem,
-  Badge,
-  Button,
-} from "@nextui-org/react";
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Badge, Button } from "@nextui-org/react";
 import { CartIcon } from "../icons/CartIcon";
-import useStore from "@/app/state/store";
-
+// import useStore from "@/app/state/store";
+import useStore from "@/state/store";
 export const NavbarHeader = () => {
   const { products } = useStore((state) => {
     //@ts-ignore
@@ -26,10 +19,7 @@ export const NavbarHeader = () => {
       }}
     >
       <NavbarBrand>
-        <Link
-          href="/store/The6PMersSwagShop"
-          className="font-bold text-inherit"
-        >
+        <Link href="/store/The6PMersSwagShop" className="font-bold text-inherit">
           Merchlife
         </Link>
       </NavbarBrand>
