@@ -12,6 +12,8 @@ import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import { validateRequest } from "@/lib/auth/validate-request";
 import { UserDropdown } from "@/app/(main)/_components/user-dropdown";
+import { CartCount } from "./cart-count";
+// import useStore from "@/app/state/store";
 
 const routes = [
   { name: "Stores", href: "/stores" },
@@ -20,7 +22,6 @@ const routes = [
 
 export const Header = async () => {
   const { user } = await validateRequest();
-
   return (
     <header className="px-2 py-4 lg:py-6">
       <div className="container flex items-center gap-2 p-0">
@@ -59,7 +60,15 @@ export const Header = async () => {
             </Link>
           ))}
         </nav>
-        <div className="ml-auto">
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+          }}
+          className="ml-auto"
+        >
+          <CartCount />
+
           {user ? (
             <UserDropdown email={user.email} avatar={user.avatar} className="ml-auto" />
           ) : (
