@@ -20,7 +20,26 @@ import { Gallery } from "@/components/ui/components/gallery/gallery";
 import { useSearchParams } from "next/navigation";
 const inter = Inter({ subsets: ["latin"] });
 const interProducts = Inter({ subsets: ["latin"], variable: "--font-inter" });
+interface Product {
+  size: string;
+  variant: string;
+  productId: number;
+}
+interface SelectedProduct {
+  title: string;
+  size: string;
+  priceId: string;
+  url: string;
+  // Otros campos necesarios
+}
 
+interface ProductData {
+  name: string;
+  quantity: number;
+  size: string;
+  priceId: string;
+  url: string;
+}
 export default function One() {
   const [selected, setSelected] = useState("s"); // Inicializa selected con "s" (S)
   const [quantity, setQuantity] = useState(1); // Inicializa quantity con 1
@@ -62,8 +81,9 @@ export default function One() {
     // Función para encontrar el producto seleccionado
     const productId = parseInt(searchParams.get("productId") ?? "1");
     const variant = searchParams.get("variant");
-    const selectedProduct = products.find(
-      (product) =>
+    //@ts-ignore
+    const selectedProduct: SelectedProduct = products.find(
+      (product: Product) =>
         product.size.toLowerCase() === selected.toLowerCase() &&
         product.variant.toLowerCase() === variant &&
         product.productId === productId,
@@ -75,13 +95,15 @@ export default function One() {
 
     console.log("products", products);
     if (selectedProduct) {
-      return {
+      const productData: ProductData = {
         name: selectedProduct.title,
         quantity: quantity,
         size: selectedProduct.size.toUpperCase(),
         priceId: selectedProduct.priceId,
         url: selectedProduct.url,
       };
+
+      return productData;
     }
 
     // Si no se encuentra el producto seleccionado, se devuelve un objeto por defecto
