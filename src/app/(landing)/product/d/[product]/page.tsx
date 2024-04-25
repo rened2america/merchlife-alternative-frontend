@@ -1,4 +1,5 @@
 "use client";
+// @ts-ignore-all
 import { Avatar, Input, Select, SelectItem } from "@nextui-org/react";
 import Link from "next/link";
 import {
@@ -147,6 +148,9 @@ export default function One() {
             <div className="grid grid-cols-4">
               <div className="col-span-3 text-xl">
                 {products.length > 0 &&
+                  products[0].product &&
+                  products[0].product.types &&
+                  products[0].variant &&
                   `${products[0].product.title} ${products[0].product.types[0].value} ${products[0].variant}`}
               </div>
               <div className="text-lg">$24.5</div>
