@@ -3,8 +3,7 @@ import Link from "next/link";
 import { Card, CardHeader, CardBody, CardFooter, Image, Button } from "@nextui-org/react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { NavbarHeader } from "@/app/components/navbar/navbar";
-import { FacebookIcon } from "@/app/components/icons/facebookIcon";
+
 import { InstagramIcon } from "@/components/ui/components/icons/InstagramIcon";
 const inter = Inter({ subsets: ["latin"] });
 const interProducts = Inter({ subsets: ["latin"], variable: "--font-inter" });

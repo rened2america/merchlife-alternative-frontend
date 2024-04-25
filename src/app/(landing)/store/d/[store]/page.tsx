@@ -10,7 +10,7 @@ import Link from "next/link";
 // } from "@nextui-org/react";
 import { Inter } from "next/font/google";
 // import { NavbarHeader } from "@/app/components/navbar/navbar";
-import { NavbarHeader } from "@/components/ui/components/navbar/navbar";
+// import { NavbarHeader } from "@/components/ui/components/navbar/navbar";
 import { FacebookIcon } from "@/components/ui/components/icons/facebookIcon";
 import { InstagramIcon } from "@/components/ui/components/icons/InstagramIcon";
 const inter = Inter({ subsets: ["latin"] });
