@@ -1,6 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import Link from "next/link";
 import React, { useRef, useState } from "react";
 
 type FeaturesProps = {
@@ -65,12 +66,16 @@ const CardSpotlight = (props: FeaturesProps) => {
         <CardDescription>{props.description}</CardDescription>
       </CardHeader>
       <CardFooter className="gap-x-1">
-        <Button variant="outline" className="w-full">
-          Tracking
-        </Button>
-        <Button variant="outline" className="w-full">
-          Re-order
-        </Button>
+        <Link href="https://tools.usps.com/go/TrackConfirmAction.action?tLabels=9400111105500536700819">
+          <Button variant="outline" className="w-full">
+            Tracking
+          </Button>
+        </Link>
+        <Link href="https://checkout.stripe.com/c/pay/cs_live_a1nlc8rYgto9eclKXPHLCu7DsYaaJqFrf6D09ZBTDANsnWYLOvAqZUV382#fidkdWxOYHwnPyd1blppbHNgWjA0SjNyVUhCblJnNER1MlBPdlw0VXJiS0NLd2lNbUNLV2dMZ3Q0ME5XdFxCdGBEbXQ9UUFLPHA1am1DRDY8M19sfE9ddzZDNmg3fFxtQ0wzbWBEbzRCNWtRNTVXUW4wZlRRdycpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl">
+          <Button variant="outline" className="w-full">
+            Re-order
+          </Button>
+        </Link>
       </CardFooter>
     </Card>
   );

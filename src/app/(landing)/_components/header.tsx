@@ -16,14 +16,20 @@ import { CartCount } from "./cart-count";
 // import useStore from "@/app/state/store";
 
 const routes = [
-  { name: "Stores", href: "/stores" },
-  { name: "How it works", href: "#how-it-works" },
+  { name: "Stores", href: "/storeMain" },
+  { name: "Categories", href: "/categories" },
 ] as const;
 
 export const Header = async () => {
   const { user } = await validateRequest();
   return (
-    <header className="px-2 py-4 lg:py-6">
+    <header
+      style={{
+        backgroundColor: "white",
+        color: "black",
+      }}
+      className="px-4 py-4 lg:py-6"
+    >
       <div className="container flex items-center gap-2 p-0">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -53,7 +59,7 @@ export const Header = async () => {
           {routes.map(({ name, href }) => (
             <Link
               key={name}
-              className="text-sm font-medium text-muted-foreground/70 transition-colors hover:text-muted-foreground"
+              className="text-sm font-medium transition-colors hover:text-muted-foreground"
               href={href}
             >
               {name}

@@ -22,6 +22,8 @@ import { Suspense } from "react";
 import { ThreeItemGrid } from "@/components/ui/components/grid/three-items";
 import { ThreeItemGridStores } from "@/components/ui/components/gridStore/three-items-store";
 import { Carousel } from "@/components/ui/components/carousel";
+import Image from "next/image";
+import { ButtonGroupProvider } from "@nextui-org/react";
 export const metadata: Metadata = {
   title: "Merchlife",
   description:
@@ -81,8 +83,12 @@ const features = [
 const HomePage = () => {
   return (
     <>
-      <section>
-        <div
+      <section
+        style={{
+          backgroundColor: "white",
+        }}
+      >
+        {/* <div
           style={{
             filter: "grayscale(50%)",
           }}
@@ -90,25 +96,723 @@ const HomePage = () => {
           <div className="relative overflow-hidden bg-cover bg-no-repeat">
             <img src="/01.webp" alt="" />
           </div>
+        </div> */}
+        <div
+          style={{
+            width: "100%",
+            height: "600px",
+            display: "grid",
+            gridTemplateColumns: "2fr 1fr 1fr",
+            backgroundColor: "black",
+          }}
+        >
+          <div
+            style={{
+              display: "grid",
+              gridTemplateRows: "2fr 1fr",
+            }}
+          >
+            <div
+              style={{
+                display: "grid",
+                justifyItems: "center",
+                alignItems: "center",
+              }}
+            >
+              <div>
+                <div
+                  style={{
+                    fontSize: "48px",
+                    fontWeight: "400",
+                  }}
+                >
+                  CREATE
+                </div>
+                <div
+                  style={{
+                    fontSize: "72px",
+                    fontWeight: "900",
+                  }}
+                >
+                  SHARE
+                </div>
+                <div
+                  style={{
+                    fontSize: "48px",
+                    fontWeight: "400",
+                  }}
+                >
+                  EARN
+                </div>
+              </div>
+            </div>
+            <div
+              style={{
+                height: "200px",
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+              }}
+            >
+              <Image width={230} height={200} src={"/classicLogoGreen_1.png"} alt="back black" />
+              <Image width={230} height={200} src={"/classicLogoSand_1.png"} alt="back black" />
+            </div>
+          </div>
+          <div
+            style={{
+              backgroundColor: "white",
+              display: "grid",
+              gridTemplateRows: "1fr 1fr",
+            }}
+          >
+            <div
+              style={{
+                display: "grid",
+                justifyItems: "center",
+                alignContent: "center",
+              }}
+            >
+              <div
+                style={{
+                  color: "black",
+                  fontSize: "32px",
+                  fontWeight: "700",
+                }}
+              >
+                6 PMERS BLACK
+              </div>
+              <div
+                style={{
+                  color: "black",
+                  fontSize: "32px",
+                  fontWeight: "700",
+                }}
+              >
+                T-SHIRT
+              </div>
+              <Button
+                style={{
+                  backgroundColor: "black",
+                  color: "white",
+                }}
+              >
+                SHOP NOW
+              </Button>
+            </div>
+            <div
+              style={{
+                display: "grid",
+                justifyContent: "center",
+                alignContent: "end",
+              }}
+            >
+              <Image width={250} height={200} src={"/product_two_1.png"} alt="back black" />
+            </div>
+          </div>
+          <div
+            style={{
+              display: "grid",
+              justifyContent: "center",
+              alignContent: "end",
+            }}
+          >
+            <Image width={230} height={200} src={"/2AAfWhite_1.png"} alt="back black" />
+          </div>
         </div>
-        <ThreeItemGrid />
-        <Suspense>
-          <Carousel />
-        </Suspense>
+        <div
+          style={{
+            height: "60px",
+            width: "100%",
+            backgroundColor: "#E6E6E6",
+            display: "flex",
+            alignItems: "center",
+            color: "black",
+            fontWeight: "300",
+            flexDirection: "row",
+            gap: "16px",
+          }}
+        >
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              width: "150px",
+              gap: "16px",
+              alignItems: "center",
+              padding: "0px 12px",
+            }}
+          >
+            <div
+              style={{
+                display: "grid",
+                justifyContent: "center",
+                alignContent: "center",
+                border: "0.5px solid black",
+                borderRadius: "40px",
+                width: "120px",
+              }}
+            >
+              Merchlife
+            </div>
+            <div
+              style={{
+                width: "16px",
+                height: "16px",
+                borderRadius: "24px",
+                backgroundColor: "black",
+              }}
+            ></div>
+          </div>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              width: "150px",
+              gap: "16px",
+              alignItems: "center",
+              padding: "0px 12px",
+            }}
+          >
+            <div
+              style={{
+                display: "grid",
+                justifyContent: "center",
+                alignContent: "center",
+                border: "0.5px solid black",
+                borderRadius: "40px",
+                width: "120px",
+              }}
+            >
+              Merchlife
+            </div>
+            <div
+              style={{
+                width: "16px",
+                height: "16px",
+                borderRadius: "24px",
+                backgroundColor: "black",
+              }}
+            ></div>
+          </div>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              width: "150px",
+              gap: "16px",
+              alignItems: "center",
+              padding: "0px 12px",
+            }}
+          >
+            <div
+              style={{
+                display: "grid",
+                justifyContent: "center",
+                alignContent: "center",
+                border: "0.5px solid black",
+                borderRadius: "40px",
+                width: "120px",
+              }}
+            >
+              Merchlife
+            </div>
+            <div
+              style={{
+                width: "16px",
+                height: "16px",
+                borderRadius: "24px",
+                backgroundColor: "black",
+              }}
+            ></div>
+          </div>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              width: "150px",
+              gap: "16px",
+              alignItems: "center",
+              padding: "0px 12px",
+            }}
+          >
+            <div
+              style={{
+                display: "grid",
+                justifyContent: "center",
+                alignContent: "center",
+                border: "0.5px solid black",
+                borderRadius: "40px",
+                width: "120px",
+              }}
+            >
+              Merchlife
+            </div>
+            <div
+              style={{
+                width: "16px",
+                height: "16px",
+                borderRadius: "24px",
+                backgroundColor: "black",
+              }}
+            ></div>
+          </div>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              width: "150px",
+              gap: "16px",
+              alignItems: "center",
+              padding: "0px 12px",
+            }}
+          >
+            <div
+              style={{
+                display: "grid",
+                justifyContent: "center",
+                alignContent: "center",
+                border: "0.5px solid black",
+                borderRadius: "40px",
+                width: "120px",
+              }}
+            >
+              Merchlife
+            </div>
+            <div
+              style={{
+                width: "16px",
+                height: "16px",
+                borderRadius: "24px",
+                backgroundColor: "black",
+              }}
+            ></div>
+          </div>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              width: "150px",
+              gap: "16px",
+              alignItems: "center",
+              padding: "0px 12px",
+            }}
+          >
+            <div
+              style={{
+                display: "grid",
+                justifyContent: "center",
+                alignContent: "center",
+                border: "0.5px solid black",
+                borderRadius: "40px",
+                width: "120px",
+              }}
+            >
+              Merchlife
+            </div>
+            <div
+              style={{
+                width: "16px",
+                height: "16px",
+                borderRadius: "24px",
+                backgroundColor: "black",
+              }}
+            ></div>
+          </div>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              width: "150px",
+              gap: "16px",
+              alignItems: "center",
+              padding: "0px 12px",
+            }}
+          >
+            <div
+              style={{
+                display: "grid",
+                justifyContent: "center",
+                alignContent: "center",
+                border: "0.5px solid black",
+                borderRadius: "40px",
+                width: "120px",
+              }}
+            >
+              Merchlife
+            </div>
+            <div
+              style={{
+                width: "16px",
+                height: "16px",
+                borderRadius: "24px",
+                backgroundColor: "black",
+              }}
+            ></div>
+          </div>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              width: "150px",
+              gap: "16px",
+              alignItems: "center",
+              padding: "0px 12px",
+            }}
+          >
+            <div
+              style={{
+                display: "grid",
+                justifyContent: "center",
+                alignContent: "center",
+                border: "0.5px solid black",
+                borderRadius: "40px",
+                width: "120px",
+              }}
+            >
+              Merchlife
+            </div>
+            <div
+              style={{
+                width: "16px",
+                height: "16px",
+                borderRadius: "24px",
+                backgroundColor: "black",
+              }}
+            ></div>
+          </div>
+        </div>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateRows: "80px 1fr",
+            padding: "24px 24px",
+            marginTop: "24px",
+            backgroundColor: "white",
+            color: "black",
+          }}
+        >
+          <div
+            style={{
+              fontWeight: "400",
+              fontSize: "48px",
+            }}
+          >
+            SELLERS AT <b>MERCHLIFE</b>
+          </div>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              justifyItems: "center",
+              alignItems: "center",
+            }}
+          >
+            <div
+              style={{
+                padding: "24px",
+                border: "1px solid #ababab",
+                display: "grid",
+                gridTemplateRows: "2fr 1fr",
+              }}
+            >
+              <Image width={450} height={500} src={"/6PMers.jpg"} alt="back black" />
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  gap: "14px",
+                }}
+              >
+                <Image width={140} height={150} src={"/product_one.jpg"} alt="back black" />
+                <Image width={140} height={150} src={"/product_two.jpg"} alt="back black" />
+                <Image width={140} height={150} src={"/product_three.jpg"} alt="back black" />
+              </div>
+            </div>
+            <div
+              style={{
+                padding: "24px",
+                border: "1px solid #ababab",
+                display: "grid",
+                gridTemplateRows: "2fr 1fr",
+              }}
+            >
+              <div
+                style={{
+                  backgroundColor: "black",
+                  borderBottom: "16px solid white",
+                  display: "grid",
+                  justifyContent: "center",
+                  alignContent: "center",
+                }}
+              >
+                <Image width={450} height={500} src={"/adam/ADAMB.png"} alt="back black" />
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  gap: "14px",
+                }}
+              >
+                <Image
+                  width={140}
+                  height={150}
+                  src={"/adam/classicLogoBlack.jpg"}
+                  alt="back black"
+                />
+                <Image
+                  width={140}
+                  height={150}
+                  src={"/adam/classicLogoSand.jpg"}
+                  alt="back black"
+                />
+                <Image
+                  width={140}
+                  height={150}
+                  src={"/adam/classicLogoWhite.jpg"}
+                  alt="back black"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateRows: "80px 1fr",
+          }}
+        >
+          <div
+            style={{
+              fontSize: "60px",
+              fontWeight: "700",
+              width: "100%",
+              display: "grid",
+              justifyContent: "center",
+              color: "black",
+            }}
+          >
+            CATEGORIES
+          </div>
+          <div
+            style={{
+              width: "100%",
+              padding: "72px 32px",
+              backgroundColor: "white",
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr 1fr",
+            }}
+          >
+            <div
+              style={{
+                position: "relative",
+              }}
+            >
+              <Image width={400} height={500} src={"/product_one.jpg"} alt="back black" />
+              <div
+                style={{
+                  position: "absolute",
+                  backgroundColor: "black",
+                  color: "white",
+                  right: "30%",
+                  top: " 95%",
+                  width: "200px",
+                  height: "50px",
+                  textAlign: "center",
+                  display: "grid",
+                  alignContent: "center",
+                }}
+              >
+                6 PM ears
+              </div>
+            </div>
+            <div
+              style={{
+                position: "relative",
+              }}
+            >
+              <Image width={400} height={500} src={"/2A/2AAfWhite.jpg"} alt="back black" />
+              <div
+                style={{
+                  position: "absolute",
+                  backgroundColor: "black",
+                  color: "white",
+                  right: "30%",
+                  top: " 95%",
+                  width: "200px",
+                  height: "50px",
+                  textAlign: "center",
+                  display: "grid",
+                  alignContent: "center",
+                }}
+              >
+                6 PM ears
+              </div>
+            </div>
+            <div
+              style={{
+                position: "relative",
+              }}
+            >
+              <Image width={400} height={500} src={"/adam/classicLogoBlack.jpg"} alt="back black" />
+              <div
+                style={{
+                  position: "absolute",
+                  backgroundColor: "black",
+                  color: "white",
+                  right: "30%",
+                  top: " 95%",
+                  width: "200px",
+                  height: "50px",
+                  textAlign: "center",
+                  display: "grid",
+                  alignContent: "center",
+                }}
+              >
+                ADAM KRUM
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateRows: "80px 1fr",
+            padding: "24px 24px",
+            marginTop: "24px",
+            backgroundColor: "rgb(226 226 226)",
+            color: "black",
+          }}
+        >
+          <div
+            style={{
+              fontWeight: "400",
+              fontSize: "48px",
+            }}
+          >
+            PRODUCT <b>PREVIEWS</b>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              gap: "36px",
+              justifyContent: "center",
+              alignContent: "center",
+            }}
+          >
+            <div
+              style={{
+                display: "grid",
+                gridTemplateRows: "3fr 1fr",
+                border: "1px solid black",
+                justifyItems: "center",
+              }}
+            >
+              <Image width={200} height={250} src={"/adam/classicLogoGrey.jpg"} alt="back black" />
+
+              <div
+                style={{
+                  backgroundColor: "black",
+                  color: "white",
+                  padding: "12px",
+                }}
+              >
+                Adam Krum Classic T-shirt Grey
+              </div>
+            </div>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateRows: "3fr 1fr",
+                border: "1px solid black",
+                justifyItems: "center",
+              }}
+            >
+              <Image width={200} height={250} src={"/adam/classicLogoWhite.jpg"} alt="back black" />
+
+              <div
+                style={{
+                  backgroundColor: "black",
+                  color: "white",
+                  padding: "12px",
+                }}
+              >
+                Adam Krum Classic T-shirt White
+              </div>
+            </div>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateRows: "3fr 1fr",
+                border: "1px solid black",
+                justifyItems: "center",
+              }}
+            >
+              <Image width={200} height={250} src={"/adam/classicLogoGreen.jpg"} alt="back black" />
+
+              <div
+                style={{
+                  backgroundColor: "black",
+                  color: "white",
+                  padding: "12px",
+                }}
+              >
+                Adam Krum Classic T-shirt Green
+              </div>
+            </div>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateRows: "3fr 1fr",
+                border: "1px solid black",
+                justifyItems: "center",
+              }}
+            >
+              <Image width={200} height={250} src={"/adam/classicLogoSand.jpg"} alt="back black" />
+
+              <div
+                style={{
+                  backgroundColor: "black",
+                  color: "white",
+                  padding: "12px",
+                }}
+              >
+                Adam Krum Classic T-shirt Sand
+              </div>
+            </div>
+          </div>
+        </div>
         {/* <ThreeItemGridStores /> */}
       </section>
-      <section id="how-it-works" className="bg-white dark:bg-white">
+      <section id="how-it-works" className="bg-black">
         <div className="mx-auto max-w-screen-xl items-center gap-16 px-4 py-8 lg:grid lg:grid-cols-2 lg:px-6 lg:py-16">
           <div className="font-light text-gray-500 dark:text-gray-400 sm:text-lg">
-            <h2 className="mb-4 text-4xl font-extrabold tracking-tight text-gray-900 dark:text-gray-900">
+            <h2
+              style={{
+                fontSize: "48px",
+                fontWeight: "700",
+              }}
+              className="mb-4 text-4xl font-extrabold tracking-tight text-white"
+            >
               Connect with Your Audience through Social Media
             </h2>
-            <p className="mb-4">
+            <p
+              style={{
+                fontSize: "18px",
+                fontWeight: "400",
+              }}
+              className="mb-4"
+            >
               Amplify your reach by linking your Merchlife store with your social media profiles.
               Engage directly with your fans and followers, and watch as your creations capture
               hearts and minds across platforms.
             </p>
-            <p>
+            <p
+              style={{
+                fontSize: "18px",
+                fontWeight: "400",
+              }}
+            >
               We are strategists, designers and developers. Innovators and problem solvers. Small
               enough to be simple and quick.
             </p>
@@ -122,102 +826,8 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-      <section className="bg-white dark:bg-gray-900">
-        <div className="mx-auto max-w-screen-xl items-center gap-16 px-4 py-8 lg:grid lg:grid-cols-2 lg:px-6 lg:py-16">
-          <div className="mt-8 grid grid-cols-2 gap-4">
-            <img
-              className="w-full rounded-lg"
-              src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-2.png"
-              alt="office content 1"
-            />
-            <img
-              className="mt-4 w-full rounded-lg lg:mt-10"
-              src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-1.png"
-              alt="office content 2"
-            />
-          </div>
-          <div className="font-light text-gray-500 dark:text-gray-400 sm:text-lg">
-            <h2 className="mb-4 text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white">
-              Free to Start, Boundless Opportunities
-            </h2>
-            <p className="mb-4">
-              Dive in without any upfront costs. Our platform is built on the belief that your
-              creativity should be your only investment. Earn a competitive commission on every sale
-              as your creations capture the market.
-            </p>
-          </div>
-        </div>
-      </section>
-      <div className="grid">
-        <div className="block bg-white dark:bg-neutral-700">
-          <div className="relative overflow-hidden bg-cover bg-no-repeat">
-            <img src="/bg.png" alt="" height="300" />
-          </div>
-          <div
-            style={{
-              backgroundColor: "white",
-            }}
-            className="p-6"
-          >
-            <div
-              style={{
-                textAlign: "center",
-              }}
-            >
-              <h2 className="mb-2 pb-4 text-5xl font-bold leading-tight text-neutral-950">
-                How it works: Create, Connect, Succeed
-              </h2>
-            </div>
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr 1fr",
-                gap: "24px",
-              }}
-              className="text-neutral-700"
-            >
-              <div className="rounded-xl bg-card">
-                <div className="relative overflow-hidden bg-cover bg-no-repeat">
-                  <img className="rounded-t-lg" src="/create.jpg" alt="" />
-                </div>
-                <div className="p-6">
-                  <h3 className="p-6 text-center text-2xl font-medium tracking-tight">Create</h3>
-
-                  <div className="text-lg">
-                    Let your imagination run wild. Our platform is your canvas for next-level
-                    product designs.
-                  </div>
-                </div>
-              </div>
-              <div className="rounded-xl bg-card">
-                <div className="relative overflow-hidden bg-cover bg-no-repeat">
-                  <img className="rounded-t-lg" src="/connect.jpg" alt="" />
-                </div>
-                <div className="p-6 ">
-                  <h3 className="p-6 text-center text-2xl font-medium tracking-tight">Connect</h3>
-
-                  <div className="text-lg">
-                    Leverage the power of social media. Share your story and products with a global
-                    audience.
-                  </div>
-                </div>
-              </div>
-              <div className="rounded-xl bg-card">
-                <div className="relative overflow-hidden bg-cover bg-no-repeat">
-                  <img className="rounded-t-lg" src="/succeed.jpg" alt="" />
-                </div>
-                <div className="p-6">
-                  <h3 className="p-6 text-center text-2xl font-medium tracking-tight">Succeed</h3>
-
-                  <div className="text-lg">
-                    Enjoy the satisfaction of each sale. Grow your brand and income as your fanbase
-                    expands.
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div className="relative overflow-hidden bg-cover bg-no-repeat">
+        <img src="/bg.png" alt="" height="300" />
       </div>
       <section className="bg-white dark:bg-gray-900">
         <div className="mx-auto max-w-screen-xl items-center px-4 py-8 lg:px-6 lg:py-16">
