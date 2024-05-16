@@ -1,5 +1,5 @@
 "use client";
-import { CartIcon } from "@/components/ui/components/icons/CartIcon";
+import { Basket } from "@/components/ui/components/icons/Basket";
 import useStore from "@/state/store";
 import Link from "next/link";
 
@@ -10,14 +10,10 @@ export const CartCount = () => {
   });
   return (
     <Link
-      style={{
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-      }}
+      className="p-1.5 bg-[#F3F3F3]"
       href="/cart"
     >
-      <CartIcon />
-      {products.length}
+        <Basket />
     </Link>
   );
 };

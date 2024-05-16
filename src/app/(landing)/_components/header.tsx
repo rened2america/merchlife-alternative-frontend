@@ -16,20 +16,18 @@ import { CartCount } from "./cart-count";
 // import useStore from "@/app/state/store";
 
 const routes = [
-  { name: "Stores", href: "/storeMain" },
-  { name: "Categories", href: "/categories" },
+  { name: "Home", href: "/" },
+  { name: "Stores", href: "/stores" },
+  { name: "Categories", href: "/Categories" },
+  { name: "How it works", href: "/how-it-works" },
+
+  // { name: "about", href: '/about' }
 ] as const;
 
 export const Header = async () => {
   const { user } = await validateRequest();
   return (
-    <header
-      style={{
-        backgroundColor: "white",
-        color: "black",
-      }}
-      className="px-4 py-4 lg:py-6"
-    >
+    <header className="px-2 py-4 lg:py-6">
       <div className="container flex items-center gap-2 p-0">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -59,7 +57,7 @@ export const Header = async () => {
           {routes.map(({ name, href }) => (
             <Link
               key={name}
-              className="text-sm font-medium transition-colors hover:text-muted-foreground"
+              className="text-sm font-medium text-muted-foreground/70 transition-colors hover:text-muted-foreground"
               href={href}
             >
               {name}
@@ -69,19 +67,51 @@ export const Header = async () => {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr 1fr",
+            gridTemplateColumns: "auto auto auto auto",
+            alignItems: "center",
+            columnGap: "8px",
           }}
           className="ml-auto"
         >
+
+          <div className="relative flex  flex-col justify-center overflow-hidden bg-gradient-to-br">
+            <div className="relative bg-[#F3F3F3] shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-lg">
+              <div className="mx-auto max-w-md">
+
+
+                <form className="relative mx-auto w-max">
+                  <input type="search"
+                    className="peer cursor-pointer relative z-10 h-9 w-12 rounded-full  bg-transparent outline-none focus:w-full focus:cursor-text focus:pl-16 focus:pr-4" />
+                  <svg xmlns="http://www.w3.org/2000/svg" className="absolute inset-y-0 my-auto h-8 w-12 border-r border-transparent stroke-black px-3.5 " fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                </form>
+
+
+              </div>
+            </div>
+          </div>
+
+
           <CartCount />
 
           {user ? (
             <UserDropdown email={user.email} avatar={user.avatar} className="ml-auto" />
           ) : (
-            <Button asChild variant={"secondary"}>
-              <Link href="/login">Login</Link>
-            </Button>
+            <div className="">
+              <Button asChild variant={"secondary"} className="rounded-none w-32">
+                <Link href="/login">Login</Link>
+              </Button>
+
+
+            </div>
           )}
+
+          <div>
+            <Button asChild variant={"secondary"} className="rounded-none w-32">
+              <Link href="/signup">Sign Up</Link>
+            </Button>
+          </div>
         </div>
       </div>
     </header>
