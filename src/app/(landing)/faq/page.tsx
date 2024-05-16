@@ -1,8 +1,8 @@
 "use client"
 
 import { useState } from 'react';
-import SubHeaderCard from '../_components/common/SubHeaderCard';
-import AccordionItem from '../_components/common/Accroidan';
+import SubHeaderCard from '../_components/SubHeaderCard';
+import AccordionItem from '../_components/Accroidan';
 
 
 const Faq = () => {

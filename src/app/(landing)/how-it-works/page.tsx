@@ -1,7 +1,7 @@
 import React from "react";
-import SubHeaderCard from "../_components/common/SubHeaderCard";
-import TImeline from "../_components/common/TImeline";
-import ImageCardSection from "../_components/common/ImageCardSection";
+import SubHeaderCard from "../_components/SubHeaderCard";
+import ImageCardSection from "../_components/ImageCardSection";
+import TImeline from "../_components/TImeline";
 
 const HowItWorks = () => {
 

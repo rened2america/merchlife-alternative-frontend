@@ -1,6 +1,6 @@
 import React from "react";
-import SubHeaderCard from "../_components/common/SubHeaderCard";
-import ImageCardSection from "../_components/common/ImageCardSection";
+import SubHeaderCard from "../_components/SubHeaderCard";
+import ImageCardSection from "../_components/ImageCardSection";
 import { title } from "process";
 
 export default function About() {
