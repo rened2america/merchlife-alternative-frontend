@@ -12,7 +12,7 @@ export function Login() {
 
   return (
     <>
-      <div className="bg-purple-900 absolute top-0 left-0 bg-gradient-to-b from-gray-900 via-gray-900 to-purple-800 bottom-0 h-full w-full overflow-auto">
+      <div className="bg-black absolute top-0 left-0 bg-gradient-to-b from-gray-900 via-gray-900 to-black bottom-0 h-full w-full overflow-auto">
         <div className="relative h-screen sm:flex sm:flex-row justify-center bg-transparent rounded-3xl shadow-xl">
           <div className="flex-col flex self-center lg:px-14 sm:max-w-4xl xl:max-w-md z-10">
             <div className="self-start hidden lg:flex flex-col text-gray-300">
@@ -111,7 +111,7 @@ export function Login() {
                   <div>
                     <button
                       type="submit"
-                      className="w-full flex justify-center bg-purple-800 hover:bg-purple-700 text-gray-100 p-3 rounded-lg tracking-wide font-semibold cursor-pointer transition ease-in duration-500"
+                      className="w-full flex justify-center bg-black hover:bg-black text-gray-100 p-3 rounded-lg tracking-wide font-semibold cursor-pointer transition ease-in duration-500"
                     >
                       Login
                     </button>
@@ -120,7 +120,7 @@ export function Login() {
                   <div>
                     <Link
                       href={"/"}
-                      className="w-full flex justify-center bg-purple-800 hover:bg-purple-700 text-gray-100 p-3 rounded-lg tracking-wide font-semibold cursor-pointer transition ease-in duration-500"
+                      className="w-full flex justify-center bg-black hover:bg-black-700 text-gray-100 p-3 rounded-lg tracking-wide font-semibold cursor-pointer transition ease-in duration-500"
                     >
                       Cancel
                     </Link>
