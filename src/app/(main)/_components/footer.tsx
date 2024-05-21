@@ -109,7 +109,7 @@ const Footer = () => {
                                 </a>
                             </li>
                             <li>
-                                <a href="javascript:;" className="text-white hover:text-gray-400">
+                                <a href="/categories" className="text-white hover:text-gray-400">
                                     Categories
                                 </a>
                             </li>

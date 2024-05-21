@@ -10,9 +10,9 @@ const SubHeaderCard = ({ title, links }) => {
     return (
         <div>
             <div className="flex h-96 flex-col items-center justify-center bg-black p-4 text-center">
-            <h1 className="tracking-normal font-bold text-8xl m-0 p-0 dark:text-white text-zinc-50 leading-normal">
-    {title}
-</h1>
+            <h1 className="tracking-normal font-bold mb-8 text-2xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl m-0 p-0 dark:text-white text-zinc-50 leading-normal">
+                    {title}
+                </h1>
                 <p className="mb-6 text-lg font-normal text-gray-500 dark:text-gray-400 sm:px-16 lg:text-xl xl:px-48">
                     <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
                         {links.map((link, index) => (
