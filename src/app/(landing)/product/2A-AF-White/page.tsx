@@ -220,7 +220,7 @@ const tabContent = [
 export default function One() {
   const [selected, setSelected] = useState(["s"]);
   const [quantity, setQuantity] = useState(1);
-  const [selectedStars, setSelectedStars] = useState([]);
+  const [selectedStars, setSelectedStars] = useState<any>([]);
   const [selectedSize, setSelectedSize] = useState("");
   const [displayedReviews, setDisplayedReviews] = useState([]);
   const router = useRouter()
@@ -383,7 +383,7 @@ export default function One() {
             <form onSubmit={(e) => handleSubmit(e)} className="p-4">
 
               <div className="flex items-center">
-                {[...Array(5)].map((_, index: any) => (
+                {[...Array(5)].map((_, index:any) => (
                   <svg
                     key={index}
                     className={`h-5 w-5 ${selectedStars.includes(index) ? "text-yellow-300" : "text-gray-300"} ms-1 cursor-pointer`}
