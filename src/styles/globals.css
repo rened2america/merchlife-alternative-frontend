@@ -202,6 +202,28 @@ body {
 
 
 
+.cust-collaction-btn a:before {
+  content: "";
+  position: absolute !important;
+  width: 40px !important;
+  height: 40px !important;
+  border: 1px dotted !important;
+  border-radius: 100% !important;
+  top: -10px !important;
+  left: 0px !important;
+}
+.cust-collaction-btn a {
+  font-size: 14px !important;
+  color: #64666A !important;
+  text-decoration: none !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  position: relative !important;
+  padding-left: 16px !important;
+}
+
+
+
 @tailwind components;
 @tailwind utilities;
 
