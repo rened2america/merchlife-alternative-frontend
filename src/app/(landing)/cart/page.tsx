@@ -1,4 +1,4 @@
-
+"use client";
 import useStore from "@/state/store";
 import { CardContent, Card } from "@/components/ui/card";
 import { Amex } from "@/components/ui/components/icons/Amex";
