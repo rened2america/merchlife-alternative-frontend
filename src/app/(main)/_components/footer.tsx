@@ -80,7 +80,7 @@ const Footer = () => {
                                 <a href="mailto:contact@merchlife.com" className="text-sm text-gray-500 dark:text-gray-400 ">mailto:contact@merchlife.com</a>
                             </div>
                         </div>
-                        <div className="flex items-center justify-end ">
+                        <div className="flex items-center justify-end mr-10">
                             <a href="tel:+1 408-835-0739" className="rounded-full flex items-center justify-center w-10 h-10 lg:w-12 lg:h-12 border-gray-400 border bg-gray-700">
                                 <PiPhoneCallDuotone className="w-4 h-4 lg:w-5 lg:h-5" />
                             </a>
