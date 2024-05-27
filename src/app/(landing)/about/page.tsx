@@ -2,7 +2,8 @@ import React from "react";
 import SubHeaderCard from "../_components/SubHeaderCard";
 import ImageCardSection from "../_components/ImageCardSection";
 import { title } from "process";
-
+import { Raleway } from "next/font/google";
+const raleway = Raleway({ subsets: ["latin"] });
 export default function About() {
   const howItWorksLinks = [
     { text: "Home", href: "/" },
@@ -46,7 +47,7 @@ export default function About() {
   <>
       <SubHeaderCard title="ABOUT US" links={howItWorksLinks} />
       <ImageCardSection imageCardData={ImageCardData} />
-      <div className="xl:h-[744px] bg-white">
+      <div className={`xl:h-[744px] bg-white ${raleway.className}` }>
   <div className="bg-black xl:h-[544px] justify-center text-center align-center space-x-8 sm:space-x-8 sm:pr-8 md:pr-0 lg:pr-">
   <div className="text-white xl:text-6xl font-bold xl:pt-20 xl:pb-12 lg:pt-10 lg:pb-8 md:pt-8 md:pb-6 sm:pt-6 sm:pb-6 leading-normal">
   Enterprise technology acquisitions
@@ -84,7 +85,7 @@ export default function About() {
 
     
   
-<div className="container pt-24 pb-24">
+<div className={`container pt-24 pb-24 ${raleway.className}`}>
 <div className="grid grid-cols-1 grid-rows-1 md:grid-cols-2">
     <div className="">
       <h5
@@ -125,7 +126,7 @@ export default function About() {
 
 
 
-      <div className="card pb-4 md:pb-8 lg:pb-12 xl:pb-28 pt-4 md:pt-8 lg:pt-12 xl:pt-28">
+      <div className={`card pb-4 md:pb-8 lg:pb-12 xl:pb-28 pt-4 md:pt-8 lg:pt-12 xl:pt-28 ${raleway.className}`}>
     <div className="relative h-[360px] sm:h-[300px] md:h-[360px] lg:h-[480px] xl:h-[720px] w-full" id="home">
         <div className="absolute inset-0">
             <img src="./about1.png" alt="Background Image" className="h-full w-full object-cover object-center" />

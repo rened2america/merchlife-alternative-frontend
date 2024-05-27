@@ -2,6 +2,8 @@ import React from "react";
 import SubHeaderCard from "../_components/SubHeaderCard";
 import ImageCardSection from "../_components/ImageCardSection";
 import TImeline from "../_components/TImeline";
+import { Raleway } from "next/font/google";
+const raleway = Raleway({ subsets: ["latin"] });
 
 const HowItWorks = () => {
 
@@ -9,7 +11,6 @@ const HowItWorks = () => {
         { text: 'HOME', href: '/' },
         { text: 'HOW-IT-WORKS', href: '#', icon: true }
     ];
-
 
     const timelineData = [
         {
@@ -27,8 +28,7 @@ const HowItWorks = () => {
         {
             title: "Sed efficitur nisi",
             content: "Fusce venenatis urna eget augue feugiat ornare. Sed varius, dui non mattis vehicula, ipsum ante faucibus velit, sit amet aliquam lacus ipsum sed nulla. Ut porta lectus eget cursus consectetur. Suspendisse posuere finibus orci, sed sodales odio tincidunt in."
-        },
-
+        }, 
     ];
 
     const ImageCardData = [
@@ -42,14 +42,13 @@ const HowItWorks = () => {
 
     return (
         <>
+        <div className={`${raleway.className}`}>
             <SubHeaderCard title="HOW IT WORKS" links={howItWorksLinks} />
-          
-
             <ImageCardSection imageCardData = {ImageCardData}/>
-    
             <TImeline title="Lorem Ipsem Step" timelineData={timelineData} />
-          
+          </div>
         </>
+    
     );
 };
 

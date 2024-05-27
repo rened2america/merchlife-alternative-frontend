@@ -2,12 +2,20 @@ import { NextIcon } from "@/components/ui/components/icons/NextIcon";
 import { PreviousIcon } from "@/components/ui/components/icons/PreviousIcon";
 import React, { useState, useEffect } from "react";
 
-export default function Pegination({ reviews, setDisplayedReviews }) {
-  const [itemsPerPage, setItemsPerPage] = useState(3);
-  const [currentPage, setCurrentPage] = useState(1);
+export default function Pagination({
+  reviews,
+  displayedReviews,
+  setDisplayedReviews,
+  itemsPerPage,
+  setItemsPerPage,
+  currentPage,
+  setCurrentPage,
+}) {
+  // Ensure itemsPerPage is not negative
+  const actualItemsPerPage = Math.max(1, itemsPerPage);
 
   // Calculate total pages
-  const totalPages = Math.ceil(reviews.length / itemsPerPage);
+  const totalPages = Math.ceil(reviews.length / actualItemsPerPage);
 
   // Function to change current page
   const changePage = (page, e) => {
@@ -17,10 +25,10 @@ export default function Pegination({ reviews, setDisplayedReviews }) {
 
   useEffect(() => {
     // Update displayed reviews when currentPage or reviews change
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
+    const startIndex = (currentPage - 1) * actualItemsPerPage;
+    const endIndex = startIndex + actualItemsPerPage;
     setDisplayedReviews(reviews.slice(startIndex, endIndex));
-  }, [currentPage, itemsPerPage, reviews, setDisplayedReviews]);
+  }, [currentPage, actualItemsPerPage, reviews, setDisplayedReviews]);
 
   return (
     <div className="flex items-center justify-center gap-2">
@@ -39,7 +47,7 @@ export default function Pegination({ reviews, setDisplayedReviews }) {
       </button>
 
       {/* Page Buttons */}
-      {[...Array(totalPages)].map((_, index) => (
+      {[...Array(totalPages && totalPages)].map((_, index) => (
         <button
           key={index}
           className={`relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full border border-gray-400 text-center align-middle font-sans text-xs font-medium uppercase ${

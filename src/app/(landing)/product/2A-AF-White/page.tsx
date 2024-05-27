@@ -182,17 +182,18 @@ import {
 import { Inter } from "next/font/google";
 import { useState } from "react";
 
+import { Raleway } from "next/font/google";
 import Breadcrumb from "../../_components/Breadcrumb";
 import QuantityCounter from "../../_components/QuantityCounter";
-import { Description } from "@radix-ui/react-dialog";
 import StarRating from "../../_components/StarRating";
-import Pegination from "../../_components/Pegination";
 import Tabs from "../../_components/Tabs";
 import CustomSwiper from "../../_components/CustomeSwiper";
-import { useRouter } from "next/navigation"
+import { useRouter } from "next/navigation";
+import Pegination from '../../_components/Pegination';
 const inter = Inter({ subsets: ["latin"] });
 const interProducts = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
+const raleway = Raleway({ subsets: ["latin"] });
 const tabContent = [
   {
     title: 'Description',
@@ -223,6 +224,9 @@ export default function One() {
   const [selectedStars, setSelectedStars] = useState<any>([]);
   const [selectedSize, setSelectedSize] = useState("");
   const [displayedReviews, setDisplayedReviews] = useState([]);
+  const [itemsPerPage, setItemsPerPage] = useState(3);
+  const [currentPage, setCurrentPage] = useState(1);
+  
   const router = useRouter()
   const [reviews, setReviews] = useState([
     {
@@ -373,8 +377,7 @@ export default function One() {
   return (
     <>
       <Breadcrumb items={breadcrumbItems} />
-
-      <div className="container mx-auto">
+      <div className={`container mx-auto ${raleway.className}`}>
         <div className="flex flex-row md:flex-row justify-center">
           <div className="p-4 w-full md:w-auto mb-4 md:mb-0 md:mr-4 md:flex-shrink-0 sm:w-full">
             <CustomSwiper images={images} />
@@ -493,7 +496,13 @@ export default function One() {
             ))}
 
             <div className="w-full border-b border-gray-100 pb-8"></div>
-            <Pegination reviews={reviews} setDisplayedReviews={setDisplayedReviews} />
+            <Pegination reviews={reviews} setDisplayedReviews={setDisplayedReviews} 
+            displayedReviews={displayedReviews}
+             itemsPerPage={itemsPerPage} // Pass itemsPerPage state
+             setItemsPerPage={setItemsPerPage}
+             currentPage={currentPage} // Pass currentPage state
+             setCurrentPage={setCurrentPage}
+            />
           </div>
         </div>
         <div className="flex items-center gap-4"></div>

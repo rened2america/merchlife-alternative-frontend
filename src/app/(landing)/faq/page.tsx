@@ -4,7 +4,8 @@ import { useState } from 'react';
 import SubHeaderCard from '../_components/SubHeaderCard';
 import AccordionItem from '../_components/Accroidan';
 
-
+import { Raleway } from "next/font/google";
+const raleway = Raleway({ subsets: ["latin"] });
 const Faq = () => {
     const howItWorksLinks = [
         { text: 'Home', href: '/' },
@@ -51,7 +52,7 @@ const Faq = () => {
     ];
 
     return (
-        <>
+        <>  <div className={`${raleway.className}`}>
             <SubHeaderCard title="FAQ" links={howItWorksLinks} />
             <div className='p-28 mb-20'>
                 <h1 className='font-bold text-4xl'>Frequently Asked Questions.</h1>
@@ -68,6 +69,7 @@ const Faq = () => {
                         />
                     ))}
                 </div>
+            </div>
             </div>
         </>
     );
