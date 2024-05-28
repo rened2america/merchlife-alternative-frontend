@@ -24,6 +24,14 @@ import { ThreeItemGridStores } from "@/components/ui/components/gridStore/three-
 import { Carousel } from "@/components/ui/components/carousel";
 import Image from "next/image";
 import { ButtonGroupProvider } from "@nextui-org/react";
+import { Raleway } from "next/font/google";
+import { NextArrow } from "@/components/ui/components/icons/NextArrow";
+import { CirclePre } from "@/components/ui/components/icons/CirclePre";
+import { CircleNext } from "@/components/ui/components/icons/CircleNext";
+
+const raleway = Raleway({ subsets: ["latin"] });
+
+
 export const metadata: Metadata = {
   title: "Merchlife",
   description:
@@ -80,708 +88,138 @@ const features = [
   },
 ];
 
+const categories = [
+  { id: 1, name: "6 PM ears", image: "/product_one.jpg" },
+  { id: 2, name: "6 PM ears", image: "/product_one.jpg" },
+  { id: 3, name: "6 PM ears", image: "/product_one.jpg" },
+
+];
+
+const products = [
+  { id: 1, name: "Adam Krum Classic T-shirt Grey", price: "$24.5", image: "/adam/classicLogoGrey.jpg" },
+  { id: 2, name: "Adam Krum Classic T-shirt White", price: "$24.5", image: "/adam/classicLogoWhite.jpg" },
+  { id: 3, name: "Adam Krum Classic T-shirt Green", price: "$24.5", image: "/adam/classicLogoGreen.jpg" },
+  { id: 4, name: "Adam Krum Classic T-shirt Sand", price: "$24.5", image: "/adam/classicLogoSand.jpg" },
+
+];
+
 const HomePage = () => {
   return (
     <>
+
       <section
-        style={{
-          backgroundColor: "white",
-        }}
+        className={`bg-white ${raleway.className}`}
       >
-        {/* <div
-          style={{
-            filter: "grayscale(50%)",
-          }}
-        >
-          <div className="relative overflow-hidden bg-cover bg-no-repeat">
-            <img src="/01.webp" alt="" />
-          </div>
-        </div> */}
-        <div
-          style={{
-            width: "100%",
-            height: "600px",
-            display: "grid",
-            gridTemplateColumns: "2fr 1fr 1fr",
-            backgroundColor: "black",
-          }}
-        >
-          <div
-            style={{
-              display: "grid",
-              gridTemplateRows: "2fr 1fr",
-            }}
-          >
-            <div
-              style={{
-                display: "grid",
-                justifyItems: "center",
-                alignItems: "center",
-              }}
-            >
+
+        <div className="grid w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-4 bg-black md:h-auto lg:h-[800px]">
+          <div className="grid md:col-span-2 md:pt-0 pt-20">
+            <div className="text-white grid justify-center items-end h-full">
               <div>
-                <div
-                  style={{
-                    fontSize: "48px",
-                    fontWeight: "400",
-                  }}
-                >
-                  CREATE
-                </div>
-                <div
-                  style={{
-                    fontSize: "72px",
-                    fontWeight: "900",
-                  }}
-                >
-                  SHARE
-                </div>
-                <div
-                  style={{
-                    fontSize: "48px",
-                    fontWeight: "400",
-                  }}
-                >
-                  EARN
-                </div>
+                <div className="text-4xl md:text-5xl font-normal">CREATE</div>
+                <div className="text-6xl md:text-7xl font-black">SHARE</div>
+                <div className="text-4xl md:text-5xl font-normal">EARN</div>
               </div>
             </div>
-            <div
-              style={{
-                height: "200px",
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-              }}
-            >
-              <Image width={230} height={200} src={"/classicLogoGreen_1.png"} alt="back black" />
-              <Image width={230} height={200} src={"/classicLogoSand_1.png"} alt="back black" />
+            <div className="grid grid-cols-1 md:mt-0 md:grid-cols-2 md:row-span-1 md:self-end md:p-0  p-5 md:gap-y-0  gap-y-3">
+              <Image width={424} height={364} src={"/classicLogoGreen_1.png"} alt="back black" className="m-auto" />
+              <Image width={424} height={364} src={"/classicLogoSand_1.png"} alt="back black" className="m-auto" />
             </div>
           </div>
-          <div
-            style={{
-              backgroundColor: "white",
-              display: "grid",
-              gridTemplateRows: "1fr 1fr",
-            }}
-          >
-            <div
-              style={{
-                display: "grid",
-                justifyItems: "center",
-                alignContent: "center",
-              }}
-            >
-              <div
-                style={{
-                  color: "black",
-                  fontSize: "32px",
-                  fontWeight: "700",
-                }}
-              >
-                6 PMERS BLACK
-              </div>
-              <div
-                style={{
-                  color: "black",
-                  fontSize: "32px",
-                  fontWeight: "700",
-                }}
-              >
-                T-SHIRT
-              </div>
-              <Button
-                style={{
-                  backgroundColor: "black",
-                  color: "white",
-                }}
-              >
-                SHOP NOW
-              </Button>
+          <div className="bg-white grid md:col-span-1">
+            <div className="grid justify-center content-center h-full p-4 text-center">
+              <div className="text-black text-2xl md:text-3xl lg:text-4xl font-bold">6 PMERS BLACK</div>
+              <div className="text-black text-center text-2xl md:text-3xl lg:text-4xl font-bold">T-SHIRT</div>
+              <div className="text-black text-center text-2xl md:text-3xl lg:text-4xl py-2 md:py-4 font-medium">$24.5</div>
+              <Button className="py-6 bg-black rounded-lg text-white">SHOP NOW &nbsp;<NextArrow/></Button>
             </div>
-            <div
-              style={{
-                display: "grid",
-                justifyContent: "center",
-                alignContent: "end",
-              }}
-            >
-              <Image width={250} height={200} src={"/product_two_1.png"} alt="back black" />
+            <div className="grid justify-center content-end">
+              <Image width={424} height={364} src={"/product_two_1.png"} alt="back black" />
             </div>
           </div>
-          <div
-            style={{
-              display: "grid",
-              justifyContent: "center",
-              alignContent: "end",
-            }}
-          >
-            <Image width={230} height={200} src={"/2AAfWhite_1.png"} alt="back black" />
+          <div className="grid justify-center content-end md:pt-0  pt-5">
+            <Image width={424} height={364} src={"/2AAfWhite_1.png"} alt="back black" />
           </div>
         </div>
-        <div
-          style={{
-            height: "60px",
-            width: "100%",
-            backgroundColor: "#E6E6E6",
-            display: "flex",
-            alignItems: "center",
-            color: "black",
-            fontWeight: "300",
-            flexDirection: "row",
-            gap: "16px",
-          }}
-        >
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              width: "150px",
-              gap: "16px",
-              alignItems: "center",
-              padding: "0px 12px",
-            }}
-          >
-            <div
-              style={{
-                display: "grid",
-                justifyContent: "center",
-                alignContent: "center",
-                border: "0.5px solid black",
-                borderRadius: "40px",
-                width: "120px",
-              }}
-            >
-              Merchlife
+        <div className="h-[60px] w-full bg-[#E6E6E6] flex items-center text-black font-light gap-4 overflow-x-auto">
+          {[...Array(9)].map((_, i) => (
+            <div key={i} className="grid grid-cols-[1fr_auto] w-[150px] gap-4 items-center px-3">
+              <div className="flex justify-center items-center border border-black rounded-full w-[120px] h-[32px]">
+                Merchlife
+              </div>
+              <div className="w-4 h-4 rounded-full bg-black"></div>
             </div>
-            <div
-              style={{
-                width: "16px",
-                height: "16px",
-                borderRadius: "24px",
-                backgroundColor: "black",
-              }}
-            ></div>
-          </div>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              width: "150px",
-              gap: "16px",
-              alignItems: "center",
-              padding: "0px 12px",
-            }}
-          >
-            <div
-              style={{
-                display: "grid",
-                justifyContent: "center",
-                alignContent: "center",
-                border: "0.5px solid black",
-                borderRadius: "40px",
-                width: "120px",
-              }}
-            >
-              Merchlife
-            </div>
-            <div
-              style={{
-                width: "16px",
-                height: "16px",
-                borderRadius: "24px",
-                backgroundColor: "black",
-              }}
-            ></div>
-          </div>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              width: "150px",
-              gap: "16px",
-              alignItems: "center",
-              padding: "0px 12px",
-            }}
-          >
-            <div
-              style={{
-                display: "grid",
-                justifyContent: "center",
-                alignContent: "center",
-                border: "0.5px solid black",
-                borderRadius: "40px",
-                width: "120px",
-              }}
-            >
-              Merchlife
-            </div>
-            <div
-              style={{
-                width: "16px",
-                height: "16px",
-                borderRadius: "24px",
-                backgroundColor: "black",
-              }}
-            ></div>
-          </div>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              width: "150px",
-              gap: "16px",
-              alignItems: "center",
-              padding: "0px 12px",
-            }}
-          >
-            <div
-              style={{
-                display: "grid",
-                justifyContent: "center",
-                alignContent: "center",
-                border: "0.5px solid black",
-                borderRadius: "40px",
-                width: "120px",
-              }}
-            >
-              Merchlife
-            </div>
-            <div
-              style={{
-                width: "16px",
-                height: "16px",
-                borderRadius: "24px",
-                backgroundColor: "black",
-              }}
-            ></div>
-          </div>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              width: "150px",
-              gap: "16px",
-              alignItems: "center",
-              padding: "0px 12px",
-            }}
-          >
-            <div
-              style={{
-                display: "grid",
-                justifyContent: "center",
-                alignContent: "center",
-                border: "0.5px solid black",
-                borderRadius: "40px",
-                width: "120px",
-              }}
-            >
-              Merchlife
-            </div>
-            <div
-              style={{
-                width: "16px",
-                height: "16px",
-                borderRadius: "24px",
-                backgroundColor: "black",
-              }}
-            ></div>
-          </div>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              width: "150px",
-              gap: "16px",
-              alignItems: "center",
-              padding: "0px 12px",
-            }}
-          >
-            <div
-              style={{
-                display: "grid",
-                justifyContent: "center",
-                alignContent: "center",
-                border: "0.5px solid black",
-                borderRadius: "40px",
-                width: "120px",
-              }}
-            >
-              Merchlife
-            </div>
-            <div
-              style={{
-                width: "16px",
-                height: "16px",
-                borderRadius: "24px",
-                backgroundColor: "black",
-              }}
-            ></div>
-          </div>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              width: "150px",
-              gap: "16px",
-              alignItems: "center",
-              padding: "0px 12px",
-            }}
-          >
-            <div
-              style={{
-                display: "grid",
-                justifyContent: "center",
-                alignContent: "center",
-                border: "0.5px solid black",
-                borderRadius: "40px",
-                width: "120px",
-              }}
-            >
-              Merchlife
-            </div>
-            <div
-              style={{
-                width: "16px",
-                height: "16px",
-                borderRadius: "24px",
-                backgroundColor: "black",
-              }}
-            ></div>
-          </div>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              width: "150px",
-              gap: "16px",
-              alignItems: "center",
-              padding: "0px 12px",
-            }}
-          >
-            <div
-              style={{
-                display: "grid",
-                justifyContent: "center",
-                alignContent: "center",
-                border: "0.5px solid black",
-                borderRadius: "40px",
-                width: "120px",
-              }}
-            >
-              Merchlife
-            </div>
-            <div
-              style={{
-                width: "16px",
-                height: "16px",
-                borderRadius: "24px",
-                backgroundColor: "black",
-              }}
-            ></div>
-          </div>
+          ))}
         </div>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateRows: "80px 1fr",
-            padding: "24px 24px",
-            marginTop: "24px",
-            backgroundColor: "white",
-            color: "black",
-          }}
-        >
-          <div
-            style={{
-              fontWeight: "400",
-              fontSize: "48px",
-            }}
-          >
-            SELLERS AT <b>MERCHLIFE</b>
+        <div className="grid p-4 md:p-12 mt-4 md:mt-12 bg-white text-black">
+          <div className="flex flex-col md:flex-row items-center justify-between pb-4 md:pb-12">
+            <h2 className="font-normal text-3xl md:text-5xl">
+              SELLERS AT <b>MERCHLIFE</b>
+            </h2>
+            {/* <div className="flex justify-between mt-4 md:mt-0">
+              <button className="px-4 py-2  text-gray-800 rounded-md"><CirclePre /></button>
+              <button className="px-4 py-2  text-gray-800 rounded-md"> <CircleNext /></button>
+            </div> */}
           </div>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              justifyItems: "center",
-              alignItems: "center",
-            }}
-          >
-            <div
-              style={{
-                padding: "24px",
-                border: "1px solid #ababab",
-                display: "grid",
-                gridTemplateRows: "2fr 1fr",
-              }}
-            >
-              <Image width={450} height={500} src={"/6PMers.jpg"} alt="back black" />
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  gap: "14px",
-                }}
-              >
-                <Image width={140} height={150} src={"/product_one.jpg"} alt="back black" />
-                <Image width={140} height={150} src={"/product_two.jpg"} alt="back black" />
-                <Image width={140} height={150} src={"/product_three.jpg"} alt="back black" />
+          <div className="grid grid-cols-2 md:grid-cols-1 xl:grid-cols-2 sm:grid-cols-1 gap-4 md:gap-7">
+            <div className="p-4 border border-gray-300 rounded-md">
+              <img className="w-full h-[531px]" src={"/6PMers.jpg"} alt="Sellers at Merchlife" />
+              <div className="grid grid-cols-3 gap-4 pt-4">
+                <img className="w-full" src={"/product_one.jpg"} alt="Product One" />
+                <img className="w-full" src={"/product_two.jpg"} alt="Product Two" />
+                <img className="w-full" src={"/product_three.jpg"} alt="Product Three" />
               </div>
             </div>
-            <div
-              style={{
-                padding: "24px",
-                border: "1px solid #ababab",
-                display: "grid",
-                gridTemplateRows: "2fr 1fr",
-              }}
-            >
-              <div
-                style={{
-                  backgroundColor: "black",
-                  borderBottom: "16px solid white",
-                  display: "grid",
-                  justifyContent: "center",
-                  alignContent: "center",
-                }}
-              >
-                <Image width={450} height={500} src={"/adam/ADAMB.png"} alt="back black" />
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  gap: "14px",
-                }}
-              >
-                <Image
-                  width={140}
-                  height={150}
-                  src={"/adam/classicLogoBlack.jpg"}
-                  alt="back black"
-                />
-                <Image
-                  width={140}
-                  height={150}
-                  src={"/adam/classicLogoSand.jpg"}
-                  alt="back black"
-                />
-                <Image
-                  width={140}
-                  height={150}
-                  src={"/adam/classicLogoWhite.jpg"}
-                  alt="back black"
-                />
+            <div className="p-4 border border-gray-300 rounded-md">
+              <img className="w-full h-[531px]" src={"/adam/ADAMB.png"} alt="Sellers at Merchlife" />
+              <div className="grid grid-cols-3 gap-4 pt-4">
+                <img className="w-full" src={"/adam/classicLogoBlack.jpg"} alt="Classic Logo Black" />
+                <img className="w-full" src={"/adam/classicLogoSand.jpg"} alt="Classic Logo Sand" />
+                <img className="w-full" src={"/adam/classicLogoWhite.jpg"} alt="Classic Logo White" />
               </div>
             </div>
           </div>
         </div>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateRows: "80px 1fr",
-          }}
-        >
-          <div
-            style={{
-              fontSize: "60px",
-              fontWeight: "700",
-              width: "100%",
-              display: "grid",
-              justifyContent: "center",
-              color: "black",
-            }}
-          >
+        <div className="grid p-4 md:p-12 mt-4 md:mt-12 bg-[#E6E6E6] text-black">
+          <div className="flex flex-col md:flex-row items-center justify-between pb-4 md:pb-12">
+            <h2 className="font-normal text-3xl md:text-5xl">
+              PRODUCT <b>PREVIEWS</b>
+            </h2>
+            {/* <div className="flex justify-between mx-2 mt-4 md:mt-0">
+              <button className="px-4 py-2  text-gray-800 rounded-md"> <CirclePre /></button>
+              <button className="px-4 py-2  text-gray-800 rounded-md">
+                <CircleNext />
+              </button>
+            </div> */}
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
+            {products.map((product) => (
+              <div key={product.id} className="grid border border-black justify-center">
+                <Image className="w-full object-cover" src={product.image} alt={product.name} width={250} height={250} />
+                <div className="bg-black text-white p-4">
+                  <h5 className="text-2xl md:text-3xl font-light">{product.name}</h5>
+                  <p className="mt-2 md:mt-4">{product.price}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="grid py-9">
+          <div className="text-3xl md:text-6xl font-bold w-full text-center text-black">
             CATEGORIES
           </div>
-          <div
-            style={{
-              width: "100%",
-              padding: "72px 32px",
-              backgroundColor: "white",
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr 1fr",
-            }}
-          >
-            <div
-              style={{
-                position: "relative",
-              }}
-            >
-              <Image width={400} height={500} src={"/product_one.jpg"} alt="back black" />
-              <div
-                style={{
-                  position: "absolute",
-                  backgroundColor: "black",
-                  color: "white",
-                  right: "30%",
-                  top: " 95%",
-                  width: "200px",
-                  height: "50px",
-                  textAlign: "center",
-                  display: "grid",
-                  alignContent: "center",
-                }}
-              >
-                6 PM ears
+          <div className="w-full grid grid-cols-1 space-y-4 md:space-y-0 sm:grid-cols-2 md:grid-cols-3 gap-4 py-4 px-4 md:px-8 bg-white">
+            {categories.map((category) => (
+              <div key={category.id} className="relative">
+                <Image className="w-full" src={category.image} alt={category.name} width={500} height={500} />
+                <Button className="absolute bg-black text-white rounded-none py-4 px-10 md:py-6 md:px-20 bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2">
+                  {category.name}
+                </Button>
               </div>
-            </div>
-            <div
-              style={{
-                position: "relative",
-              }}
-            >
-              <Image width={400} height={500} src={"/2A/2AAfWhite.jpg"} alt="back black" />
-              <div
-                style={{
-                  position: "absolute",
-                  backgroundColor: "black",
-                  color: "white",
-                  right: "30%",
-                  top: " 95%",
-                  width: "200px",
-                  height: "50px",
-                  textAlign: "center",
-                  display: "grid",
-                  alignContent: "center",
-                }}
-              >
-                6 PM ears
-              </div>
-            </div>
-            <div
-              style={{
-                position: "relative",
-              }}
-            >
-              <Image width={400} height={500} src={"/adam/classicLogoBlack.jpg"} alt="back black" />
-              <div
-                style={{
-                  position: "absolute",
-                  backgroundColor: "black",
-                  color: "white",
-                  right: "30%",
-                  top: " 95%",
-                  width: "200px",
-                  height: "50px",
-                  textAlign: "center",
-                  display: "grid",
-                  alignContent: "center",
-                }}
-              >
-                ADAM KRUM
-              </div>
-            </div>
+            ))}
           </div>
         </div>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateRows: "80px 1fr",
-            padding: "24px 24px",
-            marginTop: "24px",
-            backgroundColor: "rgb(226 226 226)",
-            color: "black",
-          }}
-        >
-          <div
-            style={{
-              fontWeight: "400",
-              fontSize: "48px",
-            }}
-          >
-            PRODUCT <b>PREVIEWS</b>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              gap: "36px",
-              justifyContent: "center",
-              alignContent: "center",
-            }}
-          >
-            <div
-              style={{
-                display: "grid",
-                gridTemplateRows: "3fr 1fr",
-                border: "1px solid black",
-                justifyItems: "center",
-              }}
-            >
-              <Image width={200} height={250} src={"/adam/classicLogoGrey.jpg"} alt="back black" />
 
-              <div
-                style={{
-                  backgroundColor: "black",
-                  color: "white",
-                  padding: "12px",
-                }}
-              >
-                Adam Krum Classic T-shirt Grey
-              </div>
-            </div>
-            <div
-              style={{
-                display: "grid",
-                gridTemplateRows: "3fr 1fr",
-                border: "1px solid black",
-                justifyItems: "center",
-              }}
-            >
-              <Image width={200} height={250} src={"/adam/classicLogoWhite.jpg"} alt="back black" />
 
-              <div
-                style={{
-                  backgroundColor: "black",
-                  color: "white",
-                  padding: "12px",
-                }}
-              >
-                Adam Krum Classic T-shirt White
-              </div>
-            </div>
-            <div
-              style={{
-                display: "grid",
-                gridTemplateRows: "3fr 1fr",
-                border: "1px solid black",
-                justifyItems: "center",
-              }}
-            >
-              <Image width={200} height={250} src={"/adam/classicLogoGreen.jpg"} alt="back black" />
-
-              <div
-                style={{
-                  backgroundColor: "black",
-                  color: "white",
-                  padding: "12px",
-                }}
-              >
-                Adam Krum Classic T-shirt Green
-              </div>
-            </div>
-            <div
-              style={{
-                display: "grid",
-                gridTemplateRows: "3fr 1fr",
-                border: "1px solid black",
-                justifyItems: "center",
-              }}
-            >
-              <Image width={200} height={250} src={"/adam/classicLogoSand.jpg"} alt="back black" />
-
-              <div
-                style={{
-                  backgroundColor: "black",
-                  color: "white",
-                  padding: "12px",
-                }}
-              >
-                Adam Krum Classic T-shirt Sand
-              </div>
-            </div>
-          </div>
-        </div>
         {/* <ThreeItemGridStores /> */}
       </section>
       <section id="how-it-works" className="bg-black">
@@ -829,41 +267,8 @@ const HomePage = () => {
       <div className="relative overflow-hidden bg-cover bg-no-repeat">
         <img src="/bg.png" alt="" height="300" />
       </div>
-      <section className="bg-white dark:bg-gray-900">
-        <div className="mx-auto max-w-screen-xl items-center px-4 py-8 lg:px-6 lg:py-16">
-          <div className="font-light text-gray-500 dark:text-gray-400 sm:text-lg">
-            <h2 className="mb-4 text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white">
-              Support Every Step of the Way
-            </h2>
-            <p className="mb-4">
-              Whether you need creative guidance or technical support, our teams are here to ensure
-              a smooth, enjoyable experience. From concept to customer, we&apos;re with you at every
-              step.
-            </p>
-          </div>
-        </div>
-      </section>
-      {/* <section>
-        <div className="container mx-auto lg:max-w-screen-lg">
-          <h1 className="mb-4 text-center text-3xl font-bold md:text-4xl lg:text-5xl">
-            <a id="features"></a> Features
-          </h1>
-          <p className="mb-10 text-balance text-center text-muted-foreground md:text-lg lg:text-xl">
-            This starter template is a guide to help you get started with Next.js for large scale
-            applications. Feel free to add or remove features to suit your needs.
-          </p>
-          <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
-            {features.map((feature, i) => (
-              <CardSpotlight
-                key={i}
-                name={feature.name}
-                description={feature.description}
-                logo={<feature.logo className="h-12 w-12" />}
-              />
-            ))}
-          </div>
-        </div>
-      </section> */}
+
+
     </>
   );
 };

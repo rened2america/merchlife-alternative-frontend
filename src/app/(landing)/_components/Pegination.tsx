@@ -28,7 +28,7 @@ export default function Pagination({
     const startIndex = (currentPage - 1) * actualItemsPerPage;
     const endIndex = startIndex + actualItemsPerPage;
     setDisplayedReviews(reviews.slice(startIndex, endIndex));
-  }, [currentPage, actualItemsPerPage, reviews, setDisplayedReviews]);
+  }, [currentPage]);
 
   return (
     <div className="flex items-center justify-center gap-2">
