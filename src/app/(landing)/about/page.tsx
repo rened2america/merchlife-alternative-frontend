@@ -125,26 +125,33 @@ export default function About() {
 </div>
 
 
-
-      <div className={`card pb-4 md:pb-8 lg:pb-12 xl:pb-28 pt-4 md:pt-8 lg:pt-12 xl:pt-28 ${raleway.className}`}>
+<div className="relative flex items-center justify-center h-screen bg-gray-100">
+        <div className="absolute inset-0 bg-cover bg-center" style={{backgroundImage: 'url(./about1.png)'}}></div>
+        <div className="relative  p-8 rounded shadow-lg max-w-2xl mx-4 md:mx-auto text-center">
+            <h1 className="text-3xl md:text-4xl font-bold mb-4">Lorem ipsum dolor sit amet</h1>
+            <p className="text-lg md:text-xl text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vitae tincidunt augue, at porta sapien. Suspendisse at finibus tellus. Non dapibus nibh. Nulla aliquam, odio ultrices aliquet pretium, lectus velit laoreet diam, dignissim egestas tortor nisi sagittis nunc. Sed vehicula neque tortor eget finibus arcu malesuada nec. Sed rutrum nisi porta turpis vehicula, facilisis finibus sapien tincidunt. Pellentesque sollicitudin purus quis dolor finibus congue.</p>
+        </div>
+    </div>
+      {/* <div className={`card pb-4 md:pb-8 lg:pb-12 xl:pb-28 pt-4 md:pt-8 lg:pt-12 xl:pt-28 ${raleway.className}`}>
     <div className="relative h-[360px] sm:h-[300px] md:h-[360px] lg:h-[480px] xl:h-[720px] w-full" id="home">
         <div className="absolute inset-0">
             <img src="./about1.png" alt="Background Image" className="h-full w-full object-cover object-center" />
         </div>
         <div className="absolute inset-0 flex items-center justify-center">
+          
             <div className="w-full md:w-2/3 text-center md:text-left">
-                <h1 className="text-base md:text-lg lg:text-xl xl:text-3xl font-bold leading-normal text-white">Bappa Flour mill Bappa Bappa</h1>
-                <p className="mb-1 mt-1 md:mb-2 md:mt-2 lg:mb-4 lg:mt-4 xl:mb-8 xl:mt-8 text-xs md:text-sm lg:text-base xl:text-lg font-thin leading-7 text-white">
+                <h1 className="text-base md:text-lg lg:text-xl xl:text-3xl font-bold leading-normal text-white sm:pt" >Bappa Flour mill Bappa Bappa</h1>
+                <p className=" my-1 md:mb-2 md:mt-2 lg:mb-4 lg:mt-4 xl:mb-8 xl:mt-8 text-xs sm:text-sm  md:text-sm lg:text-base xl:text-lg font-thin leading-7 text-white">
                     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages
                 </p>
 
-                <p className="mb-1 mt-1 md:mb-2 md:mt-2 lg:mb-4 lg:mt-4 xl:mb-8 xl:mt-8 text-xs md:text-sm lg:text-base xl:text-lg font-thin leading-7 text-white">
+                <p className=" my-1 md:mb-2 md:mt-2 lg:mb-4 lg:mt-4 xl:mb-8 xl:mt-8 text-xs md:text-sm lg:text-base xl:text-lg font-thin leading-7 text-white">
                     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release.
                 </p>
             </div>
         </div>
     </div>
-</div>
+</div> */}
   </>
   );
 }
