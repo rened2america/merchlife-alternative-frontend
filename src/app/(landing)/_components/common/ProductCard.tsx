@@ -4,7 +4,7 @@ const ProductCard = ({ product }) => (
   <div className="mb-4 w-full px-2 sm:w-1/3 ">
     <div className="bg-gray-200 p-4">
       <a href="#">
-        <img className="rounded-t-lg p-8" src={product.image} alt={product.name} />
+        <img className="rounded-t-lg p-8" src={product.design[0].url} alt={product.name} />
       </a>
       <div className="px-5 pb-5">
         <div className="flex items-center justify-between">

@@ -1,6 +1,6 @@
 import { NextIcon } from "@/components/ui/components/icons/NextIcon";
 import { PreviousIcon } from "@/components/ui/components/icons/PreviousIcon";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 
 export default function Pagination({
   reviews,
@@ -23,12 +23,22 @@ export default function Pagination({
     setCurrentPage(page);
   };
 
-  useEffect(() => {
-    // Update displayed reviews when currentPage or reviews change
-    const startIndex = (currentPage - 1) * actualItemsPerPage;
-    const endIndex = startIndex + actualItemsPerPage;
-    setDisplayedReviews(reviews.slice(startIndex, endIndex));
-  }, [currentPage, actualItemsPerPage, reviews, setDisplayedReviews]);
+  // const displayedReviewsMemo = useMemo(() => {
+  //   const startIndex = (currentPage - 1) * actualItemsPerPage;
+  //   const endIndex = startIndex + actualItemsPerPage;
+  //   return reviews.slice(startIndex, endIndex);
+  // }, [currentPage, actualItemsPerPage, reviews]);
+
+  // useEffect(() => {
+  //   setDisplayedReviews(displayedReviewsMemo);
+  // }, [displayedReviewsMemo, setDisplayedReviews]);
+
+  // useEffect(() => {
+  //   // Update displayed reviews when currentPage or reviews change
+  //   const startIndex = (currentPage - 1) * actualItemsPerPage;
+  //   const endIndex = startIndex + actualItemsPerPage;
+  //   // setDisplayedReviews(reviews.slice(startIndex, endIndex));
+  // }, [currentPage, actualItemsPerPage, reviews]);
 
   return (
     <div className="flex items-center justify-center gap-2">

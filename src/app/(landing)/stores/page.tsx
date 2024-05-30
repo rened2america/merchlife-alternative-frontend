@@ -20,8 +20,8 @@
 //     }
 //   };
 
-  
-  
+
+
 //   useEffect(() => {
 
 //     getData();
@@ -305,7 +305,7 @@
 //           </span>
 //           </div>
 //           </div>   
-          
+
 //       <div className="flex flex-wrap -mx-2 mt-8 ">
 //       {productsList.map((product) => (
 //         <ProductCard key={product.id} product={product} />
@@ -315,7 +315,7 @@
 //     </div>
 
 //     </>
-    
+
 //   );
 // }
 
@@ -326,32 +326,12 @@ import SubHeaderCard from "../_components/SubHeaderCard";
 import ProductCard from "../_components/common/ProductCard";
 import Pegination from "../_components/Pegination";
 import apiCall from "@/utile/api";
+import { CardProduct } from "../storeMain/components/content/card-product";
 const raleway = Raleway({ subsets: ["latin"] });
 
 export default function Stores() {
   const [data, setData] = useState(null);
-  const getData = async () => {
-    try {
-      const data = await apiCall('GET', 'api/1/artist/all');
-      console.log('data',data);
-    } catch (error) {
-      // Handle error
-      console.error('Error:', error);
-    }
-  };
-  useEffect(() => {
-
-    getData();
-    fetch("http://localhost:4000/api/1/artist/all")
-      .then((response) => {
-        return response.json();
-      })
-      .then((responseData) => {
-        console.log(responseData);
-        setData(responseData.artist);
-      });
-  }, []);
-  console.log(data);
+  // console.log(data);
 
   const [openCategory, setOpenCategory] = useState(null);
   const [selectedColor, setSelectedColor] = useState(null);
@@ -361,12 +341,40 @@ export default function Stores() {
   const [displayedReviews, setDisplayedReviews] = useState([]);
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
+
+  const getData = async () => {
+    try {
+      const result = await apiCall('GET', 'api/1/product/all');
+      console.log('data', result);
+      setDisplayedReviews(result.products)
+    } catch (error) {
+      // Handle error
+      console.error('Error:', error);
+    }
+  };
+  useEffect(() => {
+
+    getData();
+    // fetch("http://localhost:4000/api/1/artist/all")
+    //   .then((response) => {
+    //     return response.json();
+    //   })
+    //   .then((responseData) => {
+    //     console.log(responseData);
+    //     setData(responseData.artist);
+    //   });
+  }, [])
   
+  useEffect(()=>{
+    console.log(displayedReviews);
+    
+  },[displayedReviews])
+
   const toggleSubMenu = (categoryName) => {
     setOpenCategory(openCategory === categoryName ? null : categoryName);
   };
 
-console.log("displayedReviews",displayedReviews);
+  // console.log("displayedReviews",displayedReviews);
 
   const handleColorClick = (color) => {
     setSelectedColor(color);
@@ -423,67 +431,70 @@ console.log("displayedReviews",displayedReviews);
     { text: 'STORE', href: '#', icon: true }
   ];
 
- const productsList = [
-  {
-    "id": 1,
-    "name": "6 PMers Black T-shirt",
-    "price": 24.5,
-    "image": "2AAfWhite_1.png"
-  },
-  {
-    "id": 2,
-    "name": "Another Product",
-    "price": 25.99,
-    "image": "2AAfWhite_1.png"
-  },
-  {
-    "id": 3,
-    "name": "6 PMers Black T-shirt",
-    "price": 26.5,
-    "image": "2AAfWhite_1.png"
-  },
-  {
-    "id": 4,
-    "name": "Another Product",
-    "price": 27.99,
-    "image": "2AAfWhite_1.png"
-  },
-  {
-    "id": 5,
-    "name": "6 PMers Black T-shirt",
-    "price": 28.5,
-    "image": "2AAfWhite_1.png"
-  },
-  {
-    "id": 6,
-    "name": "Another Product",
-    "price": 99.99,
-    "image": "2AAfWhite_1.png"
-  },
-  {
-    "id": 7,
-    "name": `6 PMers Black T-shirt`,
-    "price": 30.5,
-    "image": "2AAfWhite_1.png"
-  },
-  {
-    "id": 8,
-    "name": "Another Product",
-    "price": 31.56,
-    "image": "2AAfWhite_1.png"
-  },{
-    "id": 9,
-    "name": "6 PMers Black T-shirt",
-    "price": 32.50,
-    "image": "2AAfWhite_1.png"
-  },
-  {
-    "id": 10,
-    "name": "Another Product",
-    "price": 33.23,
-    "image": "2AAfWhite_1.png"
+  const productsList = [
+    {
+      "id": 1,
+      "name": "6 PMers Black T-shirt",
+      "price": 24.5,
+      "image": "2AAfWhite_1.png"
+    },
+    {
+      "id": 2,
+      "name": "Another Product",
+      "price": 25.99,
+      "image": "2AAfWhite_1.png"
+    },
+    {
+      "id": 3,
+      "name": "6 PMers Black T-shirt",
+      "price": 26.5,
+      "image": "2AAfWhite_1.png"
+    },
+    {
+      "id": 4,
+      "name": "Another Product",
+      "price": 27.99,
+      "image": "2AAfWhite_1.png"
+    },
+    {
+      "id": 5,
+      "name": "6 PMers Black T-shirt",
+      "price": 28.5,
+      "image": "2AAfWhite_1.png"
+    },
+    {
+      "id": 6,
+      "name": "Another Product",
+      "price": 99.99,
+      "image": "2AAfWhite_1.png"
+    },
+    {
+      "id": 7,
+      "name": `6 PMers Black T-shirt`,
+      "price": 30.5,
+      "image": "2AAfWhite_1.png"
+    },
+    {
+      "id": 8,
+      "name": "Another Product",
+      "price": 31.56,
+      "image": "2AAfWhite_1.png"
+    }, {
+      "id": 9,
+      "name": "6 PMers Black T-shirt",
+      "price": 32.50,
+      "image": "2AAfWhite_1.png"
+    },
+    {
+      "id": 10,
+      "name": "Another Product",
+      "price": 33.23,
+      "image": "2AAfWhite_1.png"
+    }
+  ]
+  if(displayedReviews.length == 0){
+    return <h1>Loading</h1>
   }
-]
   return (
     <>
       <SubHeaderCard title="STORE" links={store} />
@@ -614,22 +625,29 @@ console.log("displayedReviews",displayedReviews);
           </div>
 
           <div className="flex flex-wrap -mx-2 mt-8">
-            {displayedReviews.map((product:any) => (
+            {displayedReviews.map((product: any) => (
               <ProductCard key={product?.id} product={product} />
-              
             ))}
+            
+            {/* <CardProduct
+                name="Test"
+                value={1}
+                FrontImage="/2A/2AAfWhite.jpg"
+                BackImage="/2A/2AAfWhiteB.jpg"
+                redirect="/test"
+              /> */}
           </div>
           <div>
             {itemsPerPage && currentPage && productsList &&
-          <Pegination
-        reviews={productsList} // Pass the list of products as reviews
-        displayedReviews={displayedReviews}
-        setDisplayedReviews={setDisplayedReviews}
-        itemsPerPage={itemsPerPage} // Pass itemsPerPage state
-        setItemsPerPage={setItemsPerPage}
-        currentPage={currentPage} // Pass currentPage state
-        setCurrentPage={setCurrentPage}
-      />}
+              <Pegination
+                reviews={productsList} // Pass the list of products as reviews
+                displayedReviews={displayedReviews}
+                setDisplayedReviews={setDisplayedReviews}
+                itemsPerPage={itemsPerPage} // Pass itemsPerPage state
+                setItemsPerPage={setItemsPerPage}
+                currentPage={currentPage} // Pass currentPage state
+                setCurrentPage={setCurrentPage}
+              />}
           </div>
         </div>
 
