@@ -325,7 +325,7 @@ import { Raleway } from "next/font/google";
 import SubHeaderCard from "../_components/SubHeaderCard";
 import ProductCard from "../_components/common/ProductCard";
 import Pegination from "../_components/Pegination";
-import apiCall from "@/utile/api";
+import apiCall from "@/utils/api";
 import { CardProduct } from "../storeMain/components/content/card-product";
 const raleway = Raleway({ subsets: ["latin"] });
 

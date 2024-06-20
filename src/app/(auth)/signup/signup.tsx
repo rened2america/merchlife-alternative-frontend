@@ -38,7 +38,7 @@ export function Signup() {
                 <div>
                   <input
                     required
-                    className="w-full text-sm px-4 py-3 bg-gray-200 focus:bg-gray-100 border border-gray-200 rounded-lg focus:outline-none focus:border-purple-400"
+                    className="w-full text-sm px-4 py-3 text-gray-800 bg-gray-200 focus:bg-gray-100 border border-gray-200 rounded-lg focus:outline-none focus:border-purple-400 dark:text-black"
                     name="name"
                     type="text"
                     placeholder="Name"
@@ -49,7 +49,7 @@ export function Signup() {
                 <div>
                   <input
                     required
-                    className="w-full text-sm px-4 py-3 bg-gray-200 focus:bg-gray-100 border border-gray-200 rounded-lg focus:outline-none focus:border-purple-400"
+                    className="w-full text-sm px-4 py-3 text-gray-800 bg-gray-200 focus:bg-gray-100 border border-gray-200 rounded-lg focus:outline-none focus:border-purple-400 "
                     type="email"
                     placeholder="Email"
                     name="email"
@@ -64,7 +64,7 @@ export function Signup() {
                     autoComplete="current-password"
                     placeholder="Password"
                     type={showPassword ? 'password' : 'text'}
-                    className="text-sm mt-2 text-gray-800 px-4 py-3 rounded-lg w-full bg-gray-200 focus:bg-gray-100 border border-gray-200 focus:outline-none focus:border-purple-400"
+                    className="text-sm mt-2 text-gray-800 px-4 py-3 rounded-lg w-full bg-gray-200 focus:bg-gray-100 border border-gray-200 focus:outline-none focus:border-purple-400 "
                   />
                   <div className="flex items-center absolute inset-y-0 right-0 mr-3 text-sm leading-5">
                     {showPassword ? (

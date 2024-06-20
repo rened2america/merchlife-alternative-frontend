@@ -1,3 +1,4 @@
+"use client"; 
 import Link from "next/link";
 import { type Metadata } from "next";
 import { PlusIcon } from "@/components/icons";
@@ -17,7 +18,7 @@ import {
   ReactEmail,
 } from "./_components/feature-icons";
 import CardSpotlight from "./_components/hover-card";
-import { Suspense } from "react";
+import { Suspense, useState, useEffect } from "react";
 // import { Carousel } from "./components/carousel";
 import { ThreeItemGrid } from "@/components/ui/components/grid/three-items";
 import { ThreeItemGridStores } from "@/components/ui/components/gridStore/three-items-store";
@@ -28,17 +29,19 @@ import { Raleway } from "next/font/google";
 import { NextArrow } from "@/components/ui/components/icons/NextArrow";
 import { CirclePre } from "@/components/ui/components/icons/CirclePre";
 import { CircleNext } from "@/components/ui/components/icons/CircleNext";
+import apiCall from "@/utils/api";
 
 const raleway = Raleway({ subsets: ["latin"] });
 
 
-export const metadata: Metadata = {
-  title: "Merchlife",
-  description:
-    "A Next.js starter template with nextjs and Lucia auth. Includes drizzle, trpc, react-email, tailwindcss and shadcn-ui",
-};
+// export const metadata: Metadata = {
+//   title: "Merchlife",
+//   description:
+//     "A Next.js starter template with nextjs and Lucia auth. Includes drizzle, trpc, react-email, tailwindcss and shadcn-ui",
+// };
 
 const githubUrl = "https://github.com/iamtouha/next-lucia-auth";
+
 
 const features = [
   {
@@ -103,7 +106,26 @@ const products = [
 
 ];
 
+
+
 const HomePage = () => {
+
+  //  State Variables
+  const [featuredProducts, setfeaturedProducts] = useState([])
+
+  useEffect(() => {
+    const fetchFeaturedProducts = async () => {
+      let response = await apiCall("GET", "api/1/product/all")
+      response.products.push(response.products[0])
+      let relevantProducts = response.products.slice(0,4)
+      setfeaturedProducts(relevantProducts)
+      console.log(response);
+    }
+
+    fetchFeaturedProducts()
+
+  }, [])
+
   return (
     <>
 
@@ -130,7 +152,7 @@ const HomePage = () => {
               <div className="text-black text-2xl md:text-3xl lg:text-4xl font-bold">6 PMERS BLACK</div>
               <div className="text-black text-center text-2xl md:text-3xl lg:text-4xl font-bold">T-SHIRT</div>
               <div className="text-black text-center text-2xl md:text-3xl lg:text-4xl py-2 md:py-4 font-medium">$24.5</div>
-              <Button className="py-6 bg-black rounded-lg text-white">SHOP NOW &nbsp;<NextArrow/></Button>
+              <Button className="py-6 bg-black rounded-lg text-white" variant={"ghost"}>SHOP NOW &nbsp;<NextArrow/></Button>
             </div>
             <div className="grid justify-center content-end">
               <Image width={424} height={364} src={"/product_two_1.png"} alt="back black" />
@@ -182,7 +204,7 @@ const HomePage = () => {
         <div className="grid p-4 md:p-12 mt-4 md:mt-12 bg-[#E6E6E6] text-black">
           <div className="flex flex-col md:flex-row items-center justify-between pb-4 md:pb-12">
             <h2 className="font-normal text-3xl md:text-5xl">
-              PRODUCT <b>PREVIEWS</b>
+              FEATURED <b>PRODUCTS</b>
             </h2>
             {/* <div className="flex justify-between mx-2 mt-4 md:mt-0">
               <button className="px-4 py-2  text-gray-800 rounded-md"> <CirclePre /></button>
@@ -192,12 +214,12 @@ const HomePage = () => {
             </div> */}
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
-            {products.map((product) => (
-              <div key={product.id} className="grid border border-black justify-center">
-                <Image className="w-full object-cover" src={product.image} alt={product.name} width={250} height={250} />
+            {featuredProducts.map((product) => (
+              <div key={product["id"]} className="grid border border-black justify-center">
+                <Image className="w-full object-cover" src={product["design"][0]["url"]} alt={product['title']} width={250} height={250} />
                 <div className="bg-black text-white p-4">
-                  <h5 className="text-2xl md:text-3xl font-light">{product.name}</h5>
-                  <p className="mt-2 md:mt-4">{product.price}</p>
+                  <h5 className="text-2xl md:text-3xl font-light">{product["title"]}</h5>
+                  <p className="mt-2 md:mt-4">${product["price"]}</p>
                 </div>
               </div>
             ))}
