@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { env } from "@/env";
 
-const BASE_URL = 'https://merchlife-ecommerce-backend.onrender.com';
+const BASE_URL = env.NEXT_PUBLIC_BACKEND_URL;
 
 const apiCall = async (method, endpoint, data = null, params = null) => {
   const url = `${BASE_URL}/${endpoint}`;

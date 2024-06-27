@@ -1,4 +1,3 @@
-"use client"; 
 import Link from "next/link";
 import { type Metadata } from "next";
 import { PlusIcon } from "@/components/icons";
@@ -29,7 +28,8 @@ import { Raleway } from "next/font/google";
 import { NextArrow } from "@/components/ui/components/icons/NextArrow";
 import { CirclePre } from "@/components/ui/components/icons/CirclePre";
 import { CircleNext } from "@/components/ui/components/icons/CircleNext";
-import apiCall from "@/utils/api";
+
+import FeaturedProducts from "@/app/(landing)/_components/FeaturedProducts"
 
 const raleway = Raleway({ subsets: ["latin"] });
 
@@ -110,22 +110,6 @@ const products = [
 
 const HomePage = () => {
 
-  //  State Variables
-  const [featuredProducts, setfeaturedProducts] = useState([])
-
-  useEffect(() => {
-    const fetchFeaturedProducts = async () => {
-      let response = await apiCall("GET", "api/1/product/all")
-      response.products.push(response.products[0])
-      let relevantProducts = response.products.slice(0,4)
-      setfeaturedProducts(relevantProducts)
-      console.log(response);
-    }
-
-    fetchFeaturedProducts()
-
-  }, [])
-
   return (
     <>
 
@@ -152,7 +136,7 @@ const HomePage = () => {
               <div className="text-black text-2xl md:text-3xl lg:text-4xl font-bold">6 PMERS BLACK</div>
               <div className="text-black text-center text-2xl md:text-3xl lg:text-4xl font-bold">T-SHIRT</div>
               <div className="text-black text-center text-2xl md:text-3xl lg:text-4xl py-2 md:py-4 font-medium">$24.5</div>
-              <Button className="py-6 bg-black rounded-lg text-white" variant={"ghost"}>SHOP NOW &nbsp;<NextArrow/></Button>
+              <Button className="py-6 bg-black rounded-lg text-white" variant={"ghost"}>SHOP NOW &nbsp;<NextArrow /></Button>
             </div>
             <div className="grid justify-center content-end">
               <Image width={424} height={364} src={"/product_two_1.png"} alt="back black" />
@@ -162,15 +146,17 @@ const HomePage = () => {
             <Image width={424} height={364} src={"/2AAfWhite_1.png"} alt="back black" />
           </div>
         </div>
-        <div className="h-[60px] w-full bg-[#E6E6E6] flex items-center text-black font-light gap-4 overflow-x-auto">
-          {[...Array(9)].map((_, i) => (
-            <div key={i} className="grid grid-cols-[1fr_auto] w-[150px] gap-4 items-center px-3">
-              <div className="flex justify-center items-center border border-black rounded-full w-[120px] h-[32px]">
-                Merchlife
+        <div className="h-[60px] w-full bg-[#E6E6E6] flex items-center text-black font-light gap-4 overflow-hidden relative">
+          <div className="flex space-x-4 animate-scroll">
+            {[...Array(18)].map((_, i) => (
+              <div key={i} className="flex items-center space-x-4 px-3">
+                <div className="flex justify-center items-center border border-black rounded-full w-[120px] h-[32px]">
+                  Merchlife
+                </div>
+                <div className="w-4 h-4 rounded-full bg-black"></div>
               </div>
-              <div className="w-4 h-4 rounded-full bg-black"></div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
         <div className="grid p-4 md:p-12 mt-4 md:mt-12 bg-white text-black">
           <div className="flex flex-col md:flex-row items-center justify-between pb-4 md:pb-12">
@@ -213,17 +199,7 @@ const HomePage = () => {
               </button>
             </div> */}
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
-            {featuredProducts.map((product) => (
-              <div key={product["id"]} className="grid border border-black justify-center">
-                <Image className="w-full object-cover" src={product["design"][0]["url"]} alt={product['title']} width={250} height={250} />
-                <div className="bg-black text-white p-4">
-                  <h5 className="text-2xl md:text-3xl font-light">{product["title"]}</h5>
-                  <p className="mt-2 md:mt-4">${product["price"]}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <FeaturedProducts />
         </div>
         <div className="grid py-9">
           <div className="text-3xl md:text-6xl font-bold w-full text-center text-black">
@@ -233,7 +209,7 @@ const HomePage = () => {
             {categories.map((category) => (
               <div key={category.id} className="relative">
                 <Image className="w-full" src={category.image} alt={category.name} width={500} height={500} />
-                <Button className="absolute bg-black text-white rounded-none py-4 px-10 md:py-6 md:px-20 bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2">
+                <Button className="absolute bg-black text-white rounded-none py-4 px-10 md:py-6 md:px-20 bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2" variant={"ghost"}>
                   {category.name}
                 </Button>
               </div>
