@@ -49,7 +49,7 @@ const FeaturedProducts = () => {
             ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
                     {featuredProducts.map((product) => (
-                        <div key={product.id} className="border border-black flex flex-col items-center">
+                        <div key={product.id} className="border border-black flex flex-col items-stretch">
                             <div className="w-full h-64 overflow-hidden flex items-center justify-center">
                                 {product.design && product.design[0] ? (
                                     <Image
@@ -66,13 +66,19 @@ const FeaturedProducts = () => {
                                     </div>
                                 )}
                             </div>
-                            <div className="bg-black text-white p-4 w-full text-start">
-                                <h5 className="text-2xl md:text-3xl font-light">{product.title}</h5>
-                                <p className="mt-2 md:mt-4">${product.price}</p>
+                            <div className="bg-black text-white p-4 w-full flex-grow flex flex-col justify-between">
+                                <div>
+                                    <h5 className="text-2xl md:text-3xl font-light">{product.title}</h5>
+                                </div>
+                                <div>
+                                    <p className="mt-2 md:mt-4">${product.price}</p>
+                                </div>
                             </div>
                         </div>
                     ))}
                 </div>
+
+
             )}
         </div>
     );
