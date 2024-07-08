@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { CartStoreHome } from "./cart-store-home";
+import apiCall from "@/utils/api";
 
 function ThreeItemGridItemStore({
   size,
@@ -37,114 +38,66 @@ function ThreeItemGridItemStore({
   );
 }
 
+interface SimplifiedDesign {
+  url: string;
+}
+
+interface SimplifiedProduct {
+  title: string;
+  design: SimplifiedDesign[];
+}
+
+interface SimplifiedArtist {
+  id: number;
+  name: string;
+  banner: string;
+  product: SimplifiedProduct[];
+}
+
 export async function ThreeItemGridStores() {
-  // Collections that start with `hidden-*` are hidden from the search page.
-  // const homepageItems = await getCollectionProducts({
-  //   collection: 'hidden-homepage-featured-items'
-  // });
+  let sellers: SimplifiedArtist[] = [];
+
+  try {
+    const response = await apiCall("GET", "api/1/artist/all");
+  
+    // Simplify the response to the required structure
+    sellers = response.artist.map((artist: any, index:number) => ({
+      id: artist.id,
+      name: artist.name,
+      banner: artist.banner,
+      product: artist.product.map((product: any) => ({
+        title: product.title,
+        design: product.design.map((design: any) => ({
+          url: design.url,
+        })),
+      })),
+    }));
+  } catch (err) {
+    console.error(err);
+  }
 
   return (
-    <section>
-      <div className="mb-4 mt-8 p-4 text-4xl font-extrabold text-white">
-        {" "}
+    <section className="text-white bg-black">
+      <div className="mb-4 mt-8 p-4 text-4xl font-extrabold text-white bg-black">
         Sellers at Merchlife
       </div>
       <div className="mx-auto grid max-w-screen-2xl gap-4 px-4 pb-4 md:grid-cols-8 md:grid-rows-2">
-        <ThreeItemGridItemStore
-          size="full"
-          urlRedirect="/store/The6PMersSwagShop"
-          urlImagen={"/6PMers.jpg"}
-          products={[
-            {
-              img: "/product_two.jpg",
-              urlRedirect: "/product/6-PMers-Black-T-shirt",
-            },
-            {
-              img: "/product_three.jpg",
-              urlRedirect: "/product/6PM-Somewhere-Black-T-shirt",
-            },
-            {
-              img: "/product_one.jpg",
-              urlRedirect: "/product/Re-Social-White-T-shirt",
-            },
-          ]}
-        />
-        <ThreeItemGridItemStore
-          size="half"
-          urlRedirect="/store/The6PMersSwagShop"
-          urlImagen={"/6PMers.jpg"}
-          products={[
-            {
-              img: "/product_two.jpg",
-              urlRedirect: "/product/6-PMers-Black-T-shirt",
-            },
-            {
-              img: "/product_three.jpg",
-              urlRedirect: "/product/6PM-Somewhere-Black-T-shirt",
-            },
-            {
-              img: "/product_one.jpg",
-              urlRedirect: "/product/Re-Social-White-T-shirt",
-            },
-          ]}
-        />
-        <ThreeItemGridItemStore
-          size="half"
-          urlRedirect="/store/AdamKrum"
-          urlImagen={"/adam/ADAMB.png"}
-          products={[
-            {
-              img: "/adam/classicLogoGrey.jpg",
-              urlRedirect: "/product/Adam-Krum-Pocket-Classic-Grey",
-            },
-            {
-              img: "/adam/classicLogoWhite.jpg",
-              urlRedirect: "/product/Adam-Krum-Pocket-Classic-White",
-            },
-            {
-              img: "/adam/classicLogoGreen.jpg",
-              urlRedirect: "/product/Adam-Krum-Pocket-Classic-Green",
-            },
-          ]}
-        />
-        <ThreeItemGridItemStore
-          size="half"
-          urlRedirect="/store/2AAmericanFreedom"
-          urlImagen={"/2A/2AFB.png"}
-          products={[
-            {
-              img: "/2A/2AAfWhite.jpg",
-              urlRedirect: "/product/2A-AF-White",
-            },
-            {
-              img: "/2A/AFEagleWhite.jpg",
-              urlRedirect: "/product/American-Freedom-Eagle-White",
-            },
-            {
-              img: "/2A/2ndAmendmentAFWhite.jpg",
-              urlRedirect: "/product/2nd-Amendment-American-Freedom-White",
-            },
-          ]}
-        />
-        <ThreeItemGridItemStore
-          size="half"
-          urlRedirect="/store/AdamKrum"
-          urlImagen={"/adam/ADAMB.png"}
-          products={[
-            {
-              img: "/adam/classicLogoBlack.jpg",
-              urlRedirect: "/product/Adam-Krum-Pocket-Classic-Black",
-            },
-            {
-              img: "/adam/classicLogoSand.jpg",
-              urlRedirect: "/product/Adam-Krum-Pocket-Classic-Sand",
-            },
-            {
-              img: "/adam/starLogoBlack.jpg",
-              urlRedirect: "/product/Adam-Krum-Pocket-Star-Black",
-            },
-          ]}
-        />
+        {sellers.length > 0 ? (
+          sellers.map((seller, index) => (
+            <ThreeItemGridItemStore
+              key={seller.id}
+              size={index == 0 ? "full" : "half"}
+              urlRedirect={`/store/${seller.name.replace(/\s+/g, '')}`} // Dynamically create the store URL
+              urlImagen={seller.banner}
+              products={seller.product.slice(0, 3).map((product) => ({
+                img: product.design[0] ? product.design[0].url : "/default-product-image.jpg", // Fallback to a default image if none exists
+                urlRedirect: `/product/${product.title.replace(/\s+/g, '-')}`, // Dynamically create the product URL
+              }))}
+            />
+          ))
+        ) : (
+          <div>Loading...</div>
+        )}
       </div>
     </section>
   );

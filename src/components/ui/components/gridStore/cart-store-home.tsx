@@ -11,7 +11,7 @@ export const CartStoreHome = ({
   size: string;
   urlRedirect: string;
   urlImagen: string;
-  products: any;
+  products: { img: string; urlRedirect: string }[];
 }) => {
   return (
     <div
@@ -82,75 +82,31 @@ export const CartStoreHome = ({
           justifyItems: "center",
         }}
       >
-        <Link href={products[0].urlRedirect}>
-          {size === "half" ? (
-            <Image
-              style={{
-                borderRadius: "16px",
-              }}
-              width="100"
-              height="170"
-              src={products[0].img}
-              alt="nose"
-            />
-          ) : (
-            <Image
-              style={{
-                borderRadius: "16px",
-              }}
-              width="200"
-              height="340"
-              src={products[0].img}
-              alt="nose"
-            />
-          )}
-        </Link>
-        <Link href={products[1].urlRedirect}>
-          {size === "half" ? (
-            <Image
-              style={{
-                borderRadius: "16px",
-              }}
-              width="100"
-              height="170"
-              src={products[1].img}
-              alt="nose"
-            />
-          ) : (
-            <Image
-              style={{
-                borderRadius: "16px",
-              }}
-              width="200"
-              height="340"
-              src={products[1].img}
-              alt="nose"
-            />
-          )}
-        </Link>
-        <Link href={products[2].urlRedirect}>
-          {size === "half " ? (
-            <Image
-              style={{
-                borderRadius: "16px",
-              }}
-              width="100"
-              height="170"
-              src={products[2].img}
-              alt="nose"
-            />
-          ) : (
-            <Image
-              style={{
-                borderRadius: "16px",
-              }}
-              width="200"
-              height="340"
-              src={products[2].img}
-              alt="nose"
-            />
-          )}
-        </Link>
+        {products.slice(0, 3).map((product, index) => (
+          <Link key={index} href={product.urlRedirect}>
+            {size === "half" ? (
+              <Image
+                style={{
+                  borderRadius: "16px",
+                }}
+                width="100"
+                height="170"
+                src={product.img}
+                alt="nose"
+              />
+            ) : (
+              <Image
+                style={{
+                  borderRadius: "16px",
+                }}
+                width="200"
+                height="340"
+                src={product.img}
+                alt="nose"
+              />
+            )}
+          </Link>
+        ))}
       </div>
     </div>
   );

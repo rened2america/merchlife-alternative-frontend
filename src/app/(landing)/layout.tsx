@@ -1,8 +1,9 @@
 import { APP_TITLE } from "@/lib/constants";
-import { type ReactNode } from "react";
+import { Suspense, type ReactNode } from "react";
 import { type Metadata } from "next";
 import { Header } from "./_components/header";
 import Footer from "../(main)/_components/footer";
+import Loading from "../loading";
 
 export const metadata: Metadata = {
   title: APP_TITLE,
@@ -13,9 +14,12 @@ function LandingPageLayout({ children }: { children: ReactNode }) {
   return (
     <>
       <Header />
-      {children}
-      {/* <div className="h-20"></div> */}
-      <Footer />
+      <Suspense fallback={<Loading />}>
+        <main className="bg-background text-foreground dark">
+          {children}
+        </main>
+        <Footer />
+      </Suspense>
     </>
   );
 }

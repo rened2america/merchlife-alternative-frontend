@@ -158,35 +158,7 @@ const HomePage = () => {
             ))}
           </div>
         </div>
-        <div className="grid p-4 md:p-12 mt-4 md:mt-12 bg-white text-black">
-          <div className="flex flex-col md:flex-row items-center justify-between pb-4 md:pb-12">
-            <h2 className="font-normal text-3xl md:text-5xl">
-              SELLERS AT <b>MERCHLIFE</b>
-            </h2>
-            {/* <div className="flex justify-between mt-4 md:mt-0">
-              <button className="px-4 py-2  text-gray-800 rounded-md"><CirclePre /></button>
-              <button className="px-4 py-2  text-gray-800 rounded-md"> <CircleNext /></button>
-            </div> */}
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-1 xl:grid-cols-2 sm:grid-cols-1 gap-4 md:gap-7">
-            <div className="p-4 border border-gray-300 rounded-md">
-              <img className="w-full h-[531px]" src={"/6PMers.jpg"} alt="Sellers at Merchlife" />
-              <div className="grid grid-cols-3 gap-4 pt-4">
-                <img className="w-full" src={"/product_one.jpg"} alt="Product One" />
-                <img className="w-full" src={"/product_two.jpg"} alt="Product Two" />
-                <img className="w-full" src={"/product_three.jpg"} alt="Product Three" />
-              </div>
-            </div>
-            <div className="p-4 border border-gray-300 rounded-md">
-              <img className="w-full h-[531px]" src={"/adam/ADAMB.png"} alt="Sellers at Merchlife" />
-              <div className="grid grid-cols-3 gap-4 pt-4">
-                <img className="w-full" src={"/adam/classicLogoBlack.jpg"} alt="Classic Logo Black" />
-                <img className="w-full" src={"/adam/classicLogoSand.jpg"} alt="Classic Logo Sand" />
-                <img className="w-full" src={"/adam/classicLogoWhite.jpg"} alt="Classic Logo White" />
-              </div>
-            </div>
-          </div>
-        </div>
+        <ThreeItemGridStores />
         <div className="grid p-4 md:p-12 mt-4 md:mt-12 bg-[#E6E6E6] text-black">
           <div className="flex flex-col md:flex-row items-center justify-between pb-4 md:pb-12">
             <h2 className="font-normal text-3xl md:text-5xl">
@@ -218,7 +190,6 @@ const HomePage = () => {
         </div>
 
 
-        {/* <ThreeItemGridStores /> */}
       </section>
       <section id="how-it-works" className="bg-black">
         <div className="mx-auto max-w-screen-xl items-center gap-16 px-4 py-8 lg:grid lg:grid-cols-2 lg:px-6 lg:py-16">
