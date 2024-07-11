@@ -15,14 +15,14 @@ function ThreeItemGridItemStore({
 }) {
   return (
     <div
-      className={
-        size === "full"
-          ? "md:col-span-4 md:row-span-2"
-          : "md:col-span-2 md:row-span-1"
-      }
+      className={`sm:w-[300px]
+        ${size === "full"
+          ? "md:col-span-4 md:row-span-2 "
+          : "md:col-span-2 md:row-span-1"}
+     `}
     >
       <Link
-        className="relative block aspect-square h-full w-full"
+        className="relative block aspect-square  w-full"
         href={urlRedirect}
       >
         <CartStoreHome
@@ -79,7 +79,7 @@ export async function ThreeItemGridStores() {
       <div className="mb-4 mt-8 p-4 text-4xl font-extrabold text-white bg-black">
         Sellers at Merchlife
       </div>
-      <div className="mx-auto grid max-w-screen-2xl gap-4 px-4 pb-4 md:grid-cols-8 md:grid-rows-2">
+      <div className="mx-auto grid max-w-screen-2xl gap-4 px-4 pb-4 md:grid-cols-4 md:grid-rows-2 xl:grid-cols-8 lg:grid-cols-6 sm:grid-cols-1">
         {sellers.length > 0 ? (
           sellers.map((seller, index) => (
             <ThreeItemGridItemStore
