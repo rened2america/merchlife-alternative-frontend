@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import { CartStoreHome } from "./cart-store-home";
 import apiCall from "@/utils/api";
@@ -58,7 +56,7 @@ export async function ThreeItemGridStores() {
   let sellers: SimplifiedArtist[] = [];
 
   try {
-    const response = await apiCall("GET", "api/1/artist/all");
+    const response = await apiCall("GET", "api/1/artist/randomArtists");
   
     // Simplify the response to the required structure
     sellers = response.artist.map((artist: any, index:number) => ({

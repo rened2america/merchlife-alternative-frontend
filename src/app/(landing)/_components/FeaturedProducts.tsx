@@ -53,11 +53,11 @@ const FeaturedProducts = () => {
                             <div className="w-full h-64 overflow-hidden flex items-center justify-center">
                                 {product.design && product.design[0] ? (
                                     <Image
-                                        className="object-cover h-full w-full"
+                                        className="object-cover h-full w-80"
                                         src={product.design[0].url}
                                         alt={product.title}
-                                        width={500}
-                                        height={500}
+                                        width={320}
+                                        height={320}
                                         quality={100}
                                     />
                                 ) : (

@@ -1,5 +1,6 @@
 import { Avatar, Input, Select, SelectItem } from "@nextui-org/react";
 import Link from "next/link";
+import Image from "next/image"
 // import {
 //   Card,
 //   CardHeader,
@@ -123,11 +124,13 @@ export default async function Store({ params }: { params: { store: string } }) {
             zIndex: "2",
           }}
         >
-          {/* <Avatar
+          <Image
             src={artistData.artist.avatar}
-            className="w-48 h-48 text-large"
-          /> */}
-          avatar
+            className="w-48 h-48 text-large opacity-100"
+            width={400}
+            height= {400}
+            alt="avatar"
+          />
         </div>
         <div
           style={{
