@@ -1,4 +1,4 @@
-import { Avatar, Input, Select, SelectItem } from "@nextui-org/react";
+import { Avatar, Card, CardBody, CardFooter, CardHeader, Input, Select, SelectItem } from "@nextui-org/react";
 import Link from "next/link";
 import Image from "next/image"
 // import {
@@ -43,7 +43,7 @@ export default async function Store({ params }: { params: { store: string } }) {
     artistDataPromise,
     artistRelationPromise,
   ]);
-  console.log("artistData.data", artistData.artist);
+  console.log("artistData.data", artistData);
   return (
     <main
       style={{
@@ -225,40 +225,8 @@ export default async function Store({ params }: { params: { store: string } }) {
         }}
       >
         <div className="grid max-w-[900px] grid-cols-12 gap-2 px-8 pb-8">
-          {/* <Card className="col-span-12 sm:col-span-4 h-[400px]">
-            <Link href={"/product/2A-AF-White"}>
-              <CardHeader className="absolute z-10 flex-col !items-start bg-white/30">
-                <p
-                  className={`${interProducts.variable} text-slate-900/60 uppercase font-bold text-xs`}
-                >
-                  Go to buy
-                </p>
-              </CardHeader>
-              <CardBody className="overflow-visible p-0">
-                <Image
-                  removeWrapper
-                  alt="Card background"
-                  className="z-0 w-full h-full object-cover"
-                  src="/2A/2AAfWhite.jpg"
-                />
-              </CardBody>
-            </Link>
-            <CardFooter
-              style={{
-                display: "grid",
-                justifyContent: "center",
-                alignContent: "center",
-              }}
-            >
-              <h4
-                className={`${interProducts.variable} font-sans text-cyan-50 font-medium text-sm`}
-              >
-                2A AF Tee White
-              </h4>
-            </CardFooter>
-          </Card> */}
-          {/* {artistData.data
-            ? artistData.data.map((product: any) => {
+          {artistData.products
+            ? artistData.products.map((product: any) => {
                 return (
                   <Card
                     key={product.id}
@@ -269,23 +237,25 @@ export default async function Store({ params }: { params: { store: string } }) {
                       href={`/product/d/${artistData.artist.name.replace(
                         / /g,
                         "-"
-                      )}?productId=${product.productId}&variant=${
-                        product.variant
-                      }&type=${product.product.types[0].value}`}
+                      )}?productId=${product.id}&variant=${
+                        product.design[0].variant
+                      }&type=${product.types[0].value}`}
                     >
                       <CardHeader className="absolute z-10 flex-col !items-start bg-white/30">
                         <p
-                          className={`${interProducts.variable} text-slate-900/60 uppercase font-bold text-xs`}
+                          className={`${interProducts.variable} text-black uppercase font-bold text-xs`}
                         >
                           Go to buy
                         </p>
                       </CardHeader>
                       <CardBody className="overflow-visible p-0">
                         <Image
-                          removeWrapper
                           alt="Card background"
-                          className="z-0 w-full h-full object-cover"
-                          src={product.url}
+                          className="z-0 w-fit h-full object-cover"
+                          src={product.design[0].url}
+                          width={320}
+                          height={320}
+                          quality={100}
                           style={{
                             minHeight: "364px",
                             backgroundColor: "#e5e5e5",
@@ -303,13 +273,13 @@ export default async function Store({ params }: { params: { store: string } }) {
                       <h4
                         className={`${interProducts.variable} font-sans text-cyan-50 font-medium text-sm`}
                       >
-                        {`${product.product.title} ${product.variant}`}
+                        {`${product.title} ${product.design[0].variant}`}
                       </h4>
                     </CardFooter>
                   </Card>
                 );
               })
-            : null} */}
+            : null}
         </div>
       </section>
     </main>

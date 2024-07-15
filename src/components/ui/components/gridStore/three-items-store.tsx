@@ -38,9 +38,11 @@ function ThreeItemGridItemStore({
 
 interface SimplifiedDesign {
   url: string;
+  variant: string
 }
 
 interface SimplifiedProduct {
+  id:number;
   title: string;
   design: SimplifiedDesign[];
 }
@@ -57,26 +59,17 @@ export async function ThreeItemGridStores() {
 
   try {
     const response = await apiCall("GET", "api/1/artist/randomArtists");
-  
+
     // Simplify the response to the required structure
-    sellers = response.artist.map((artist: any, index:number) => ({
-      id: artist.id,
-      name: artist.name,
-      banner: artist.banner,
-      product: artist.product.map((product: any) => ({
-        title: product.title,
-        design: product.design.map((design: any) => ({
-          url: design.url,
-        })),
-      })),
-    }));
+    sellers = response.artist;
   } catch (err) {
     console.error(err);
   }
-
+  console.log("sellers: ", sellers)
+  console.log("products: ", sellers[0]?.product[0])
   return (
     <section className="text-white bg-black">
-      <div className="mb-4 mt-8 p-4 text-4xl font-extrabold text-white bg-black">
+      <div className="mb-4 p-4 text-4xl font-extrabold text-white bg-black">
         Sellers at Merchlife
       </div>
       <div className="mx-auto grid max-w-screen-2xl gap-4 px-4 pb-4 md:grid-cols-8 md:grid-rows-2">
@@ -85,12 +78,16 @@ export async function ThreeItemGridStores() {
             <ThreeItemGridItemStore
               key={seller.id}
               size={index == 0 ? "full" : "half"}
-              urlRedirect={`/store/${seller.name.replace(/\s+/g, '')}`} // Dynamically create the store URL
+              urlRedirect={`/store/d/${seller.name.trim()}`} // Dynamically create the store URL
               urlImagen={seller.banner}
               products={seller.product.slice(0, 3).map((product) => ({
                 img: product.design[0] ? product.design[0].url : "/default-product-image.jpg", // Fallback to a default image if none exists
-                urlRedirect: `/product/${product.title.replace(/\s+/g, '-')}`, // Dynamically create the product URL
-              }))}
+                urlRedirect: `/product/d/${seller.name.replace(
+                  /\s+/g,
+                   '-'
+                  )}?productId=${product.id}&variant=${
+                    product.design[0].variant
+                  }&type=${product.types[0].value}`}))}
             />
           ))
         ) : (

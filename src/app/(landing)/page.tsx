@@ -159,7 +159,7 @@ const HomePage = () => {
           </div>
         </div>
         <ThreeItemGridStores />
-        <div className="grid p-4 md:p-12 mt-4 md:mt-12 bg-[#E6E6E6] text-black">
+        <div className="grid p-4 md:p-12 bg-[#E6E6E6] text-black">
           <div className="flex flex-col md:flex-row items-center justify-between pb-4 md:pb-12">
             <h2 className="font-normal text-3xl md:text-5xl">
               FEATURED <b>PRODUCTS</b>
