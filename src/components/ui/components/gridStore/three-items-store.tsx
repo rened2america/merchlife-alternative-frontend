@@ -45,6 +45,7 @@ interface SimplifiedProduct {
   id:number;
   title: string;
   design: SimplifiedDesign[];
+  types: [{value: string}]
 }
 
 interface SimplifiedArtist {
@@ -86,7 +87,7 @@ export async function ThreeItemGridStores() {
                   /\s+/g,
                    '-'
                   )}?productId=${product.id}&variant=${
-                    product.design[0].variant
+                    product.design[0]?.variant
                   }&type=${product.types[0].value}`}))}
             />
           ))
