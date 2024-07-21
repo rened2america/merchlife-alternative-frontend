@@ -1,11 +1,14 @@
 import Image from "next/image";
 import apiCall from "@/utils/api";
+import Link from "next/link";
 
 type Product = {
     id: string;
     title: string;
     price: number;
-    design?: { url: string }[];
+    artist?:{name:string};
+    design: { url: string,variant:string }[];
+    types:{value:string}[];
 };
 
 const FeaturedProducts = async () => {
@@ -24,7 +27,7 @@ const FeaturedProducts = async () => {
         <div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
                 {relevantProducts.map((product) => (
-                    <div key={product.id} className="border border-black flex flex-col items-stretch">
+                    <Link key={product.id} href={`/product/d/${product.artist?.name}?productId=${product.id}&variant=${product.design[0]?.variant}&type=${product.types[0]?.value}`} className="border border-black flex flex-col items-stretch transform h-64  w-80 hover: transition duration-500 hover:scale-110 justify-center">
                         <div className="w-full h-64 overflow-hidden flex items-center justify-center">
                             {product.design && product.design[0] ? (
                                 <Image
@@ -49,7 +52,7 @@ const FeaturedProducts = async () => {
                                 <p className="mt-2 md:mt-4">${product.price}</p>
                             </div>
                         </div>
-                    </div>
+                    </Link>
                 ))}
             </div>
         </div>

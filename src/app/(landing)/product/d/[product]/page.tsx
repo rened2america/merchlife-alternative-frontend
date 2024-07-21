@@ -18,40 +18,27 @@ import { AddCart } from "@/components/ui/components/addCart/addCart";
 import { NavbarHeader } from "@/components/ui/components/navbar/navbar";
 import { useEffect, useState } from "react";
 import { Gallery } from "@/components/ui/components/gallery/gallery";
-import { useSearchParams } from "next/navigation";
-const inter = Inter({ subsets: ["latin"] });
-const interProducts = Inter({ subsets: ["latin"], variable: "--font-inter" });
-interface Product {
-  size: string;
-  variant: string;
-  productId: number;
-}
-interface SelectedProduct {
-  title: string;
-  size: string;
-  priceId: string;
-  url: string;
-  // Otros campos necesarios
-}
+import { useParams, useSearchParams } from "next/navigation";
+import apiCall from "@/utils/api";
 
-interface ProductData {
-  name: string;
-  quantity: number;
+interface productsState {
+  product: { title: string; price: string; type: string };
+  variant: string;
   size: string;
-  priceId: string;
+  id: string;
   url: string;
 }
 
 export default function One() {
-  const [selected, setSelected] = useState("s"); // Inicializa selected con "s" (S)
+  const [selectedSize, setSelectedSize] = useState("s"); // Inicializa selected con "s" (S)
   const [quantity, setQuantity] = useState(1); // Inicializa quantity con 1
-  const [products, setProducts] = useState([
-    { product: { title: "", types: [{ value: "" }] }, variant: "", size: "", id: "1" },
+  const [products, setProducts] = useState<productsState[]>([
+    { product: { title: "", price: "", type: "" }, variant: "", size: "", id: "1", url: "" },
   ]); // Inicializa products como un arreglo vacío
-  const [dataList, setDataList] = useState(null); // Inicializa products como un arreglo vacío
+  const [dataList, setDataList] = useState<string[]>([]); // Inicializa products como un arreglo vacío
   const [product, setProduct] = useState(null);
   const searchParams = useSearchParams();
-
+  const params = useParams();
   useEffect(() => {
     // Función para obtener los datos del endpoint
     const fetchData = async () => {
@@ -59,22 +46,35 @@ export default function One() {
         const productId = searchParams.get("productId");
         const variant = searchParams.get("variant");
         const type = searchParams.get("type");
-        console.log(productId);
-        console.log(variant);
-        console.log(type);
 
-        const response = await fetch(
-          `http://localhost:4000/api/1/product/productsByGroup/Rene-Meza?productId=${productId}&variant=${variant}&type=${type}`,
+        const store = params.product
+        
+        const response = await apiCall(
+          "GET",
+          // `http://localhost:4000/api/1/product/productsByGroup/Rene-Meza?productId=${productId}&variant=${variant}&type=${type}`,
+          `api/1/product/productsByGroup/${store}?productId=${productId}&variant=${variant}&type=${type}`,
         );
-        if (!response.ok) {
-          throw new Error("Failed to fetch data");
-        }
+
         //@ts-ignore
-        const data = await response.json();
-        console.log(data.data);
-        setProducts(data.data); // Actualiza el estado con los datos recibidos del endpoint
+        const resData = response.data;
+        let productArray: any = [];
+        response.data.product[0].design.map((item) => {
+          productArray.push({
+            product: {
+              title: resData.product[0].title,
+              price: resData.product[0].price,
+              type: resData.product[0].types[0].value,
+            },
+            size: item.size,
+            id: resData.product[0].id,
+            variant: item.variant,
+            url: item.url,
+          });
+        });
+        setProducts(productArray); // Actualiza el estado con los datos recibidos del endpoint
+
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error("Error fetching dataaa:", error);
       }
     };
 
@@ -90,16 +90,10 @@ export default function One() {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any
       (product: any) =>
         // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-        product?.size.toLowerCase() === selected.toLowerCase() &&
+        product?.size.toLowerCase() === selectedSize.toLowerCase() &&
         product.variant.toLowerCase() === variant &&
         product.productId === productId,
     );
-    console.log("selectedProduct", selectedProduct);
-    console.log("selected.toLowerCase()", selected.toLowerCase());
-    console.log("variant", variant);
-    console.log("productId", productId);
-
-    console.log("products", products);
     if (selectedProduct) {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any
       const productData: any = {
@@ -112,23 +106,16 @@ export default function One() {
 
       return productData;
     }
-
-    // Si no se encuentra el producto seleccionado, se devuelve un objeto por defecto
-    console.log("Aqui estoy");
-    return {
-      name: "2A AF White S",
-      quantity: quantity,
-      size: "S",
-      priceId: "price_1OoljtGkWb1Ap7UJKGzI8MpW",
-      url: "/2A/2AAfWhite.jpg",
-    };
   };
 
   useEffect(() => {
     if (products && products.length > 0) {
       //@ts-ignore
-      setDataList([products[0].url]);
+      const temp = products.map(item=>item.url).filter((value, index, self) =>
+        self.indexOf(value) === index);
+      setDataList(temp);
       //@ts-ignore
+
       setProduct(findProduct());
     }
   }, [products]);
@@ -148,15 +135,15 @@ export default function One() {
           }}
           className="grid grid-cols-2 gap-10 justify-self-center"
         >
-          {dataList && <Gallery list={[dataList[0]]} defaultValue={dataList[0]} />}
+          {dataList && <Gallery list={dataList} defaultValue={dataList[0] as string} />}
           {/* Pasa la lista de URLs de imágenes como prop a Gallery */}
           <div>
             <div className="grid grid-cols-4">
               <div className="col-span-3 text-xl">
                 {products.length > 0 &&
-                  `${products[0]?.product.title} ${products[0]?.product?.types[0]?.value} ${products[0]?.variant}`}
+                  `${products[0]?.product.title} ${products[0]?.product?.type} ${products[0]?.variant}`}
               </div>
-              <div className="text-lg">$24.5</div>
+              <div className="text-lg">${products.length > 0 && products[0]?.product.price}</div>
             </div>
             <Divider className="my-4" />
 
@@ -164,19 +151,20 @@ export default function One() {
               <CheckboxGroup
                 label="Select size"
                 //@ts-ignore
-                value={selected}
+                value={selectedSize}
                 //@ts-ignore
-                onChange={(data) => setSelected(data[1])}
+                onChange={setSelectedSize}
                 classNames={{
                   base: "w-full",
                 }}
               >
                 <div className="grid grid-cols-2 gap-2">
-                  {products.map((product) => (
+                
+                  {products.map((product, index) => ( product.variant === products[0]?.variant &&
                     <CustomCheckbox
                       //@ts-ignore
 
-                      key={product.id}
+                      key={index}
                       //@ts-ignore
 
                       value={product.size.toLowerCase()}
