@@ -234,7 +234,7 @@ export default async function Store({ params }: { params: { store: string } }) {
                   >
                     <Link
                       //   href={`/product/${product.productId}/?variant=${product.variant}`}
-                      href={`/product/d/${artistData.artist.name.replace(
+                      href={`/product/${artistData.artist.name.replace(
                         / /g,
                         "-"
                       )}?productId=${product.id}&variant=${

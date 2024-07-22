@@ -83,7 +83,7 @@ export async function ThreeItemGridStores() {
               urlImagen={seller.banner}
               products={seller.product.slice(0, 3).map((product) => ({
                 img: product.design[0] ? product.design[0].url : "/default-product-image.jpg", // Fallback to a default image if none exists
-                urlRedirect: `/product/d/${seller.name.replace(
+                urlRedirect: `/product/${seller.name.replace(
                   /\s+/g,
                    '-'
                   )}?productId=${product.id}&variant=${
