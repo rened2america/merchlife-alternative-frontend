@@ -5,8 +5,9 @@ const useStore = create(
     (set) => ({
       products: [],
       addProduct: (product: {
+        id:number
         name: string;
-        priceId: string;
+        price: number;
         quantity: number;
         size: string;
         url: string;
@@ -14,23 +15,24 @@ const useStore = create(
         set((state: any) => {
           const findProduct = state.products.map(
             (productState: {
+              id:number
               name: string;
-              priceId: string;
+              price: number;
               quantity: number;
               size: string;
               url: string;
             }) => {
-              if (productState.name === product.name) {
+              if (productState?.name === product.name && productState?.size === product.size && productState?.url === product.url) {
                 return {
                   ...product,
-                  quantity: product.quantity + productState.quantity,
+                  quantity: product?.quantity + productState?.quantity,
                 };
               }
               return productState;
             }
           );
           const existProduct = state.products.find(
-            (findProduct: any) => findProduct.name === product.name
+            (findProduct: any) => findProduct?.name === product.name && findProduct?.size === product.size && findProduct?.url === product.url
           );
           if (existProduct) {
             return {
@@ -41,12 +43,16 @@ const useStore = create(
             products: [...state.products, { ...product }],
           };
         }),
-      removeFromCart: (itemName: string) =>
+      removeFromCart: (itemName: string,itemSize:string,itemUrl:string) =>
         set((state: any) => ({
           products: state.products.filter(
-            (item: any) => item.name !== itemName
+            (item: any) => {
+              console.log(item ,"--",itemName,itemSize,itemUrl)
+              return (item?.name !== itemName || item?.size !== itemSize || item?.url !== itemUrl);
+            }
           ),
         })),
+      updateQuantitiy:(itemName: string,quantity:number)=>set((state:any)=>({products: state.products.map((item:any)=>(item.name == itemName)? {...item,quantity:quantity} : item)}))
     }),
     { name: "cart-storage" }
   )

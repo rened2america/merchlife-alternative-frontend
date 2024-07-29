@@ -3,7 +3,7 @@ import React from 'react';
 const Breadcrumb = ({ items }) => {
     return (
         <div className='p-5'>
-            <div className="bg-background p-4">
+            <div className="bg-[#F3F3F3] p-4">
                 <nav className="flex" aria-label="Breadcrumb">
                     <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
                         {items.map((item, index) => (
@@ -15,7 +15,7 @@ const Breadcrumb = ({ items }) => {
                                         </svg>
                                     )}
                                     {item.href ? (
-                                        <a href={item.href} className="text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">{item.label}</a>
+                                        <a href={item.href} className={`text-sm font-medium text-gray-900 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-600`}>{item.label}</a>
                                     ) : (
                                         <span className="text-sm font-medium text-gray-500 dark:text-gray-400">{item.label}</span>
                                     )}

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/free-mode';
@@ -11,9 +11,10 @@ type ImagesArray = string[];
 
 interface AppProps {
     images: ImagesArray;
+    selectedValue: Dispatch<SetStateAction<number>>;
 }
 
-export default function CustomSwiper({ images }: AppProps) {
+export default function CustomSwiper({ images, selectedValue }: AppProps) {
     const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
 
     return (
@@ -44,7 +45,7 @@ export default function CustomSwiper({ images }: AppProps) {
             >
                 {images.map((image, index) => (
                     <SwiperSlide key={index} className='w-[155px] h-[155px]'>
-                        <img src={image}  />
+                        <img src={image} onClick={()=>selectedValue(index)}  />
                     </SwiperSlide>
                 ))}
             </Swiper>
