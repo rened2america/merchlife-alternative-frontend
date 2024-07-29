@@ -26,6 +26,7 @@ interface productsState {
   variant: string;
   size: string;
   id: string;
+  priceId:string;
   url: string;
 }
 
@@ -33,7 +34,7 @@ export default function One() {
   const [selectedSize, setSelectedSize] = useState("s"); // Inicializa selected con "s" (S)
   const [quantity, setQuantity] = useState(1); // Inicializa quantity con 1
   const [products, setProducts] = useState<productsState[]>([
-    { product: { title: "", price: "", type: "" }, variant: "", size: "", id: "1", url: "" },
+    { product: { title: "", price: "", type: "" }, variant: "", size: "", id: "1", url: "", priceId:""},
   ]); // Inicializa products como un arreglo vacío
   const [dataList, setDataList] = useState<string[]>([]); // Inicializa products como un arreglo vacío
   const [product, setProduct] = useState(null);

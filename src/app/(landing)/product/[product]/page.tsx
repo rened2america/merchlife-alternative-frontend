@@ -43,6 +43,7 @@ interface productsState {
   size: string;
   id: string;
   url: string;
+  priceId:string;
 }
 
 export default function One() {
@@ -89,7 +90,7 @@ export default function One() {
   ]);
   const searchParams = useSearchParams();
   const [products, setProducts] = useState<productsState[]>([
-    { product: { title: "", price: "", type: "" }, variant: "", size: "", id: "1", url: "" },
+    { product: { title: "", price: "", type: "" }, variant: "", size: "", id: "1", url: "",priceId:"" },
   ]);
   const params = useParams()
   const store = params.product
@@ -110,6 +111,7 @@ export default function One() {
 
         //@ts-ignore
         const resData = response.data;
+        console.log('products in single product page: ', resData)
         let productArray: any = [];
         response.data.product[0].design.map((item) => {
           productArray.push({
@@ -122,9 +124,10 @@ export default function One() {
             id: resData.product[0].id,
             variant: item.variant,
             url: item.url,
+            priceId: item.priceId
           });
         });
-        console.log(productArray)
+        console.log('productArray: ',productArray)
         setProducts(productArray); // Actualiza el estado con los datos recibidos del endpoint
 
       } catch (error) {
@@ -251,6 +254,7 @@ export default function One() {
         id:products[0]?.id,
         quantity: quantity,
         size: selectedSize,
+        priceId: products[0]?.priceId,
         url: images[selectedColor]})
         router.push('/cart')
       } else{

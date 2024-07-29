@@ -11,6 +11,7 @@ const useStore = create(
         quantity: number;
         size: string;
         url: string;
+        priceId: string
       }) =>
         set((state: any) => {
           const findProduct = state.products.map(
@@ -21,6 +22,7 @@ const useStore = create(
               quantity: number;
               size: string;
               url: string;
+              priceId: string
             }) => {
               if (productState?.name === product.name && productState?.size === product.size && productState?.url === product.url) {
                 return {

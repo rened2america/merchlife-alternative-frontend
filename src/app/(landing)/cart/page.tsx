@@ -3,6 +3,7 @@
 import useStore from "@/state/store";
 import { Amex } from "@/components/ui/components/icons/Amex";
 import Breadcrumb from "../_components/Breadcrumb";
+import { env } from "@/env";
 export default function Creators() {
   const { products, removeFromCart, updateQuantitiy } = useStore((state:any) => {
     //@ts-ignore
@@ -46,7 +47,26 @@ export default function Creators() {
     return sum.toFixed(2);
   };
 
-  console.log(products)
+  console.log('products in cart: ',products)
+  
+  const onClickCheckout = async()=>{
+    const getPayment = await fetch(
+      env.NEXT_PUBLIC_BACKEND_URL + "/api/1/product/payment",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: JSON.stringify({
+          products: products,
+        }),
+      }
+    );
+    const getPaymentParse = await getPayment.json();
+    console.log(getPaymentParse)
+    window.location.replace(getPaymentParse.session.url);
+  }
 
   // useEffect(()=>{
 
@@ -214,7 +234,7 @@ export default function Creators() {
               <span className="text-lg text-gray-600">{totalPrice()}</span>
             </div>
             <div className="mb-4 flex flex-col items-end">
-              <button className="mb-2 h-14 w-full bg-black px-4 py-2 font-bold text-white">
+              <button className="mb-2 h-14 w-full bg-black px-4 py-2 font-bold text-white" onClick={()=>onClickCheckout()}>
                 CHECKOUT
               </button>
               <button className="h-14 w-full border border-black px-4 py-2 font-bold text-stone-950">
