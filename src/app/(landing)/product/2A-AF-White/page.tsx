@@ -380,7 +380,7 @@ export default function One() {
       <div className={`container mx-auto ${raleway.className}`}>
         <div className="flex flex-row md:flex-row justify-center">
           <div className="p-4 w-full md:w-auto mb-4 md:mb-0 md:mr-4 md:flex-shrink-0 sm:w-full">
-            <CustomSwiper images={images} />
+            {/* <CustomSwiper images={images} /> */}
           </div>
           <div className="p-4 w-full md:w-auto lg:w-1/2">
             <form onSubmit={(e) => handleSubmit(e)} className="p-4">
