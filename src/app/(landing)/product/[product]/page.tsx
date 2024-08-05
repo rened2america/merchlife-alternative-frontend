@@ -219,6 +219,10 @@ export default function One() {
   ];
   const images = products.map(item=>item.url).filter((value, index, self) =>
     self.indexOf(value) === index);
+  const colorList = products.map((product)=>product.variant).filter((value, index, self) =>
+    self.indexOf(value) === index)
+  const selectedPriceId = products.filter(item=>(item.size == selectedSize && item.variant == colorList[selectedColor])&& item.priceId);
+  console.log(selectedPriceId);
   // [
   //   "/2A/2AAfWhite.jpg",
   //   "/2A/2AAfWhite.jpg",
@@ -254,7 +258,7 @@ export default function One() {
         id:products[0]?.id,
         quantity: quantity,
         size: selectedSize,
-        priceId: products[0]?.priceId,
+        priceId: selectedPriceId[0]?.priceId,
         url: images[selectedColor]})
         router.push('/cart')
       } else{
