@@ -334,19 +334,34 @@ export default function Stores() {
   // console.log(data);
 
   const [openCategory, setOpenCategory] = useState(null);
-  const [selectedColor, setSelectedColor] = useState(null);
-  const [selectedPrice, setSelectedPrice] = useState(null);
+  const [selectedColor, setSelectedColor] = useState('White');
+  const [selectedPrice, setSelectedPrice] = useState<string>("All");
   const [selectedSize, setSelectedSize] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [displayedReviews, setDisplayedReviews] = useState([]);
+  const [displayedReviews, setDisplayedReviews] = useState<any>([]);
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
 
   const getData = async () => {
     try {
-      const result = await apiCall('GET', 'api/1/product/all');
+      let query = `api/1/product/findProductsByFilters/1?`;
+      if(openCategory!= null && openCategory!= 'All'){
+        query +="type="+openCategory
+      }
+      if(selectedSize != null && selectedSize!= 'All'){
+        query +="&size="+selectedSize
+      }
+      if(selectedPrice != null && selectedPrice != 'All'){
+        const tempPrice = selectedPrice.split(" - ")
+
+        query +="&minPrice="+tempPrice[0]?.split("$")[1]+"&maxPrice="+tempPrice[1]?.split("$")[1]
+      }
+      if(selectedColor != null && selectedColor != 'All'){
+        query +="&variant="+selectedColor
+      }
+      const result = await apiCall('GET', query);
       console.log('data', result);
-      setDisplayedReviews(result.products)
+      setDisplayedReviews(result);
     } catch (error) {
       // Handle error
       console.error('Error:', error);
@@ -363,22 +378,23 @@ export default function Stores() {
     //     console.log(responseData);
     //     setData(responseData.artist);
     //   });
-  }, [])
+  }, [openCategory,selectedSize,selectedPrice,selectedColor])
   
   useEffect(()=>{
     console.log(displayedReviews);
     
   },[displayedReviews])
 
-  const toggleSubMenu = (categoryName) => {
-    setOpenCategory(openCategory === categoryName ? null : categoryName);
-  };
+  // const toggleSubMenu = (categoryName) => {
+  //   setOpenCategory(openCategory === categoryName ? null : categoryName);
+  // };
 
   // console.log("displayedReviews",displayedReviews);
 
   const handleColorClick = (color) => {
     setSelectedColor(color);
   };
+
 
   const categories = [
     {
@@ -395,7 +411,10 @@ export default function Stores() {
     },
   ];
 
+  const productTypeArr = ['All','Sweatshirt','Mug','Shirt','Hoodie']
+
   const colors = [
+    {name:'All'},
     { name: 'Red', colorCode: 'bg-red-500' },
     { name: 'Blue', colorCode: 'bg-blue-500' },
     { name: 'Green', colorCode: 'bg-green-500' },
@@ -415,7 +434,7 @@ export default function Stores() {
     { priceTag: '$100 - $150' },
   ];
 
-  const sizeOptions = ["S", "M", "L", "XL", "XXL"];
+  const sizeOptions = ["All","S", "M", "L", "XL", "XXL"];
 
 
   const handlePriceClick = (priceTag) => {
@@ -492,9 +511,9 @@ export default function Stores() {
       "image": "2AAfWhite_1.png"
     }
   ]
-  if(displayedReviews.length == 0){
-    return <h1>Loading</h1>
-  }
+  // if(displayedReviews.length == 0){
+  //   return <h1>Loading</h1>
+  // }
   return (
     <>
       <SubHeaderCard title="STORE" links={store} />
@@ -519,11 +538,20 @@ export default function Stores() {
               </svg>
             </button>
           </div>
-
           <div className="p-4 bg-gray-100 mt-6">
-            <h2 className="font-bold text-lg mb-2">CATEGORIES</h2>
-            <ul>
-              {categories.map((category, index, array) => (
+            <h2 className="font-bold text-lg mb-2 text-black">CATEGORIES</h2>
+                  {/* <ul> */}
+                
+              { productTypeArr.map((item:any,index:number,array:any)=>(
+                  <div key={index}>
+                  <li className={`mb-3 mt-3 flex items-center cursor-pointer`} onClick={() => setOpenCategory(item)}>
+                    <span className={`${openCategory === item ? 'text-black' : 'text-[#868686]'}`}>{item}</span>
+                  </li>
+                  {index === array.length - 1 ? "" : (<div className="border-b border-1 border-[#868686]" />)}
+                </div>
+              ))}
+
+              {/* {categories.map((category, index, array) => (
                 <li key={index}>
                   <div
                     className="mb-3 mt-3 flex justify-between items-center text-gray-700 cursor-pointer"
@@ -553,14 +581,14 @@ export default function Stores() {
                     </ul>
                   )}
                 </li>
-              ))}
-            </ul>
+              ))} */}
+              
+            {/* </ul> */}
           </div>
-
           <div className="p-4 bg-gray-100 mt-6">
-            <h2 className="font-bold text-lg mb-2">COLOR</h2>
+            <h2 className="font-bold text-lg mb-2 text-black">COLOR</h2>
             <ul>
-              {colors.map((color, index, array) => (
+              {colors.map((color, index, array) => 
                 <div key={index}>
                   <li className={`mb-3 mt-3 flex items-center cursor-pointer`} onClick={() => handleColorClick(color.name)}>
                     <div className={`w-4 h-4 rounded-full ${color.colorCode} mr-5`}></div>
@@ -568,12 +596,12 @@ export default function Stores() {
                   </li>
                   {index === array.length - 1 ? "" : (<div className="border-b border-1 border-[#868686]" />)}
                 </div>
-              ))}
+              )}
             </ul>
           </div>
 
           <div className="p-4 bg-gray-100 mt-6">
-            <h2 className="font-bold text-lg mb-2">Price</h2>
+            <h2 className="font-bold text-lg mb-2 text-black">Price</h2>
             <ul>
               {priceRanges.map((price, index, array) => (
                 <div key={index}>
@@ -587,7 +615,7 @@ export default function Stores() {
           </div>
 
           <div className="p-4 bg-gray-100 mt-6">
-            <h2 className="font-bold text-lg mb-2">Size</h2>
+            <h2 className="font-bold text-lg mb-2 text-black">Size</h2>
             <ul>
               {sizeOptions.map((size, index, array) => (
                 <div key={index}>
@@ -626,7 +654,7 @@ export default function Stores() {
 
           <div className="flex flex-wrap -mx-2 mt-8">
             {displayedReviews.map((product: any) => (
-              <ProductCard key={product?.id} product={product} />
+              <ProductCard key={product?.id} product={product} color={selectedColor} />
             ))}
             
             {/* <CardProduct
@@ -640,7 +668,7 @@ export default function Stores() {
           <div>
             {itemsPerPage && currentPage && productsList &&
               <Pegination
-                reviews={productsList} // Pass the list of products as reviews
+                reviews={displayedReviews} // Pass the list of products as reviews
                 displayedReviews={displayedReviews}
                 setDisplayedReviews={setDisplayedReviews}
                 itemsPerPage={itemsPerPage} // Pass itemsPerPage state
