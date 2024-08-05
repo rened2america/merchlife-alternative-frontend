@@ -24,8 +24,8 @@ export const CartStoreHome = ({
         border: "1px solid hsla(0,0%,100%,.07)",
         background: "hsla(0,0%,100%,.1)",
         width: `${size === "half" ? "300px" : "600px"}`,
-        height: `${size === "half" ? "300px" : "630px"}`,
-      }}
+        height: `${size === "half" ? "300px" : "550px"}`,
+      }} 
     >
       <Link
         style={{
@@ -40,15 +40,15 @@ export const CartStoreHome = ({
           style={
             size === "half"
               ? {
-                  position: "absolute",
-                  width: "100%",
-                }
+                position: "absolute",
+                width: "100%",
+              }
               : {
-                  position: "absolute",
-                  width: "100%",
-                  top: "0px",
-                  backgroundColor: "black",
-                }
+                position: "absolute",
+                width: "100%",
+                top: "0px",
+                backgroundColor: "black",
+              }
           }
         >
           {size === "half" ? (
@@ -85,24 +85,33 @@ export const CartStoreHome = ({
         {products.slice(0, 3).map((product, index) => (
           <Link key={index} href={product.urlRedirect}>
             {size === "half" ? (
-              <Image
+              <img
+                alt="Product"
+                className="z-0 w-full h-full object-cover"
+                src={product.img}
+                width={100}
+                height={170}
+                // quality={100}
                 style={{
+                  // minHeight: "170px",
+                  backgroundColor: "#e5e5e5",
                   borderRadius: "16px",
                 }}
-                width="100"
-                height="170"
-                src={product.img}
-                alt="nose"
               />
             ) : (
-              <Image
-                style={{
-                  borderRadius: "16px",
-                }}
-                width="200"
-                height="340"
+              <img
+                alt="Product"
+                className="z-0 w-full h-full object-cover"
                 src={product.img}
-                alt="nose"
+                width={200}
+                height={340}
+                // quality={100}
+                style={{
+                  // minHeight: "340",
+                  backgroundColor: "#e5e5e5",
+                  borderRadius: "16px",
+
+                }}
               />
             )}
           </Link>
