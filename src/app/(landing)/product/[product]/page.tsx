@@ -369,7 +369,7 @@ export default function One() {
     
 
       <Tabs tabContent={tabContent} />
-      <section className="container relative py-24">
+      {/* <section className="container relative py-24">
         <div className="lg-6 mx-auto w-full max-w-7xl px-4 md:px-5">
           <div className="mb-11 flex items-center justify-center md:space-x-2">
             <div className="flex-grow border-t border-black"></div>
@@ -426,7 +426,7 @@ export default function One() {
           </div>
         </div>
         <div className="flex items-center gap-4"></div>
-      </section>
+      </section> */}
 
     </>
   );

@@ -79,7 +79,7 @@ export const Header = async () => {
               <div className="mx-auto max-w-md">
 
 
-                <form className="relative mx-auto w-max">
+                <form className="relative mx-auto w-max text-black">
                   <input type="search"
                     className="peer cursor-pointer relative z-10 h-9 w-12 rounded-full  bg-transparent outline-none focus:w-full focus:cursor-text focus:pl-16 focus:pr-4" />
                   <svg xmlns="http://www.w3.org/2000/svg" className="absolute inset-y-0 my-auto h-8 w-12 border-r border-transparent stroke-black px-3.5 " fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
@@ -95,7 +95,7 @@ export const Header = async () => {
 
           <CartCount />
 
-          {user ? (
+          {/* {user ? (
             <UserDropdown email={user.email} avatar={user.avatar} className="ml-auto" />
           ) : (
             <div className="">
@@ -111,7 +111,7 @@ export const Header = async () => {
             <Button asChild variant={"secondary"} className="rounded-none w-32">
               <Link href="/signup">Sign Up</Link>
             </Button>
-          </div>
+          </div> */}
         </div>
       </div>
     </header>
