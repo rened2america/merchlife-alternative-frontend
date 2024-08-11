@@ -3,7 +3,7 @@ import React from 'react';
 const Breadcrumb = ({ items }) => {
     return (
         <div className='p-5'>
-            <div className="bg-[#F3F3F3] p-4">
+            <div className="bg-gray-900 p-4">
                 <nav className="flex" aria-label="Breadcrumb">
                     <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
                         {items.map((item, index) => (

@@ -38,7 +38,7 @@ const Footer = () => {
     return (
         <>
         <div className="p-28 pb-0 bg-black mt-28 text-white">
-            <div className="mb-9 mt-[-220px] w-full border border-gray-200 bg-gray-200 text-center shadow dark:border-gray-700 dark:bg-gray-800 sm:p-8">
+            <div className="mb-9 mt-[-220px] w-full border border-gray-200 bg-gray-200 text-center shadow dark:border-0 dark:bg-gray-900 sm:p-8">
                 <h5 className="p-4 font-sans text-3xl text-gray-900 dark:text-white sm:text-4xl md:text-5xl lg:text-6xl">
                     SUPPORT EVERY STEP OF THE WAY
                 </h5>
