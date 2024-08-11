@@ -13,9 +13,9 @@ const ProductCard = ({ product,color }) => (
         </div>
         <div className="mt-8 flex  items-center">
           <div className="cust-collaction-btn ">
-            <a className="text-black">
-              {" "}
-              shop now{" "}
+            {/* <a className="text-black"> */}
+            <a href={`/product/${product.artist.name}?productId=${product.id}&variant=${product.design[0].variant}&type=${product.types[0].value}`}>
+              shop now
               <span>
                 <img
                   src="https://cdn.shopify.com/s/files/1/0981/1190/files/Arrow_1.svg?v=1710841588"

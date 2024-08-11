@@ -320,7 +320,7 @@
 // }
 
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Raleway } from "next/font/google";
 import SubHeaderCard from "../_components/SubHeaderCard";
 import ProductCard from "../_components/common/ProductCard";
@@ -338,15 +338,20 @@ export default function Stores() {
   const [selectedPrice, setSelectedPrice] = useState<string>("All");
   const [selectedSize, setSelectedSize] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [searchWord,setSearchWord] = useState<string | null>(null);
   const [displayedReviews, setDisplayedReviews] = useState<any>([]);
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
+  const refSearchInput = useRef<HTMLInputElement>(null)
 
   const getData = async () => {
     try {
       let query = `api/1/product/findProductsByFilters/1?`;
       if(openCategory!= null && openCategory!= 'All'){
         query +="type="+openCategory
+      }
+      if(searchWord != null){
+        query +="&searchWord="+searchWord
       }
       if(selectedSize != null && selectedSize!= 'All'){
         query +="&size="+selectedSize
@@ -378,7 +383,7 @@ export default function Stores() {
     //     console.log(responseData);
     //     setData(responseData.artist);
     //   });
-  }, [openCategory,selectedSize,selectedPrice,selectedColor])
+  }, [openCategory,selectedSize,selectedPrice,selectedColor,searchWord])
   
   useEffect(()=>{
     console.log(displayedReviews);
@@ -415,12 +420,10 @@ export default function Stores() {
 
   const colors = [
     {name:'All'},
-    { name: 'Red', colorCode: 'bg-red-500' },
-    { name: 'Blue', colorCode: 'bg-blue-500' },
-    { name: 'Green', colorCode: 'bg-green-500' },
-    { name: 'Grey', colorCode: 'bg-gray-400' },
-    { name: 'Yellow', colorCode: 'bg-yellow-500' },
-    { name: 'Black', colorCode: 'bg-black' },
+    { name: 'Red',value:'red', colorCode: 'bg-red-500 border' },
+    { name: 'Blue',value:'blue', colorCode: 'bg-blue-500 border' },
+    { name: 'White',value:'white', colorCode: 'bg-white-500 border' },
+    { name: 'Beige',value:'beige', colorCode: 'bg-[#bec9a9] border' },
   ];
 
   const toggleSidebar = () => {
@@ -430,11 +433,13 @@ export default function Stores() {
   const priceRanges = [
     { priceTag: 'All' },
     { priceTag: '$0 - $20' },
+    { priceTag: '$21 - $40' },
+    { priceTag: '$41 - $59' },
     { priceTag: '$60 - $100' },
     { priceTag: '$100 - $150' },
   ];
 
-  const sizeOptions = ["All","S", "M", "L", "XL", "XXL"];
+  const sizeOptions = ["All","S", "M", "L", "XL", "2XL","3XL","4XL","5XL"];
 
 
   const handlePriceClick = (priceTag) => {
@@ -529,9 +534,10 @@ export default function Stores() {
             <input
               type="text"
               placeholder="Search"
+              ref={refSearchInput}
               className="bg-transparent px-3 py-4 flex-grow text-gray-600 focus:outline-none placeholder:text-xs"
             />
-            <button className="ml-2 mt-[3px]">
+            <button className="ml-2 mt-[3px]" onClick={()=>{setSearchWord(refSearchInput.current &&refSearchInput.current?.value)}}>
               <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path fill="#000" d="m20.746 18.607-3.572-3.361-.084-.123a.855.855 0 0 0-.59-.233.855.855 0 0 0-.591.233c-3.036 2.68-7.714 2.826-10.932.34-3.218-2.485-3.976-6.83-1.773-10.153C5.407 1.987 9.889.717 13.676 2.342c3.788 1.625 5.707 5.642 4.484 9.386a.758.758 0 0 0 .189.771.876.876 0 0 0 .804.232.823.823 0 0 0 .616-.54c1.462-4.442-.746-9.223-5.195-11.25-4.45-2.026-9.806-.69-12.603 3.144C-.827 7.92-.226 13.102 3.384 16.28c3.61 3.178 9.146 3.397 13.027.516l3.163 2.975a.875.875 0 0 0 1.181 0 .763.763 0 0 0 0-1.12l-.009-.043Z"></path>
                 <path stroke="#000" strokeWidth={1.5} d="M6.45 12.5c1.04 1.167 4.054 2.8 7.795 0" />
@@ -590,9 +596,9 @@ export default function Stores() {
             <ul>
               {colors.map((color, index, array) => 
                 <div key={index}>
-                  <li className={`mb-3 mt-3 flex items-center cursor-pointer`} onClick={() => handleColorClick(color.name)}>
+                  <li className={`mb-3 mt-3 flex items-center cursor-pointer`} onClick={() => handleColorClick(color.value)}>
                     <div className={`w-4 h-4 rounded-full ${color.colorCode} mr-5`}></div>
-                    <span className={`${selectedColor === color.name ? 'text-black' : 'text-[#868686]'}`}>{color.name}</span>
+                    <span className={`${selectedColor === color.value ? 'text-black' : 'text-[#868686]'}`}>{color.name}</span>
                   </li>
                   {index === array.length - 1 ? "" : (<div className="border-b border-1 border-[#868686]" />)}
                 </div>
