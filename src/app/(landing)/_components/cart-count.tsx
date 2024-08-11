@@ -10,10 +10,11 @@ export const CartCount = () => {
   });
   return (
     <Link
-      className="p-1.5 bg-[#F3F3F3]"
+      className="p-1.5 bg-[#F3F3F3] relative inline-flex items-center text-sm font-medium text-center text-white rounded-lg"
       href="/cart"
     >
         <Basket />
+        <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900">{products.length}</div>
     </Link>
   );
 };

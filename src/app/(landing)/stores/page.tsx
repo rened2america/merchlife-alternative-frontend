@@ -340,8 +340,10 @@ export default function Stores() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [searchWord,setSearchWord] = useState<string | null>(null);
   const [displayedReviews, setDisplayedReviews] = useState<any>([]);
-  const [itemsPerPage, setItemsPerPage] = useState(10);
+  const [itemsPerPage, setItemsPerPage] = useState(9);
   const [currentPage, setCurrentPage] = useState(1);
+  const [apiQuery,setquery] = useState("");
+  const [productCount,setProductCount] = useState(0);
   const refSearchInput = useRef<HTMLInputElement>(null)
 
   const getData = async () => {
@@ -364,9 +366,11 @@ export default function Stores() {
       if(selectedColor != null && selectedColor != 'All'){
         query +="&variant="+selectedColor
       }
-      const result = await apiCall('GET', query);
-      console.log('data', result);
-      setDisplayedReviews(result);
+      setquery(query)
+      const {data, count} = await apiCall('GET', query+"&page=1&pageSize="+itemsPerPage);
+      console.log('data', data,"\n\n\n","Count:",count);
+      setDisplayedReviews(data);
+      setProductCount(count);
     } catch (error) {
       // Handle error
       console.error('Error:', error);
@@ -681,6 +685,8 @@ export default function Stores() {
                 setItemsPerPage={setItemsPerPage}
                 currentPage={currentPage} // Pass currentPage state
                 setCurrentPage={setCurrentPage}
+                query={apiQuery}
+                count={productCount}
               />}
           </div>
         </div>

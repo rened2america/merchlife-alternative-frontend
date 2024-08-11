@@ -279,7 +279,7 @@ export default function One() {
           <div className="p-4 w-full md:w-auto lg:w-1/2">
             <form onSubmit={(e) => handleSubmit(e)} className="p-4">
 
-              <div className="flex items-center">
+              {/* <div className="flex items-center">
                 {[...Array(5)].map((_, index:any) => (
                   <svg
                     key={index}
@@ -297,7 +297,7 @@ export default function One() {
                 ))}{" "}
                 &nbsp; &nbsp;
                 <p className="text-xl  text-gray-400">Lorem ipsum dolor sit amet</p>
-              </div>
+              </div> */}
               <p className="py-4 text-5xl font-bold">{products.length > 0 &&
                   `${products[0]?.product.title} ${products[0]?.product?.type}`}</p>
               <p className="border-b py-2 text-2xl font-semibold text-[#636363]">${products.length > 0 && products[0]?.product.price}</p>
