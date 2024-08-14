@@ -92,10 +92,10 @@ const features = [
 ];
 
 const categories = [
-  { id: 1, name: "6 PM ears", image: "/product_one.jpg" },
-  { id: 2, name: "6 PM ears", image: "/product_one.jpg" },
-  { id: 3, name: "6 PM ears", image: "/product_one.jpg" },
-
+  { id: 1, name: "Sweatshirt", image: "/category_sweatshirt.png" },
+  { id: 2, name: "Mug", image: "/category_mug.png" },
+  { id: 3, name: "Shirt", image: "/category_tshirt.png" },
+  { id: 3, name: "Hoodie", image: "/category_hoodie.png" },
 ];
 
 const products = [
@@ -177,14 +177,14 @@ const HomePage = () => {
           <div className="text-3xl md:text-6xl font-bold w-full text-center text-black">
             CATEGORIES
           </div>
-          <div className="w-full grid grid-cols-1 space-y-4 md:space-y-0 sm:grid-cols-2 md:grid-cols-3 gap-4 py-4 px-4 md:px-8 bg-white">
+          <div className="w-full grid grid-cols-1 space-y-4 md:space-y-0 sm:grid-cols-2 md:grid-cols-4 gap-4 py-4 px-4 md:px-8 bg-white">
             {categories.map((category) => (
-              <div key={category.id} className="relative">
+               <Link key={category.id} href={"/stores?category="+category.name} className="relative">
                 <Image className="w-full" src={category.image} alt={category.name} width={500} height={500} />
                 <Button className="absolute bg-black text-white rounded-none py-4 px-10 md:py-6 md:px-20 bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2" variant={"ghost"}>
                   {category.name}
                 </Button>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

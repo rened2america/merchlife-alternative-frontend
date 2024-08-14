@@ -326,13 +326,15 @@ import SubHeaderCard from "../_components/SubHeaderCard";
 import ProductCard from "../_components/common/ProductCard";
 import Pegination from "../_components/Pegination";
 import apiCall from "@/utils/api";
+import { useSearchParams } from "next/navigation";
 const raleway = Raleway({ subsets: ["latin"] });
 
 export default function Stores() {
   const [data, setData] = useState(null);
   // console.log(data);
 
-  const [openCategory, setOpenCategory] = useState(null);
+  const catagory = useSearchParams().get("category")
+  const [openCategory, setOpenCategory] = useState(catagory);
   const [selectedColor, setSelectedColor] = useState('White');
   const [selectedPrice, setSelectedPrice] = useState<string>("All");
   const [selectedSize, setSelectedSize] = useState(null);
