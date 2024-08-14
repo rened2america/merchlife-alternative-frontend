@@ -496,13 +496,13 @@ export default function One() {
             ))}
 
             <div className="w-full border-b border-gray-100 pb-8"></div>
-            <Pegination reviews={reviews} setDisplayedReviews={setDisplayedReviews} 
+            {/* <Pegination reviews={reviews} setDisplayedReviews={setDisplayedReviews} 
             displayedReviews={displayedReviews}
              itemsPerPage={itemsPerPage} // Pass itemsPerPage state
              setItemsPerPage={setItemsPerPage}
              currentPage={currentPage} // Pass currentPage state
              setCurrentPage={setCurrentPage}
-            />
+            /> */}
           </div>
         </div>
         <div className="flex items-center gap-4"></div>

@@ -17,7 +17,7 @@ const Breadcrumb = ({ items }) => {
                                     {item.href ? (
                                         <a href={item.href} className={`text-sm font-medium text-gray-900 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-600`}>{item.label}</a>
                                     ) : (
-                                        <span className="text-sm font-medium text-gray-500 dark:text-gray-400">{item.label}</span>
+                                        <span className="text-sm font-medium text-gray-500 dark:text-gray-400">{decodeURIComponent(item.label)}</span>
                                     )}
                                 </div>
                             </li>

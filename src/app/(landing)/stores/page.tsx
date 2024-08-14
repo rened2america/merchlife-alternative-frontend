@@ -326,7 +326,6 @@ import SubHeaderCard from "../_components/SubHeaderCard";
 import ProductCard from "../_components/common/ProductCard";
 import Pegination from "../_components/Pegination";
 import apiCall from "@/utils/api";
-import { CardProduct } from "../storeMain/components/content/card-product";
 const raleway = Raleway({ subsets: ["latin"] });
 
 export default function Stores() {
@@ -344,6 +343,7 @@ export default function Stores() {
   const [currentPage, setCurrentPage] = useState(1);
   const [apiQuery,setquery] = useState("");
   const [productCount,setProductCount] = useState(0);
+  const [sortBy,setSortBy] = useState("LowToHigh");
   const refSearchInput = useRef<HTMLInputElement>(null)
 
   const getData = async () => {
@@ -366,9 +366,9 @@ export default function Stores() {
       if(selectedColor != null && selectedColor != 'All'){
         query +="&variant="+selectedColor
       }
+      query +="&sort="+sortBy;
       setquery(query)
-      const {data, count} = await apiCall('GET', query+"&page=1&pageSize="+itemsPerPage);
-      console.log('data', data,"\n\n\n","Count:",count);
+      const {data,count} = await apiCall('GET', query+"&page=1&pageSize="+itemsPerPage);
       setDisplayedReviews(data);
       setProductCount(count);
     } catch (error) {
@@ -387,7 +387,7 @@ export default function Stores() {
     //     console.log(responseData);
     //     setData(responseData.artist);
     //   });
-  }, [openCategory,selectedSize,selectedPrice,selectedColor,searchWord])
+  }, [openCategory,selectedSize,selectedPrice,selectedColor,searchWord,sortBy])
   
   useEffect(()=>{
     console.log(displayedReviews);
@@ -650,12 +650,10 @@ export default function Stores() {
               </span>
               <span>
                 <form className="max-w-sm mx-auto">
-                  <select id="countries" className="bg-[#F3F3F3] h-12 md:h-14 text-gray-900 text-sm block w-full py-2 md:py-3 px-4 pl-2 focus:outline-none">
-                    <option selected>Sort</option>
-                    <option value="US">United States</option>
-                    <option value="CA">Canada</option>
-                    <option value="FR">France</option>
-                    <option value="DE">Germany</option>
+                  <select onChange={(e)=>setSortBy(e.target.value)} className="bg-[#F3F3F3] h-12 md:h-14 text-gray-900 text-sm block w-full py-2 md:py-3 px-4 pl-2 focus:outline-none">
+                    <option selected>Sort by Price</option>
+                    <option value="LowToHigh">Low To High</option>
+                    <option value="HighToLow">High To Low</option>
                   </select>
                 </form>
               </span>
@@ -697,4 +695,3 @@ export default function Stores() {
 
   );
 }
-
