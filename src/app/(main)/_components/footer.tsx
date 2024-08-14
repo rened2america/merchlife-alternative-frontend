@@ -136,7 +136,7 @@ const Footer = () => {
                     <div className="">
                         <div className="flex flex-col items-center justify-center lg:flex-row lg:justify-between">
                             <span className="text-sm text-gray-500 ">
-                                ©Copyright © 2024 Merchlife. All Rights Reserved.
+                                Copyright © 2024 Merchlife. All Rights Reserved.
                             </span>
                             <div className="mt-4 flex space-x-4 sm:justify-center lg:mt-0 ">
                                 <a
