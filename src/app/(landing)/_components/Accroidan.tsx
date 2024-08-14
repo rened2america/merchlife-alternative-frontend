@@ -5,7 +5,7 @@ const AccordionItem = ({ id, question, answer, expanded, toggleAccordion, index 
         <h2 id={`accordion-open-heading-${id}`}>
             <button
                 type="button"
-                className={`flex items-center justify-between w-full p-4 font-medium rtl:text-right text-gray-500 border border-gray-400 focus:text-black focus:ring-2 focus:ring-black dark:focus:ring-black dark:border-gray-700 dark:text-black  gap-3 ${expanded ? '' : ''}`}
+                className={`flex items-center justify-between w-full p-4 font-medium rtl:text-right text-gray-500 border border-gray-400 focus:text-black focus:ring-2 focus:ring-black dark:focus:ring-black dark:border-gray-700 dark:text-gray-500  gap-3 ${expanded ? '' : ''}`}
                 data-accordion-target={`#${id}`}
                 aria-expanded={expanded}
                 onClick={() => toggleAccordion(id)}

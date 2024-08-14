@@ -44,8 +44,17 @@ const HowItWorks = () => {
         <>
         <div className={`${raleway.className}`}>
             <SubHeaderCard title="HOW IT WORKS" links={howItWorksLinks} />
-            <ImageCardSection imageCardData = {ImageCardData}/>
-            <TImeline title="Lorem Ipsem Step" timelineData={timelineData} />
+            <div className="flex flex-col p-4 leading-normal text-center bg-white w-full mb-5">
+            <h5 className="mb-6 xl:mt-24 md:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-tight leading-normal text-gray-900">
+              title
+            </h5>
+            <p className="text-sm  xl:mb-6 md:text-base lg:text-lg xl:text-xl m-0 p-0 font-normal text-gray-700">
+              description1
+            </p>
+            
+          </div>
+            {/* <ImageCardSection imageCardData = {ImageCardData}/> */}
+            {/* <TImeline title="Lorem Ipsem Step" timelineData={timelineData} /> */}
           </div>
         </>
     

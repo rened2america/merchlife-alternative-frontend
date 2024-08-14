@@ -23,17 +23,30 @@ const tabContent = [
 
     <p>Mauris at elementum elit, eget feugiat elit. Pellentesque vel porta velit, quis tristique justo. In lobortis vehicula odio, non pretium felis. Donec tempus justo rhoncus augue malesuada, et aliquet nisi aliquet. Proin vulputate odio tortor, et pulvinar erat interdum quis. Morbi finibus fringilla quam vel finibus. Fusce vel blandit lectus, et tincidunt sapien. Sed facilisis erat in orci volutpat sodales.</p> <br/>`,
   },
-  {
-    title: 'Size Charts',
-    content: `<p>In hac habitasse platea dictumst. Pellentesque volutpat enim nec nibh vulputate lacinia...</p>`,
-  },
+
   {
     title: 'Shipping Policy',
-    content: `<p>Mauris at elementum elit, eget feugiat elit. Pellentesque vel porta velit, quis tristique justo...</p>`,
+    content: `<p>Orders are processed within one business day (Monday to Friday, excluding holidays), and delivery takes 2-4 days. You'll receive a tracking number to monitor your order.
+    <br><br><Strong>INTERNATIONAL SHIPPING</strong><br>
+    We ship to many countries with a flat rate of $18.99. After processing, international delivery typically takes 15 business days (Monday to Friday), but this may vary due to customs.</p>`,
   },
   {
     title: 'Return Policy',
-    content: `<p>Sed sollicitudin porttitor nisl. Nullam at nunc vulputate, sollicitudin ipsum sit amet, venenatis sapien...</p>`,
+    content: `<p>
+    We want to provide you the best service ever. We have a “Total Satisfaction Guarantee” policy, which means that we have a generous 30-day exchange policy. In other words, within the first 30 days of receiving your shirt, you can always exchange it for another, as long as the shirt is in its original condition.
+    <br><br>
+    We have three options in order to make sure you are satisfied with your order:
+    <br><br>
+    <strong>Change the size of your shirt:</strong> your shirt doesn’t fit? You can change it for the right size! You just have to return the wrong shirt and we’ll send you another one without charging any cost.
+    <br><br>
+    <strong>Exchange your shirt for another one:</strong> don’t like the shirt? Don’t worry! We want you to look amazing in your favorite designs. If you didn’t like the shirt we sent you, you can send us an email asking for another one!
+    <br><br>
+    <strong>Get a refund:</strong> request a refund through our email or phone number.
+    For any of the provided options, you will have to send the wrong shirt to this address: 
+    Merchlife | D2 America Sales Inc 153-F Lincoln Ave, San Jose, Ca 95125 USA
+    <br><br>
+    If you have any questions, please contact us through our phone number or email and we will be happy to assist you.
+    </p>`,
   },
 ];
 
@@ -43,7 +56,7 @@ interface productsState {
   size: string;
   id: string;
   url: string;
-  priceId:string;
+  priceId: string;
 }
 
 export default function One() {
@@ -54,7 +67,7 @@ export default function One() {
   const [displayedReviews, setDisplayedReviews] = useState([]);
   const [itemsPerPage, setItemsPerPage] = useState(3);
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedColor,setSelectedColor] = useState(0)
+  const [selectedColor, setSelectedColor] = useState(0)
   const router = useRouter()
   const [reviews, setReviews] = useState([
     {
@@ -90,7 +103,7 @@ export default function One() {
   ]);
   const searchParams = useSearchParams();
   const [products, setProducts] = useState<productsState[]>([
-    { product: { title: "", price: "", type: "" }, variant: "", size: "", id: "1", url: "",priceId:"" },
+    { product: { title: "", price: "", type: "" }, variant: "", size: "", id: "1", url: "", priceId: "" },
   ]);
   const params = useParams()
   const store = params.product
@@ -127,7 +140,7 @@ export default function One() {
             priceId: item.priceId
           });
         });
-        console.log('productArray: ',productArray)
+        console.log('productArray: ', productArray)
         setProducts(productArray); // Actualiza el estado con los datos recibidos del endpoint
 
       } catch (error) {
@@ -217,11 +230,11 @@ export default function One() {
     { href: "/stores", label: "Store" },
     { label: store }, // This item does not have a link
   ];
-  const images = products.map(item=>item.url).filter((value, index, self) =>
+  const images = products.map(item => item.url).filter((value, index, self) =>
     self.indexOf(value) === index);
-  const colorList = products.map((product)=>product.variant).filter((value, index, self) =>
+  const colorList = products.map((product) => product.variant).filter((value, index, self) =>
     self.indexOf(value) === index)
-  const selectedPriceId = products.filter(item=>(item.size == selectedSize && item.variant == colorList[selectedColor])&& item.priceId);
+  const selectedPriceId = products.filter(item => (item.size == selectedSize && item.variant == colorList[selectedColor]) && item.priceId);
   console.log(selectedPriceId);
   // [
   //   "/2A/2AAfWhite.jpg",
@@ -236,7 +249,7 @@ export default function One() {
     setSelectedStars(newSelectedStars);
   };
 
-  const sizeOptions = products.map((product)=>product.size).filter((value, index, self) =>
+  const sizeOptions = products.map((product) => product.size).filter((value, index, self) =>
     self.indexOf(value) === index);
   // ["S", "M", "L", "XL", "2XL", "3XL", "4XL", "5XL"];
 
@@ -246,24 +259,25 @@ export default function One() {
 
   const { addProduct } = useStore((state) => {
     //@ts-ignore
-    return { addProduct: state.addProduct};
+    return { addProduct: state.addProduct };
   });
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(selectedSize !== "")
-    {
+    if (selectedSize !== "") {
 
-      addProduct({name:products[0]?.product.title,
+      addProduct({
+        name: products[0]?.product.title,
         price: products[0]?.product.price,
-        id:products[0]?.id,
+        id: products[0]?.id,
         quantity: quantity,
         size: selectedSize,
         priceId: selectedPriceId[0]?.priceId,
-        url: images[selectedColor]})
-        router.push('/cart')
-      } else{
-        alert("Select size");
-      }
+        url: images[selectedColor]
+      })
+      router.push('/cart')
+    } else {
+      alert("Select size");
+    }
 
   }
   // const colorList = products.map((product)=>product.variant).filter((value, index, self) =>
@@ -274,7 +288,7 @@ export default function One() {
       <div className={`container mx-auto ${raleway.className}`}>
         <div className="flex flex-row md:flex-row justify-center">
           <div className="p-4 w-full md:w-auto mb-4 md:mb-0 md:mr-4 md:flex-shrink-0 sm:w-full">
-            <CustomSwiper images={images} selectedValue={setSelectedColor}  />
+            <CustomSwiper images={images} selectedValue={setSelectedColor} />
           </div>
           <div className="p-4 w-full md:w-auto lg:w-1/2">
             <form onSubmit={(e) => handleSubmit(e)} className="p-4">
@@ -299,7 +313,7 @@ export default function One() {
                 <p className="text-xl  text-gray-400">Lorem ipsum dolor sit amet</p>
               </div> */}
               <p className="py-4 text-5xl font-bold">{products.length > 0 &&
-                  `${products[0]?.product.title} ${products[0]?.product?.type}`}</p>
+                `${products[0]?.product.title} ${products[0]?.product?.type}`}</p>
               <p className="border-b py-2 text-2xl font-semibold text-[#636363]">${products.length > 0 && products[0]?.product.price}</p>
 
               <div className=" border-b py-5">
@@ -327,14 +341,14 @@ export default function One() {
                   <div className="inline-flex   py-5 md:space-x-2 sm:space-x-2" role="group">
                     <QuantityCounter setQuantity={setQuantity} quantity={quantity} />
                     <button
-                    onClick={() => {}}
+                      onClick={() => { }}
                       type="submit"
                       className="mb-2 border-gray-200 bg-[#121212] px-5 py-2.5 text-sm font-medium text-[#F5F5F5]  md:mb-0 lg:h-[54px] lg:w-[290px]"
                     >
                       ADD TO CART
                     </button>
                   </div>
-              {/* <fieldset aria-label="Choose a color" className="mt-4">
+                  {/* <fieldset aria-label="Choose a color" className="mt-4">
               <legend className="text-xl font-bold">Color</legend>
 
               <RadioGroup
@@ -342,7 +356,7 @@ export default function One() {
                 onChange={setSelectedColor}
                 className="mt-4 flex items-center space-x-3"
               > */}
-                {/* {colorList &&
+                  {/* {colorList &&
                   colorList.map((color:any,index:number) => (
                     <Radio
                       key={index}
@@ -357,7 +371,7 @@ export default function One() {
                       />
                     </Radio>
                   ))} */}
-              {/* </RadioGroup>
+                  {/* </RadioGroup>
             </fieldset> */}
                 </div>
               </div>
@@ -366,7 +380,7 @@ export default function One() {
         </div>
       </div>
 
-    
+
 
       <Tabs tabContent={tabContent} />
       {/* <section className="container relative py-24">

@@ -43,10 +43,7 @@ const Footer = () => {
                     SUPPORT EVERY STEP OF THE WAY
                 </h5>
                 <p className="mb-5 text-sm text-[#8C8E8F] dark:text-gray-400 sm:text-base md:text-lg lg:text-xl">
-                    Whether you need creative guidance or technical support, our teams are here to ensure a
-                    smooth, enjoyable
-                    <br className="hidden sm:inline" /> experience. From concept to customer, we're with you
-                    at every step.
+                    From placing an order to creating your perfect product,<br/> we're here to help every step of the way. Reach out anytime for support!
                 </p>
             </div>
 
@@ -72,23 +69,23 @@ const Footer = () => {
                             </button>
                         </div>
                         <div className="flex items-center justify-end mb-4 lg:mb-0">
-                            <a href="mailto:contact@merchlife.com" className="rounded-full  flex items-center justify-center w-10 h-10 lg:w-12 lg:h-12 border-gray-400 border bg-gray-700">
+                            <a href="mailto:support@merchlife.com" className="rounded-full  flex items-center justify-center w-10 h-10 lg:w-12 lg:h-12 border-gray-400 border bg-gray-700">
                                 <IoMailOpenSharp className="w-4 h-4 lg:w-5 lg:h-5" />
                             </a>
                             <div className="space-y-0.5 font-medium dark:text-white text-left ms-3">
                                 <div>Email Us!</div>
-                                <a href="mailto:contact@merchlife.com" className="text-sm text-gray-500 dark:text-gray-400 ">mailto:contact@merchlife.com</a>
+                                <a href="mailto:support@merchlife.com" className="text-sm text-gray-500 dark:text-gray-400 ">mailto:support@merchlife.com</a>
                             </div>
                         </div>
                         <div className="flex items-center justify-end mr-10">
-                            <a href="tel:+1 408-835-0739" className="rounded-full flex items-center justify-center w-10 h-10 lg:w-12 lg:h-12 border-gray-400 border bg-gray-700">
+                            <a href="tel:+1 253 376 0307" className="rounded-full flex items-center justify-center w-10 h-10 lg:w-12 lg:h-12 border-gray-400 border bg-gray-700">
                                 <PiPhoneCallDuotone className="w-4 h-4 lg:w-5 lg:h-5" />
                             </a>
                             <div className="space-y-0.5 font-medium dark:text-white text-left ms-3">
                                 <div>Call Us!</div>
-                                <a href="tel:+1 408-835-0739" className="text-sm text-gray-500 dark:text-gray-400 ">+1 408-835-0739</a>
+                                <a href="tel:+1 253 376 0307" className="text-sm text-gray-500 dark:text-gray-400 ">+1 253 376 0307</a>
                             </div>
-                        </div>
+                        </div>                        
                     </div>
 
             </div>
@@ -139,18 +136,18 @@ const Footer = () => {
                     <div className="">
                         <div className="flex flex-col items-center justify-center lg:flex-row lg:justify-between">
                             <span className="text-sm text-gray-500 ">
-                                ©<a href="https://pagedone.io/">pagedone</a>2024, All rights reserved.
+                                ©Copyright © 2024 Merchlife. All Rights Reserved.
                             </span>
                             <div className="mt-4 flex space-x-4 sm:justify-center lg:mt-0 ">
                                 <a
-                                    href="javascript:;"
+                                    href="/terms-of-use"
                                     className=" items-centerhover:bg-gray-900 flex justify-center duration-500"
                                 >
                                     Terms of Service
                                 </a>
 
                                 <a
-                                    href="javascript:;"
+                                    href="/privacy-policy"
                                     className="relative flex items-center justify-center duration-500  hover:bg-gray-900 "
                                 >
                                     Privacy Policy
