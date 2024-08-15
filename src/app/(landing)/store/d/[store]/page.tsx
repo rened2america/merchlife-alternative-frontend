@@ -18,22 +18,22 @@ const inter = Inter({ subsets: ["latin"] });
 const interProducts = Inter({ subsets: ["latin"], variable: "--font-inter" });
 import type { Metadata } from "next";
 import { Twitter } from "@/components/ui/components/icons/twitter";
-
+import { env } from "@/env";
+import apiCall from "@/utils/api";
 export const metadata: Metadata = {
   title: "2A American Freedom",
   description: "Store",
 };
-
+const BACKEND_URL = env.NEXT_PUBLIC_BACKEND_URL;
+console.log('Backendurl: ', BACKEND_URL)
 async function getArtist(artist: string) {
-  const res = await fetch(`http://localhost:4000/api/1/artist/store/${artist}/`, {
-    cache: "no-store",
-  });
-  return res.json();
+  const res = await apiCall("GET", `api/1/artist/store/${artist}/`);
+  return res;
 }
 
 async function getGropRelationByArtist(artist: string) {
-  const res = await fetch(`http://localhost:4000/api/1/product/groupRelation/${artist}`);
-  return res.json();
+  const res = await apiCall("GET", `api/1/product/groupRelation/${artist}`);
+  return res;
 }
 
 export default async function Store({ params }: { params: { store: string } }) {
