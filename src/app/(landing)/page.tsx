@@ -150,7 +150,7 @@ const HomePage = () => {
           <FeaturedProducts />
         </div>
         <div className="grid py-9">
-          <div className="text-3xl md:text-6xl font-bold w-full text-center text-black">
+          <div className="text-3xl md:text-5xl font-bold text-black p-4 md:p-12">
             CATEGORIES
           </div>
           <div className="w-full grid grid-cols-1 space-y-4 md:space-y-0 sm:grid-cols-2 md:grid-cols-4 gap-4 py-4 px-4 md:px-8 bg-white">

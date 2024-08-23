@@ -70,8 +70,8 @@ export async function ThreeItemGridStores() {
   console.log("products: ", sellers[0]?.product[0])
   return (
     <section className="text-white bg-black">
-      <div className="mb-4 p-4 text-4xl font-extrabold text-white bg-black">
-        Sellers at Merchlife
+      <div className="p-4 text-3xl md:text-5xl font-normal md:p-12">
+        SELLERS AT <b>MERCHLIFE</b>
       </div>
       <div className="mx-auto grid max-w-screen-2xl gap-4 px-4 pb-4 md:grid-cols-8 md:grid-rows-2">
         {sellers.length > 0 ? (
