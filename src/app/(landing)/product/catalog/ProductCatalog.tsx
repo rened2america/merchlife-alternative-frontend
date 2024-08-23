@@ -24,7 +24,7 @@ export default function ProductCatalog() {
   const [apiQuery, setquery] = useState("");
   const [productCount, setProductCount] = useState(0);
   const [sortBy, setSortBy] = useState("LowToHigh");
-  const [loading, setLoading] = useState(null)
+  const [loading, setLoading] = useState<boolean>(false);
   const refSearchInput = useRef<HTMLInputElement>(null)
 
   const getData = async () => {
@@ -49,12 +49,15 @@ export default function ProductCatalog() {
       }
       query += "&sort=" + sortBy;
       setquery(query)
+      setLoading(true);
       const { data, count } = await apiCall('GET', query + "&page=1&pageSize=" + itemsPerPage);
       setDisplayedReviews(data);
       setProductCount(count);
     } catch (error) {
       // Handle error
       console.error('Error:', error);
+    }finally{
+      setLoading(false);
     }
   };
   useEffect(() => {
@@ -274,14 +277,17 @@ export default function ProductCatalog() {
           </div>
 
           <div className="flex flex-wrap -mx-2 mt-8">
-            {loading ?
-              displayedReviews.map((product: any) => (
-                <ProductCard key={product?.id} product={product} color={selectedColor} />
-              ))
-              :
+            { loading ?            
               <div className="flex items-center m-auto p-20">
                 <BeatLoader color="white" />
               </div>
+              :
+              (
+                displayedReviews &&
+                displayedReviews.map((product: any) => (
+                  <ProductCard key={product?.id} product={product} color={selectedColor} />
+                ))
+              )
             }
 
             {/* <CardProduct
