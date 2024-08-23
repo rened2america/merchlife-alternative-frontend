@@ -18,6 +18,7 @@ import { CartCount } from "./cart-count";
 const routes = [
   { name: "Home", href: "/" },
   { name: "Stores", href: "/stores" },
+  { name: "Product Catalog", href: "/product/catalog" },
   { name: "Categories", href: "/categories" },
   { name: "How it works", href: "/how-it-works" },
 
