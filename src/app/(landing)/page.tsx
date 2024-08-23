@@ -117,33 +117,9 @@ const HomePage = () => {
         className={`bg-white ${raleway.className}`}
       >
 
-        <div className="grid w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-4 bg-black md:h-auto lg:h-[800px]">
-          <div className="grid md:col-span-2 md:pt-0 pt-20">
-            <div className="text-white grid justify-center items-end h-full">
-              <div>
-                <div className="text-4xl md:text-5xl font-normal">CREATE</div>
-                <div className="text-6xl md:text-7xl font-black">SHARE</div>
-                <div className="text-4xl md:text-5xl font-normal">EARN</div>
-              </div>
-            </div>
-            <div className="grid grid-cols-1 md:mt-0 md:grid-cols-2 md:row-span-1 md:self-end md:p-0  p-5 md:gap-y-0  gap-y-3">
-              <Image width={424} height={364} src={"/classicLogoGreen_1.png"} alt="back black" className="m-auto" />
-              <Image width={424} height={364} src={"/classicLogoSand_1.png"} alt="back black" className="m-auto" />
-            </div>
-          </div>
-          <div className="bg-white grid md:col-span-1">
-            <div className="grid justify-center content-center h-full p-4 text-center">
-              <div className="text-black text-2xl md:text-3xl lg:text-4xl font-bold">6 PMERS BLACK</div>
-              <div className="text-black text-center text-2xl md:text-3xl lg:text-4xl font-bold">T-SHIRT</div>
-              <div className="text-black text-center text-2xl md:text-3xl lg:text-4xl py-2 md:py-4 font-medium">$24.5</div>
-              <Button className="py-6 bg-black rounded-lg text-white" variant={"ghost"}>SHOP NOW &nbsp;<NextArrow /></Button>
-            </div>
-            <div className="grid justify-center content-end">
-              <Image width={424} height={364} src={"/product_two_1.png"} alt="back black" />
-            </div>
-          </div>
-          <div className="grid justify-center content-end md:pt-0  pt-5">
-            <Image width={424} height={364} src={"/2AAfWhite_1.png"} alt="back black" />
+        <div style={{ filter: "grayscale(50%)", }}>
+          <div className="relative overflow-hidden bg-cover bg-no-repeat ">
+            <img src="/above-the-fold.webp" alt="home" />
           </div>
         </div>
         <div className="h-[60px] w-full bg-[#E6E6E6] flex items-center text-black font-light gap-4 overflow-hidden relative">
@@ -179,7 +155,7 @@ const HomePage = () => {
           </div>
           <div className="w-full grid grid-cols-1 space-y-4 md:space-y-0 sm:grid-cols-2 md:grid-cols-4 gap-4 py-4 px-4 md:px-8 bg-white">
             {categories.map((category) => (
-               <Link key={category.id} href={"/stores?category="+category.name} className="relative">
+              <Link key={category.id} href={"/stores?category=" + category.name} className="relative">
                 <Image className="w-full" src={category.image} alt={category.name} width={500} height={500} />
                 <Button className="absolute bg-black text-white rounded-none py-4 px-10 md:py-6 md:px-20 bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2" variant={"ghost"}>
                   {category.name}
