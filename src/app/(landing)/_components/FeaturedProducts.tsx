@@ -27,11 +27,11 @@ const FeaturedProducts = async () => {
         <div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
                 {relevantProducts.map((product) => (
-                    <Link key={product.id} href={`/product/${product.artist?.name}?productId=${product.id}&variant=${product.design[0]?.variant}&type=${product.types[0]?.value}`} className="border border-black flex flex-col items-stretch hover:transition hover:scale-110 duration-300">
+                    <Link key={product.id} href={`/product/${product.artist?.name}?productId=${product.id}&variant=${product.design[0]?.variant}&type=${product.types[0]?.value}`} className="border border-black flex flex-col items-stretch group">
                         <div className="w-full h-64 overflow-hidden flex items-center justify-center">
                             {product.design && product.design[0] ? (
                                 <Image
-                                    className="object-cover h-full w-80"
+                                    className="object-cover h-full w-80 hover:transition-all group-hover:scale-110 duration-500"
                                     src={product.design[0].url}
                                     alt={product.title}
                                     width={320}
