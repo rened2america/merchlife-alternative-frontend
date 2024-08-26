@@ -47,9 +47,10 @@ const FeaturedProducts = async () => {
                       alt={product.title}
                       label={{
                         title: product.title,
-                        amount: product.price,                        
+                        amount: product.price.toString(),
+                        currencyCode: "USD"                        
                       }}
-                      src={product.design[0].url}
+                      src={product.design[0]?.url || ""}
                       fill
                       sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"
                     />
