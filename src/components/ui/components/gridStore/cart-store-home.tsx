@@ -20,7 +20,6 @@ export const CartStoreHome = ({
         display: "grid",
         gridTemplateRows: "auto",
         gap: "16px",
-        borderRadius: "16px",
         border: "1px solid hsla(0,0%,100%,.07)",
         background: "hsla(0,0%,100%,.1)",
         width: `${size === "half" ? "300px" : "600px"}`,
@@ -31,7 +30,6 @@ export const CartStoreHome = ({
         style={{
           position: "relative",
           overflow: "hidden",
-          borderRadius: "8px",
           height: `${size === "half" ? "100px" : "300px"}`,
         }}
         href={urlRedirect}
@@ -53,9 +51,6 @@ export const CartStoreHome = ({
         >
           {size === "half" ? (
             <Image
-              style={{
-                borderRadius: "16px",
-              }}
               width="1000"
               height="170"
               src={urlImagen}
@@ -63,9 +58,6 @@ export const CartStoreHome = ({
             />
           ) : (
             <Image
-              style={{
-                borderRadius: "16px",
-              }}
               width="1000"
               height="300"
               src={urlImagen}
@@ -95,7 +87,6 @@ export const CartStoreHome = ({
                 style={{
                   // minHeight: "170px",
                   backgroundColor: "#e5e5e5",
-                  borderRadius: "16px",
                 }}
               />
             ) : (
@@ -109,7 +100,6 @@ export const CartStoreHome = ({
                 style={{
                   // minHeight: "340",
                   backgroundColor: "#e5e5e5",
-                  borderRadius: "16px",
 
                 }}
               />
