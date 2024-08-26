@@ -138,7 +138,9 @@ export default function One() {
         });
         console.log('productArray: ', productArray)
         setProducts(productArray); // Actualiza el estado con los datos recibidos del endpoint
-        tabContent[0].content = resData.product[0].description
+        if (tabContent[0]) {
+          tabContent[0].content = resData?.product?.[0]?.description ?? '';
+        }
       } catch (error) {
         console.error("Error fetching dataaa:", error);
       }

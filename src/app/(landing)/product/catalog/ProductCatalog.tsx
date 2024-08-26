@@ -6,7 +6,8 @@ import ProductCard from "../../_components/common/ProductCard";
 import Pegination from "../../_components/Pegination";
 import apiCall from "@/utils/api";
 import { useSearchParams } from "next/navigation";
-import BeatLoader from "react-spinners/BeatLoader";
+import BeatLoader from "react-spinners/BeatLoader";;
+import { ArrowRightIcon } from "@radix-ui/react-icons";
 const raleway = Raleway({ subsets: ["latin"] });
 
 export default function ProductCatalog() {
@@ -196,6 +197,9 @@ export default function ProductCatalog() {
                 <path stroke="#000" strokeWidth={1.5} d="M6.45 12.5c1.04 1.167 4.054 2.8 7.795 0" />
               </svg>
             </button>
+          </div>
+          <div className="flex items-center bg-gray-100 text-black p-2 mt-6 gap-2 py-4 hover:bg-gray-300">
+              <a className="flex items-center gap-2" href="../stores">Visit Store Catalog <ArrowRightIcon/></a>
           </div>
           <div className="p-4 bg-gray-100 mt-6">
             <h2 className="font-bold text-lg mb-2 text-black">CATEGORIES</h2>

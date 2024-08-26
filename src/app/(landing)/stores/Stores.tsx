@@ -7,6 +7,7 @@ import apiCall from "@/utils/api";
 import { useSearchParams } from "next/navigation";
 import StoreCard from "../_components/common/StoreCard";
 import BeatLoader from "react-spinners/BeatLoader";
+import { ArrowRightIcon } from "@radix-ui/react-icons";
 const raleway = Raleway({ subsets: ["latin"] });
 
 export default function Stores() {
@@ -79,6 +80,9 @@ export default function Stores() {
             </div>
           </div>
 
+          <div className="flex items-center bg-gray-100 text-black mt-6 gap-2 p-4 w-fit hover:bg-gray-300">
+              <a className="flex items-center gap-2" href="../product/catalog">Visit Product Catalog <ArrowRightIcon/></a>
+          </div>
           <div className="flex flex-wrap -mx-2 mt-8">
             {artists &&
               (loading ?
