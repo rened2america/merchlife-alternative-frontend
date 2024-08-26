@@ -17,11 +17,7 @@ const raleway = Raleway({ subsets: ["latin"] });
 const tabContent = [
   {
     title: 'Description',
-    content: `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vitae tincidunt augue, at porta sapien. Suspendisse ac finibus tellus, non dapibus nibh. Nulla aliquam, odio ultricies aliquet pretium, lectus velit lacinia diam, dignissim egestas tortor nisi sagittis nunc. Sed vehicula neque tortor, eget finibus arcu molestie nec. Sed rutrum nisi porta turpis vehicula, facilisis finibus sapien tincidunt. Pellentesque sollicitudin purus quis dolor finibus congue.</p><br/>
-
-    <p>Sed a velit lectus. In hac habitasse platea dictumst. Pellentesque volutpat enim nec nibh vulputate lacinia. Donec tempor, sem id placerat faucibus, sapien urna convallis leo, nec bibendum sapien diam mattis nulla. Mauris auctor velit id dui lobortis rhoncus. Praesent eget mattis neque. Sed sollicitudin porttitor nisl. Nullam at nunc vulputate, sollicitudin ipsum sit amet, venenatis sapien. Maecenas imperdiet sem ut ante varius, a aliquet mauris tristique.</p> <br/>
-
-    <p>Mauris at elementum elit, eget feugiat elit. Pellentesque vel porta velit, quis tristique justo. In lobortis vehicula odio, non pretium felis. Donec tempus justo rhoncus augue malesuada, et aliquet nisi aliquet. Proin vulputate odio tortor, et pulvinar erat interdum quis. Morbi finibus fringilla quam vel finibus. Fusce vel blandit lectus, et tincidunt sapien. Sed facilisis erat in orci volutpat sodales.</p> <br/>`,
+    content: ``,
   },
 
   {
@@ -142,7 +138,7 @@ export default function One() {
         });
         console.log('productArray: ', productArray)
         setProducts(productArray); // Actualiza el estado con los datos recibidos del endpoint
-
+        tabContent[0].content = resData.product[0].description
       } catch (error) {
         console.error("Error fetching dataaa:", error);
       }
