@@ -147,7 +147,9 @@ const HomePage = () => {
               </button>
             </div> */}
           </div>
-          <FeaturedProducts />
+          <Suspense>
+            <FeaturedProducts />
+          </Suspense>
         </div>
         <div className="grid py-9">
           <div className="text-3xl md:text-5xl font-bold text-black p-4 md:p-12">

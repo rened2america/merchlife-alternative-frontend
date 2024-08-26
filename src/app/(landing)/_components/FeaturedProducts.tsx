@@ -1,6 +1,8 @@
 import Image from "next/image";
 import apiCall from "@/utils/api";
 import Link from "next/link";
+import "./scroll.css"
+import { GridTileImage } from "@/components/ui/components/grid/tile";
 
 type Product = {
     id: string;
@@ -17,47 +19,47 @@ const FeaturedProducts = async () => {
     try {
         let response = await apiCall("GET", "api/1/product/all");
         if (response?.products?.length > 0) {
-            relevantProducts = response.products.slice(0, 4);
+            relevantProducts = response.products.slice(0, 10);
         }
     } catch (err) {
         console.error(err);
     }
+    if (!relevantProducts?.length) return null;
+
+    relevantProducts = [...relevantProducts, ...relevantProducts, ...relevantProducts];
 
     return (
-        <div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
-                {relevantProducts.map((product) => (
-                    <Link key={product.id} href={`/product/${product.artist?.name}?productId=${product.id}&variant=${product.design[0]?.variant}&type=${product.types[0]?.value}`} className="border border-black flex flex-col items-stretch group">
-                        <div className="w-full h-64 overflow-hidden flex items-center justify-center">
-                            {product.design && product.design[0] ? (
-                                <Image
-                                    className="object-cover h-full w-80 hover:transition-all group-hover:scale-110 duration-500"
-                                    src={product.design[0].url}
-                                    alt={product.title}
-                                    width={320}
-                                    height={320}
-                                    quality={100}
-                                />
-                            ) : (
-                                <div className="flex justify-center items-center w-full h-full bg-gray-200">
-                                    Image not available
-                                </div>
-                            )}
-                        </div>
-                        <div className="bg-black text-white p-4 w-full flex-grow flex flex-col justify-between">
-                            <div>
-                                <h5 className="text-2xl md:text-3xl font-light">{product.title}</h5>
-                            </div>
-                            <div>
-                                <p className="mt-2 md:mt-4">${product.price}</p>
-                            </div>
-                        </div>
-                    </Link>
-                ))}
-            </div>
-        </div>
+            <>
+            <div className=" w-full overflow-x-auto pb-6 pt-1">
+            <ul className="flex animate-carousel gap-4">
+              {relevantProducts.map((product) => (
+                <li
+                  key={product.id}
+                  className="relative aspect-square h-[30vh] max-h-[275px] w-2/3 max-w-[475px] flex-none md:w-1/3"
+                >
+                  <Link
+                    key={product.id}
+                    href={`/product/${product.artist?.name}?productId=${product.id}&variant=${product.design[0]?.variant}&type=${product.types[0]?.value}`}
+                    className="relative h-full w-full"
+                  >
+                    <GridTileImage
+                      key={product.id}
+                      alt={product.title}
+                      label={{
+                        title: product.title,
+                        amount: product.price,                        
+                      }}
+                      src={product.design[0].url}
+                      fill
+                      sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"
+                    />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          </>
     );
 };
 
 export default FeaturedProducts;
-
