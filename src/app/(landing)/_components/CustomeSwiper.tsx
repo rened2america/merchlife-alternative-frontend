@@ -33,11 +33,13 @@ export default function CustomSwiper({ images, selectedValue }: AppProps) {
                     </SwiperSlide>
                 ))}
             </Swiper>
+            <p className='text-xl font-bold'>SELECT COLOR: </p>
+
             <Swiper
                 onSwiper={setThumbsSwiper}
                 loop={true}
                 spaceBetween={10}
-                slidesPerView={4}
+                slidesPerView={5}
                 freeMode={true}
                 watchSlidesProgress={true}
                 modules={[FreeMode, Navigation, Thumbs]}
