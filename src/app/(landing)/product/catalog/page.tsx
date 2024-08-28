@@ -11,7 +11,7 @@ export default function productCatalog(){
       ];
     return(
         <>
-        <SubHeaderCard title="PRODUCT CATALOG" links={store} />
+        {/* <SubHeaderCard title="PRODUCT CATALOG" links={store} /> */}
         <ProductCatalog />
         </>
     )

@@ -10,7 +10,7 @@ export default function SellersPage() {
 
   return (
     <>
-      <SubHeaderCard title="STORE" links={store} />
+      {/* <SubHeaderCard title="STORE" links={store} /> */}
       <Stores />
     </>
   )

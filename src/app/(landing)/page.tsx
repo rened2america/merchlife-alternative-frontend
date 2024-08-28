@@ -92,9 +92,9 @@ const features = [
 ];
 
 const categories = [
-  { id: 1, name: "Sweatshirt", image: "/category_sweatshirt.png" },
+  { id: 1, name: "Sweatshirts", image: "/category_sweatshirt.png" },
   { id: 2, name: "Mug", image: "/category_mug.png" },
-  { id: 3, name: "Shirt", image: "/category_tshirt.png" },
+  { id: 3, name: "T-Shirts", image: "/category_tshirt.png" },
   { id: 3, name: "Hoodie", image: "/category_hoodie.png" },
 ];
 
@@ -152,9 +152,6 @@ const HomePage = () => {
           </Suspense>
         </div>
         <div className="grid py-9">
-          <div className="text-3xl md:text-5xl font-bold text-black p-4 md:p-12">
-            CATEGORIES
-          </div>
           <div className="w-full grid grid-cols-1 space-y-4 md:space-y-0 sm:grid-cols-2 md:grid-cols-4 gap-4 py-4 px-4 md:px-8 bg-white">
             {categories.map((category) => (
               <Link key={category.id} href={"/stores?category=" + category.name} className="relative">
