@@ -92,10 +92,10 @@ const features = [
 ];
 
 const categories = [
-  { id: 1, name: "Sweatshirts", image: "/category_sweatshirt.png" },
-  { id: 2, name: "Mug", image: "/category_mug.png" },
-  { id: 3, name: "T-Shirts", image: "/category_tshirt.png" },
-  { id: 3, name: "Hoodie", image: "/category_hoodie.png" },
+  { id: 1, name: "Sweatshirts", image: "/category_sweatshirt_no_bg.png" },
+  { id: 2, name: "Mug", image: "/category_mug_no_bg.png" },
+  { id: 3, name: "T-Shirts", image: "/category_tshirt_no_bg.png" },
+  { id: 3, name: "Hoodie", image: "/category_hoodie_no_bg.png" },
 ];
 
 const products = [
@@ -154,8 +154,10 @@ const HomePage = () => {
         <div className="grid py-9">
           <div className="w-full grid grid-cols-1 space-y-4 md:space-y-0 sm:grid-cols-2 md:grid-cols-4 gap-4 py-4 px-4 md:px-8 bg-white">
             {categories.map((category) => (
-              <Link key={category.id} href={"/stores?category=" + category.name} className="relative">
-                <Image className="w-full" src={category.image} alt={category.name} width={500} height={500} />
+              <Link key={category.id} href={"/stores?category=" + category.name} className="relative bg-[#E6E6E6] group">
+                <div className="overflow-hidden">
+                  <Image className="w-full object-cover h-full hover:transition-all group-hover:scale-110 duration-500" src={category.image} alt={category.name} width={500} height={500} />
+                </div>
                 <Button className="absolute bg-black text-white rounded-none py-4 px-10 md:py-6 md:px-20 bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2" variant={"ghost"}>
                   {category.name}
                 </Button>
