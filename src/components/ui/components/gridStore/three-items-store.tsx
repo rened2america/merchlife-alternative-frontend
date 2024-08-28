@@ -56,26 +56,26 @@ interface SimplifiedArtist {
 }
 
 export async function ThreeItemGridStores() {
-  let sellers: SimplifiedArtist[] = [];
+  let stores: SimplifiedArtist[] = [];
 
   try {
     const response = await apiCall("GET", "api/1/artist/randomArtists");
 
     // Simplify the response to the required structure
-    sellers = response.artist;
+    stores = response.artist;
   } catch (err) {
     console.error(err);
   }
-  console.log("sellers: ", sellers)
-  console.log("products: ", sellers[0]?.product[0])
+  console.log("stores: ", stores)
+  console.log("products: ", stores[0]?.product[0])
   return (
     <section className="text-white bg-black">
       <div className="p-4 text-3xl md:text-5xl font-normal md:p-12">
-        SELLERS AT <b>MERCHLIFE</b>
+        STORES AT <b>MERCHLIFE</b>
       </div>
       <div className="mx-auto grid max-w-screen-2xl gap-4 px-4 pb-4 md:grid-cols-8 md:grid-rows-2">
-        {sellers.length > 0 ? (
-          sellers.map((seller, index) => (
+        {stores.length > 0 ? (
+          stores.map((seller, index) => (
             <ThreeItemGridItemStore
               key={seller.id}
               size={index == 0 ? "full" : "half"}

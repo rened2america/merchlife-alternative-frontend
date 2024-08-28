@@ -16,16 +16,16 @@ type Seller = {
     product: Product[];
 };
 
-const SellersAtMerchlife = () => {
-    const [sellers, setSellers] = useState<Seller[]>([]);
+const StoresAtMerchlife = () => {
+    const [stores, setStores] = useState<Seller[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
 
-    const fetchSellers = useCallback(async () => {
+    const fetchStores = useCallback(async () => {
         try {
             let response = await apiCall("GET", "api/1/artist/all");
             // Sellers = Stores = Artists
-            setSellers(response.artist);
+            setStores(response.artist);
         } catch (err) {
             setError("Failed to fetch products.");
             console.error(err);
@@ -35,8 +35,8 @@ const SellersAtMerchlife = () => {
     }, []);
 
     useEffect(() => {
-        fetchSellers();
-    }, [fetchSellers]);
+        fetchStores();
+    }, [fetchStores]);
 
     if (error) {
         return <div>{error}</div>;
@@ -46,7 +46,7 @@ const SellersAtMerchlife = () => {
         <div className="grid p-4 md:p-12 bg-black text-white">
             <div className="flex flex-col md:flex-row items-center justify-between pb-4 md:pb-12">
                 <h2 className="font-normal text-3xl md:text-5xl">
-                    SELLERS AT <b>MERCHLIFE</b>
+                    STORES AT <b>MERCHLIFE</b>
                 </h2>
             </div>
             <div>
@@ -56,7 +56,7 @@ const SellersAtMerchlife = () => {
                     </div>
                 ) : (
                     <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 md:gap-7">
-                        {sellers.map((seller, index) => (
+                        {stores.map((seller, index) => (
                             <div key={index} className="p-4 border border-zinc-800 rounded-md bg-zinc-900">
                                 <Image
                                     className="w-full h-[300px] object-cover"
@@ -89,4 +89,4 @@ const SellersAtMerchlife = () => {
     );
 };
 
-export default SellersAtMerchlife;
+export default StoresAtMerchlife;

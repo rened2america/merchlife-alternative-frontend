@@ -1,7 +1,7 @@
 import SubHeaderCard from "../_components/SubHeaderCard";
 import Stores from "./Stores";
 
-export default function SellersPage() {
+export default function StoresPage() {
 
   const store = [
     { text: 'HOME', href: '/' },

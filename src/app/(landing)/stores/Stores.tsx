@@ -62,7 +62,7 @@ export default function Stores() {
         <div className="flex-1 p-4 mx-24">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <span className="uppercase font-light text-3xl md:text-5xl">
-              Sellers at <strong className="font-bold text-3xl md:text-5xl">Merchlife</strong>
+              Stores at <strong className="font-bold text-3xl md:text-5xl">Merchlife</strong>
             </span>
             <div className="flex items-center bg-gray-100 p-2">
               <input

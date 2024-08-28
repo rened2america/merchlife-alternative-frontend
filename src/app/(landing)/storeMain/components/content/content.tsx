@@ -25,7 +25,7 @@ export const Content = () => {
             fontSize: "32px",
           }}
         >
-          SELLERS AT <b>MERCHLIFE</b>
+          STORES AT <b>MERCHLIFE</b>
         </h1>
         <div
           style={{
