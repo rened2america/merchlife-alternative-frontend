@@ -15,23 +15,14 @@ export const CartStoreHome = ({
 }) => {
   return (
     <div
-      style={{
-        padding: "20px",
-        display: "grid",
-        gridTemplateRows: "auto",
-        gap: "16px",
-        border: "1px solid hsla(0,0%,100%,.07)",
-        background: "hsla(0,0%,100%,.1)",
-        width: `${size === "half" ? "300px" : "600px"}`,
-        height: `${size === "half" ? "300px" : "550px"}`,
-      }} 
+      className={`p-5 grid border border-opacity-20 bg-opacity-10 bg-white  ${size === "half"
+        ? "w-full md:w-[300px] h-72"
+        : " md:w-[600px] md:h-[630px] xl:h-[650px] lg:w-[600px] lg:h-[650px] xl:w[600px] "
+        }`}
     >
       <Link
-        style={{
-          position: "relative",
-          overflow: "hidden",
-          height: `${size === "half" ? "100px" : "300px"}`,
-        }}
+        className={`relative overflow-hidden ${size === "half" ? "h-24" : "h-72"
+          }`}
         href={urlRedirect}
       >
         <figure
@@ -49,21 +40,16 @@ export const CartStoreHome = ({
               }
           }
         >
-          {size === "half" ? (
-            <Image
-              width="1000"
-              height="170"
-              src={urlImagen}
-              alt="nose"
-            />
-          ) : (
-            <Image
-              width="1000"
-              height="300"
-              src={urlImagen}
-              alt="nose"
-            />
-          )}
+
+          <Image
+            className="w-full h-full"
+            width="1000"
+            height={size === "half" ? 170 : 300}
+            layout="responsive"
+            src={urlImagen}
+            alt="nose"
+          />
+
         </figure>
       </Link>
       <div

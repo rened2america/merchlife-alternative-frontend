@@ -22,7 +22,7 @@ function ThreeItemGridItemStore({
       }
     >
       <Link
-        className="relative block aspect-square h-full w-full"
+        className="relative block aspect-square w-full"
         href={urlRedirect}
       >
         <CartStoreHome
@@ -73,7 +73,7 @@ export async function ThreeItemGridStores() {
       <div className="p-4 text-3xl md:text-5xl font-normal md:p-12">
         STORES AT <b>MERCHLIFE</b>
       </div>
-      <div className="mx-auto grid max-w-screen-2xl gap-4 px-4 pb-4 md:grid-cols-8 md:grid-rows-2">
+      <div className="mx-auto grid max-w-screen-2xl gap-4 px-4 pb-4 md:grid-cols-4 md:grid-rows-2 xl:grid-cols-8 lg:grid-cols-6 sm:grid-cols-1">
         {stores.length > 0 ? (
           stores.map((seller, index) => (
             <ThreeItemGridItemStore
