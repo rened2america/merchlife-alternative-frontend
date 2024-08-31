@@ -18,7 +18,7 @@ const Tabs: React.FC<TabsProps> = ({ tabContent }) => {
 
     return (
         <div className="m-8 border border-gray-200 bg-white p-6 dark:border-0 dark:bg-gray-900 md:space-x-6 lg:flex-row">
-            <div className="m-6 flex flex-col md:flex-row md:space-x-2 md:space-y-0 items-center justify-center">
+            <div className="m-6 flex flex-col md:flex-row md:space-x-2 md:space-y-0 md:items-center justify-center">
                 {tabContent.map((tab, index) => (
                     <button
                         key={index}

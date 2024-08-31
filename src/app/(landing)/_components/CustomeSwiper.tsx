@@ -25,7 +25,7 @@ export default function CustomSwiper({ images, selectedValue }: AppProps) {
                 navigation={false}
                 thumbs={{ swiper: thumbsSwiper }}
                 modules={[FreeMode, Navigation, Thumbs]}
-                className="mySwiper2 w-[484px]"
+                className="mySwiper2 w-auto md:w-[484px]"
             >
                 {images.map((image, index) => (
                     <SwiperSlide key={index}>
@@ -43,7 +43,7 @@ export default function CustomSwiper({ images, selectedValue }: AppProps) {
                 freeMode={true}
                 watchSlidesProgress={true}
                 modules={[FreeMode, Navigation, Thumbs]}
-                className="mySwiper mt-5  w-[484px]"
+                className="mySwiper mt-2  w-auto md:w-[484px]"
             >
                 {images.map((image, index) => (
                     <SwiperSlide key={index} className='w-[155px] h-[155px]'>

@@ -1,7 +1,6 @@
 "use client";
 import { Inter } from "next/font/google";
 import { useEffect, useState } from "react";
-import { Radio, RadioGroup } from "@headlessui/react";
 import { Raleway } from "next/font/google";
 import Breadcrumb from "../../_components/Breadcrumb";
 import QuantityCounter from "../../_components/QuantityCounter";
@@ -19,7 +18,6 @@ const tabContent = [
     title: 'Description',
     content: ``,
   },
-
   {
     title: 'Shipping Policy',
     content: `<p>Orders are processed within one business day (Monday to Friday, excluding holidays), and delivery takes 2-4 days. You'll receive a tracking number to monitor your order.
@@ -284,12 +282,12 @@ export default function One() {
     <>
       <Breadcrumb items={breadcrumbItems} />
       <div className={`container mx-auto ${raleway.className}`}>
-        <div className="flex flex-row md:flex-row justify-center">
-          <div className="p-4 w-full md:w-auto mb-4 md:mb-0 md:mr-4 md:flex-shrink-0 sm:w-full">
+        <div className="flex flex-row  flex-wrap md:flex-row justify-center">
+          <div className="p-0 md:p-4 w-full md:w-auto mb-4 md:mb-0 md:flex-shrink-0 sm:w-full">
             <CustomSwiper images={images} selectedValue={setSelectedColor} />
           </div>
-          <div className="p-4 w-full md:w-auto lg:w-1/2">
-            <form onSubmit={(e) => handleSubmit(e)} className="p-4">
+          <div className="mt-6 p-0 md:p-4 w-full md:w-auto lg:w-1/2">
+            <form onSubmit={(e) => handleSubmit(e)} className="p-0 md:p-4">
 
               {/* <div className="flex items-center">
                 {[...Array(5)].map((_, index:any) => (
@@ -310,7 +308,7 @@ export default function One() {
                 &nbsp; &nbsp;
                 <p className="text-xl  text-gray-400">Lorem ipsum dolor sit amet</p>
               </div> */}
-              <p className="py-4 text-5xl font-bold">{products.length > 0 &&
+              <p className="py-4 text-3xl lg:text-5xl font-bold">{products.length > 0 &&
                 `${products[0]?.product.title} ${products[0]?.product?.type}`}</p>
               <p className="border-b py-2 text-2xl font-semibold text-[#636363]">${products.length > 0 && products[0]?.product.price}</p>
 
@@ -319,7 +317,7 @@ export default function One() {
                   SIZE : <span className="font-normal text-gray-400">{selectedSize}</span>
                 </p>
 
-                <div className="inline-flex gap-3 rounded-md py-4" role="group">
+                <div className="inline-flex flex-wrap gap-3 rounded-md py-4" role="group">
                   {sizeOptions.map((size, index) => (
                     <button
                       key={index}
@@ -341,7 +339,7 @@ export default function One() {
                     <button
                       onClick={() => { }}
                       type="submit"
-                      className="mb-2 border-gray-200 bg-[#121212] px-5 py-2.5 text-sm font-medium text-[#F5F5F5]  md:mb-0 lg:h-[54px] lg:w-[290px]"
+                      className=" border-gray-200 bg-[#121212] px-4 py-2.5 text-sm font-medium text-[#F5F5F5]  md:mb-0 lg:h-[54px] lg:w-[290px]"
                     >
                       ADD TO CART
                     </button>
