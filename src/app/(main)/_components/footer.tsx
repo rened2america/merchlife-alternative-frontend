@@ -37,7 +37,7 @@ import { PiPhoneCallDuotone } from "react-icons/pi";
 const Footer = () => {
     return (
         <>
-            <div className="p-4 md:p-28 pb-0 bg-black mt-28 text-white">
+            <div className="p-4 md:px-28 md:pt-28 pb-0 bg-black mt-28 text-white">
                 <div className="mb-9 mt-[-90px] md:mt-[-150px] lg:mt-[-220px] w-full border border-gray-200 bg-gray-200 text-center shadow dark:border-0 dark:bg-gray-900 sm:p-8">
                     <h5 className="p-4 font-sans text-xl text-gray-900 dark:text-white sm:text-2xl md:text-3xl lg:text-6xl">
                         SUPPORT EVERY STEP OF THE WAY

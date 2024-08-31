@@ -11,6 +11,7 @@ import { useParams, useRouter, useSearchParams } from "next/navigation";
 import Pegination from '../../_components/Pegination';
 import apiCall from "@/utils/api";
 import useStore from "@/state/store";
+import Loading from "@/app/loading";
 
 const raleway = Raleway({ subsets: ["latin"] });
 const tabContent = [
@@ -54,6 +55,7 @@ interface productsState {
 }
 
 export default function One() {
+  const [loading, setLoading] = useState(true)
   const [selected, setSelected] = useState(["s"]);
   const [quantity, setQuantity] = useState(1);
   const [selectedStars, setSelectedStars] = useState<any>([]);
@@ -106,6 +108,7 @@ export default function One() {
     // Función para obtener los datos del endpoint
     const fetchData = async () => {
       try {
+        setLoading(true)
         const productId = searchParams.get("productId");
         const variant = searchParams.get("variant");
         const type = searchParams.get("type");
@@ -141,6 +144,8 @@ export default function One() {
         }
       } catch (error) {
         console.error("Error fetching dataaa:", error);
+      }finally{
+        setLoading(false)
       }
     };
 
@@ -278,7 +283,8 @@ export default function One() {
   }
   // const colorList = products.map((product)=>product.variant).filter((value, index, self) =>
   //   self.indexOf(value) === index)
-  return (
+  return loading ? (<Loading />) :  
+   (
     <>
       <Breadcrumb items={breadcrumbItems} />
       <div className={`container mx-auto ${raleway.className}`}>
