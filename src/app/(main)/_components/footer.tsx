@@ -33,8 +33,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { IoMailOpenSharp } from "react-icons/io5";
 import { PiPhoneCallDuotone } from "react-icons/pi";
+import { env } from "@/env";
 
 const Footer = () => {
+    const dashboardUrl = env.NEXT_PUBLIC_DASHBOARD_URL!;
     return (
         <>
             <div className="p-4 md:px-28 md:pt-28 pb-0 bg-black mt-28 text-white">
@@ -117,6 +119,13 @@ const Footer = () => {
                                     <a href="/how-it-works" className="text-white hover:text-gray-400">
                                         How it works
                                     </a>
+                                </li>
+                                <li className="">                                
+                                    <Link
+                                        href={dashboardUrl}
+                                        className="text-white hover:text-gray-400">
+                                        Sell on Merchlife
+                                    </Link>
                                 </li>
                                 <li>
                                     <a href="/about" className="text-white hover:text-gray-400">
