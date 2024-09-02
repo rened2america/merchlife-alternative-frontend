@@ -10,7 +10,7 @@ export const CartCount = () => {
   });
   return (
     <Link
-      className="p-1.5 bg-[#F3F3F3] relative inline-flex items-center text-sm font-medium text-center text-white rounded-lg"
+      className="p-1.5 bg-[#F3F3F3] relative inline-flex items-center text-sm font-medium text-center text-white "
       href="/cart"
     >
         <Basket />

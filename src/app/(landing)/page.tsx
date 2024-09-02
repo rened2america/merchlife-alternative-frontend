@@ -2,7 +2,7 @@ import Link from "next/link";
 import { type Metadata } from "next";
 import { PlusIcon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
+import { ArrowRightIcon } from "@radix-ui/react-icons";
 import { CopyToClipboard } from "./_components/copy-to-clipboard";
 import {
   Drizzle,
@@ -28,6 +28,9 @@ import { Raleway } from "next/font/google";
 import { NextArrow } from "@/components/ui/components/icons/NextArrow";
 import { CirclePre } from "@/components/ui/components/icons/CirclePre";
 import { CircleNext } from "@/components/ui/components/icons/CircleNext";
+
+import { env } from "@/env";
+
 
 import FeaturedProducts from "@/app/(landing)/_components/FeaturedProducts"
 
@@ -106,6 +109,7 @@ const products = [
 
 ];
 
+const dashboardUrl = env.NEXT_PUBLIC_DASHBOARD_URL!;
 
 
 const HomePage = () => {
@@ -118,8 +122,14 @@ const HomePage = () => {
       >
 
         <div style={{ filter: "grayscale(50%)", }}>
-          <div className="relative overflow-hidden bg-cover bg-no-repeat ">
-            <img src="/above-the-fold.webp" alt="home" />
+          <div className="relative overflow-hidden gap-2 bg-cover bg-no-repeat">
+            <img src="/above-the-fold.webp" alt="home" className="w-full h-auto" />
+            <Link
+              href={dashboardUrl}
+              className="btn absolute bg-black text-white text-xs font-medium p-3 md:p-4 md:text-3xl flex justify-center items-center hover:bg-gray-800 transition-all delay-150"
+              style={{ "top": "68%", "left": "5.2%" }}>
+              Get your own Store <ArrowRightIcon className="ms-2" />
+            </Link>
           </div>
         </div>
         <div className="h-[60px] w-full bg-[#E6E6E6] flex items-center text-black font-light gap-4 overflow-hidden relative">

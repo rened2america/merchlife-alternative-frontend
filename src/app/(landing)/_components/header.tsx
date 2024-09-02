@@ -13,6 +13,7 @@ import Image from "next/image";
 import { validateRequest } from "@/lib/auth/validate-request";
 import { UserDropdown } from "@/app/(main)/_components/user-dropdown";
 import { CartCount } from "./cart-count";
+import { env } from "@/env";
 // import useStore from "@/app/state/store";
 
 const routes = [
@@ -24,6 +25,8 @@ const routes = [
 
   // { name: "about", href: '/about' }
 ] as const;
+
+const dashboardUrl = env.NEXT_PUBLIC_DASHBOARD_URL!;
 
 export const Header = async () => {
   const { user } = await validateRequest();
@@ -74,6 +77,11 @@ export const Header = async () => {
           }}
           className="ml-auto"
         >
+            <Link
+              href={dashboardUrl}
+              className="btn bg-white text-black gap-2 text-sm font-medium p-2 flex justify-center items-center hover:bg-gray-200 transition-all delay-150">
+              Sell on Merchlife
+            </Link>
 
           <div className="relative flex  flex-col justify-center overflow-hidden bg-gradient-to-br">
             <div className="relative bg-[#F3F3F3] shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-lg">
