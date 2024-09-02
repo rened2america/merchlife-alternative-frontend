@@ -2,9 +2,9 @@
 
 const ProductCard = ({ product,color }) => (
   <div className="mb-4 w-full px-2 sm:w-1/3 ">
-    <div className="bg-gray-200 p-4 h-full flex flex-col">
+    <div className="bg-gray-200 p-4 h-full flex flex-col group overflow-hidden">
       <a href={`/product/${product.artist.name}?productId=${product.id}&variant=${product.design[0].variant}&type=${product.types[0].value}`}>
-        <img className="rounded-t-lg p-8 object-cover w-[320px] h-[320px]"   src={product.design[0].url} alt={product.name} />
+        <img className="rounded-t-lg p-8 object-cover w-fit h-[320px] transition duration-300 ease-in-out group-hover:scale-105"   src={product.design[0].url} alt={product.name} />
       </a>
       <div className="px-4 pb-5 grid h-full ">
         <div className="flex items-center justify-between flex-1">

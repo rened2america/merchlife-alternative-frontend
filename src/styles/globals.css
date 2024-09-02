@@ -221,6 +221,9 @@ body {
   position: relative !important;
   padding-left: 16px !important;
 }
+.cust-collaction-btn a:hover {
+  color: black !important
+}
 
 
 
