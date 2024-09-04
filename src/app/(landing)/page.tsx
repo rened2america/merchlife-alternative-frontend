@@ -164,7 +164,7 @@ const HomePage = () => {
         <div className="grid py-9">
           <div className="w-full grid grid-cols-1 space-y-4 md:space-y-0 sm:grid-cols-2 md:grid-cols-4 gap-4 py-4 px-4 md:px-8 bg-white">
             {categories.map((category) => (
-              <Link key={category.id} href={"/stores?category=" + category.name} className="relative bg-[#E6E6E6] group">
+              <Link key={category.id} href={"/product/catalog?category=" + category.name} className="relative bg-[#E6E6E6] group">
                 <div className="overflow-hidden">
                   <Image className="w-full object-cover h-full hover:transition-all group-hover:scale-110 duration-500" src={category.image} alt={category.name} width={500} height={500} />
                 </div>
