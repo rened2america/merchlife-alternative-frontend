@@ -59,8 +59,8 @@ export default function Stores() {
           </svg>
         </button>
 
-        <div className="flex-1 p-4 mx-24">
-          <div className="flex flex-col md:flex-row justify-between items-center">
+        <div className="flex-1 p-4 md:mx-24 mx-2">
+          <div className="flex flex-col md:flex-row justify-between md:items-center">
             <span className="uppercase font-light text-3xl md:text-5xl">
               Stores at <strong className="font-bold text-3xl md:text-5xl">Merchlife</strong>
             </span>
@@ -83,7 +83,7 @@ export default function Stores() {
           <div className="flex items-center bg-gray-100 text-black mt-6 gap-2 p-4 w-fit hover:bg-gray-300">
               <a className="flex items-center gap-2" href="../product/catalog">Visit Product Catalog <ArrowRightIcon/></a>
           </div>
-          <div className="flex flex-wrap -mx-2 mt-8">
+          <div className="flex justify-center sm:justify-between flex-wrap mt-8">
             {artists &&
               (loading ?
                 <div className="flex items-center m-auto p-20">
