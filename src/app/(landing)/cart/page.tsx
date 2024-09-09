@@ -142,11 +142,11 @@ export default function Creators() {
                   </tr>
                 </thead>
                 <tbody>
-                  {product.map((product) => (
+                  {products.map((product) => (
                     <tr key={product?.id} className="border-b-8 border-b-white bg-[#F3F3F3]">
                       <td className="px-5 py-4">
                         <div className="flex h-24  items-center">
-                          <button className="" onClick={() => {removeFromCart(product?.name,product?.size,product?.image);
+                          <button className="" onClick={() => {removeFromCart(product?.name,product?.size,product?.url);
                           }}>
                             <svg
                               width="47"
@@ -187,7 +187,7 @@ export default function Creators() {
                       <td className="px-5 py-4">
                         <div className="border-r-gray md:flex h-30 md:h-24 items-center border-r-2 p-2">
                           <img
-                            src={product?.image}
+                            src={product?.url}
                             alt={product?.name}
                             className="border-1 h-24 w-24 border border-gray-400 object-cover"
                           />
