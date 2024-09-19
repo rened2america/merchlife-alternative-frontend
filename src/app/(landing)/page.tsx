@@ -33,6 +33,7 @@ import { env } from "@/env";
 
 
 import FeaturedProducts from "@/app/(landing)/_components/FeaturedProducts"
+import Loading from "../loading";
 
 const raleway = Raleway({ subsets: ["latin"] });
 
@@ -95,9 +96,9 @@ const features = [
 ];
 
 const categories = [
-  { id: 1, name: "Sweatshirts",url: "Sweatshirt", image: "/category_sweatshirt_no_bg.png" },
+  { id: 1, name: "Sweatshirts", url: "Sweatshirt", image: "/category_sweatshirt_no_bg.png" },
   { id: 2, name: "Mug", url: "Mug", image: "/category_mug_no_bg.png" },
-  { id: 3, name: "T-Shirts",url: "Shirt", image: "/category_tshirt_no_bg.png" },
+  { id: 3, name: "T-Shirts", url: "Shirt", image: "/category_tshirt_no_bg.png" },
   { id: 3, name: "Hoodie", url: "Hoodie", image: "/category_hoodie_no_bg.png" },
 ];
 
@@ -144,7 +145,9 @@ const HomePage = () => {
             ))}
           </div>
         </div>
-        <ThreeItemGridStores />
+        <Suspense fallback={<Loading />}>
+          <ThreeItemGridStores />
+        </Suspense>
         <div className="grid p-4 md:p-12 bg-[#E6E6E6] text-black">
           <div className="flex flex-col md:flex-row items-start justify-between pb-4 md:pb-12">
             <h2 className="font-normal text-3xl md:text-5xl">

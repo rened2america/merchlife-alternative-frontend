@@ -74,7 +74,7 @@ export async function ThreeItemGridStores() {
         STORES AT <b>MERCHLIFE</b>
       </div>
       <div className="mx-auto grid max-w-screen-2xl gap-4 px-4 pb-4 md:grid-cols-4 md:grid-rows-2 xl:grid-cols-8 lg:grid-cols-6 sm:grid-cols-1">
-        {stores.length > 0 ? (
+        {stores.length > 0 && (
           stores.map((seller, index) => (
             <ThreeItemGridItemStore
               key={seller.id}
@@ -91,8 +91,6 @@ export async function ThreeItemGridStores() {
                   }&type=${product.types[0].value}`}))}
             />
           ))
-        ) : (
-          <div>Loading...</div>
         )}
       </div>
     </section>
