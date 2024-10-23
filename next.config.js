@@ -32,6 +32,10 @@ const config = {
         protocol: "https",
         hostname: "politicozen-test.s3.us-east-2.amazonaws.com",
       },
+      {
+        protocol: "https",
+        hostname: "merchlife-content.s3.us-east-2.amazonaws.com",
+      },
     ],
   },
 };
