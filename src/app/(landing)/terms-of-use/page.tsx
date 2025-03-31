@@ -403,7 +403,7 @@ const HowItWorks = () => {
             <p><strong>SECTION 20 - CONTACT INFORMATION</strong></p>
 
             <p>
-              Questions about the Terms of Service should be sent to us at support@merchlife.com
+              Questions about the Terms of Service should be sent to us at support@merchlife.co
               <br />
             </p>
           </div>

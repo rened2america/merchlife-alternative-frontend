@@ -163,7 +163,7 @@ const HowItWorks = () => {
 
             <p>
               To Opt-Out of receiving our direct mail, you can click the unsubscribe button at the
-              footer of any of our emails, you may send us an email to support@merchlife.com, or
+              footer of any of our emails, you may send us an email to support@merchlife.co, or
               call us at (408) 418 5217. We will be happy to help you.
             </p>
 
@@ -315,7 +315,7 @@ const HowItWorks = () => {
             <p>
               <strong>Contact Us</strong>
               <br />
-              Send us an email to support@merchlife.com or call us at 408 418 5217. We&rsquo;re
+              Send us an email to support@merchlife.co or call us at 408 418 5217. We&rsquo;re
               always happy to hear from you.
               <br />
             </p>

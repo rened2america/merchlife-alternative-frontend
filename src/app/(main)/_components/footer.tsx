@@ -73,12 +73,12 @@ const Footer = () => {
                         <div className="md:flex">
 
                             <div className="flex items-center justify-end mb-4 lg:mb-0 md:mr-3">
-                                <a href="mailto:support@merchlife.com" className="rounded-full  flex items-center justify-center w-10 h-10 lg:w-12 lg:h-12 border-gray-400 border bg-gray-700">
+                                <a href="mailto:support@merchlife.co" className="rounded-full  flex items-center justify-center w-10 h-10 lg:w-12 lg:h-12 border-gray-400 border bg-gray-700">
                                     <IoMailOpenSharp className="w-4 h-4 lg:w-5 lg:h-5" />
                                 </a>
                                 <div className="space-y-0.5 font-medium dark:text-white text-left ms-3">
                                     <div>Email Us!</div>
-                                    <a href="mailto:support@merchlife.com" className="text-sm text-gray-500 dark:text-gray-400 ">mailto:support@merchlife.com</a>
+                                    <a href="mailto:support@merchlife.co" className="text-sm text-gray-500 dark:text-gray-400 ">mailto:support@merchlife.co</a>
                                 </div>
                             </div>
                             <div className="flex items-center md:justify-end mr-10">
