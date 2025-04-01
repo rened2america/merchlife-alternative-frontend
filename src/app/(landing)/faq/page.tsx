@@ -57,7 +57,7 @@ const Faq = () => {
         {
             id: 'accordion-open-body-7',
             question: 'What can I do if I want a design in another garment or color?',
-            answer: 'We try to have a lot of options so our clients find everything they want - and more - in our store! But if you find a design and you would like to change it to another garment or color, please send us the design information to support@merchlife.co and our Customer Service team will help you create the order. Please note that this option will always be subject to the availability of the garments and colors.'
+            answer: 'We try to have a lot of options so our clients find everything they want - and more - in our store! But if you find a design and you would like to change it to another garment or color, please send us the design information to adam@merchlife.co and our Customer Service team will help you create the order. Please note that this option will always be subject to the availability of the garments and colors.'
         },
         {
             id: 'accordion-open-body-8',
@@ -72,7 +72,7 @@ const Faq = () => {
         {
             id: 'accordion-open-body-10',
             question: 'Still have questions? ',
-            answer: 'Send us an email to support@merchlife.co or call us by phone to clear up your doubts. We’re always happy to help!'
+            answer: 'Send us an email to adam@merchlife.co or call us by phone to clear up your doubts. We’re always happy to help!'
         },
     ];
 

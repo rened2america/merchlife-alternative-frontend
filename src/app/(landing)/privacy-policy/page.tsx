@@ -163,7 +163,7 @@ const HowItWorks = () => {
 
             <p>
               To Opt-Out of receiving our direct mail, you can click the unsubscribe button at the
-              footer of any of our emails, you may send us an email to support@merchlife.co, or
+              footer of any of our emails, you may send us an email to adam@merchlife.co, or
               call us at (408) 418 5217. We will be happy to help you.
             </p>
 
@@ -230,7 +230,7 @@ const HowItWorks = () => {
               <strong> How to Opt-Out</strong>
               <br />
               You may Opt-Out of receiving further information from us and third-party ad networks
-              at any time by contacting our team at support@merchlife.co In your email, please give
+              at any time by contacting our team at adam@merchlife.co In your email, please give
               us your full name, email address, and statement that you do not want to receive
               further information from us.
             </p>
@@ -289,7 +289,7 @@ const HowItWorks = () => {
               and <br />
               The right to Opt-Out of having your personal information sold. <br />
               You can submit requests about your information to the email address
-              support@merchlife.co. California consumers have the right to request information about
+              adam@merchlife.co. California consumers have the right to request information about
               Merchlife collection and use of their personal information over the past 12 months. We
               will respond to your request within 45 calendar days. You must provide sufficient
               information that allows us to reasonably verify identity, and you must describe the
@@ -315,7 +315,7 @@ const HowItWorks = () => {
             <p>
               <strong>Contact Us</strong>
               <br />
-              Send us an email to support@merchlife.co or call us at 408 418 5217. We&rsquo;re
+              Send us an email to adam@merchlife.co or call us at 408 418 5217. We&rsquo;re
               always happy to hear from you.
               <br />
             </p>
